@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Microsoft Windows 1.01 (1985)</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230000aa'/><text x='2' y='22' fill='%2300aaaa' font-family='monospace' font-weight='bold' font-size='16'>W1</text></svg>">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="win1-desktop" id="win1-desktop">
+
+    <!-- Tile 1: MS-DOS Executive -->
+    <div class="tiled-window" id="tile-dos">
+      <div class="tiled-header">
+        <span>MS-DOS Executive</span>
+        <button class="tiled-menu-btn" id="btn-dos-sys" title="System Menu">[-]</button>
+      </div>
+      <div class="tiled-menubar">
+        <div class="menu-container">
+          <button class="tiled-menu-btn" id="dos-file-menu">File</button>
+          <div class="win1-dropdown hidden" id="dropdown-file">
+            <div class="dropdown-item" id="menu-file-run">Run...</div>
+            <div class="dropdown-item" id="menu-file-print">Print...</div>
+            <div class="dropdown-divider"></div>
+            <div class="dropdown-item" id="menu-file-exit">Exit Windows...</div>
+          </div>
+        </div>
+        <div class="menu-container">
+          <button class="tiled-menu-btn" id="dos-view-menu">View</button>
+          <div class="win1-dropdown hidden" id="dropdown-view">
+            <div class="dropdown-item" id="view-short">✓ Short</div>
+            <div class="dropdown-item" id="view-long">Long</div>
+            <div class="dropdown-divider"></div>
+            <div class="dropdown-item" id="view-all">All Files</div>
+            <div class="dropdown-item" id="view-programs">Programs Only</div>
+          </div>
+        </div>
+        <div class="menu-container">
+          <button class="tiled-menu-btn" id="dos-special-menu">Special</button>
+          <div class="win1-dropdown hidden" id="dropdown-special">
+            <div class="dropdown-item" id="special-end-session">End Session...</div>
+            <div class="dropdown-item" id="special-create-dir">Create Directory...</div>
+            <div class="dropdown-divider"></div>
+            <div class="dropdown-item" id="special-about">About MS-DOS Exec...</div>
+          </div>
+        </div>
+      </div>
+      <div class="tiled-body">
+        <p style="margin-bottom:8px; font-weight:bold;">A: C:\WINDOWS\*.*</p>
+        <div class="file-list" id="file-list-container">
+          <!-- Files populated by script -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Tile 2: Reversi Game -->
+    <div class="tiled-window" id="tile-reversi">
+      <div class="tiled-header">
+        <span>Reversi</span>
+        <button class="tiled-menu-btn btn-close-tile" data-target="tile-reversi" title="Close Tile">[X]</button>
+      </div>
+      <div class="tiled-menubar">
+        <button class="tiled-menu-btn" id="btn-reversi-new">New Game</button>
+        <button class="tiled-menu-btn" id="btn-reversi-skill">Skill: Novice</button>
+      </div>
+      <div class="tiled-body" style="text-align:center;">
+        <div id="reversi-score" style="margin-bottom:8px; font-weight:bold;">Turno: Negras | Negras: 2 | Blancas: 2</div>
+        <div id="reversi-board" class="reversi-board"></div>
+      </div>
+    </div>
+
+    <!-- Tile 3: Clock -->
+    <div class="tiled-window" id="tile-clock">
+      <div class="tiled-header">
+        <span>Clock</span>
+        <button class="tiled-menu-btn btn-close-tile" data-target="tile-clock" title="Close Tile">[X]</button>
+      </div>
+      <div class="tiled-body" style="display:flex;align-items:center;justify-content:center;">
+        <canvas id="clock-canvas" class="clock-canvas" width="160" height="160"></canvas>
+      </div>
+    </div>
+
+    <!-- Tile 4: Calculator -->
+    <div class="tiled-window hidden" id="tile-calc">
+      <div class="tiled-header">
+        <span>Calculator</span>
+        <button class="tiled-menu-btn btn-close-tile" data-target="tile-calc" title="Close Tile">[X]</button>
+      </div>
+      <div class="tiled-menubar">
+        <button class="tiled-menu-btn" id="calc-cga-c">Clear</button>
+      </div>
+      <div class="tiled-body" style="text-align:center;">
+        <div id="calc-cga-display" class="calc-cga-screen">0</div>
+        <div class="calc-cga-keys">
+          <button class="cga-key" data-k="7">7</button>
+          <button class="cga-key" data-k="8">8</button>
+          <button class="cga-key" data-k="9">9</button>
+          <button class="cga-key" data-k="/">/</button>
+          <button class="cga-key" data-k="4">4</button>
+          <button class="cga-key" data-k="5">5</button>
+          <button class="cga-key" data-k="6">6</button>
+          <button class="cga-key" data-k="*">*</button>
+          <button class="cga-key" data-k="1">1</button>
+          <button class="cga-key" data-k="2">2</button>
+          <button class="cga-key" data-k="3">3</button>
+          <button class="cga-key" data-k="-">-</button>
+          <button class="cga-key" data-k="0">0</button>
+          <button class="cga-key" data-k=".">.</button>
+          <button class="cga-key" data-k="=">=</button>
+          <button class="cga-key" data-k="+">+</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tile 5: Notepad -->
+    <div class="tiled-window hidden" id="tile-notepad">
+      <div class="tiled-header">
+        <span>Notepad - (untitled)</span>
+        <button class="tiled-menu-btn btn-close-tile" data-target="tile-notepad" title="Close Tile">[X]</button>
+      </div>
+      <div class="tiled-menubar">
+        <button class="tiled-menu-btn" id="notepad-new-btn">New</button>
+        <button class="tiled-menu-btn" id="notepad-time-btn">Time/Date</button>
+      </div>
+      <div class="tiled-body" style="padding:0;">
+        <textarea id="notepad-textarea" class="win1-notepad-textarea" spellcheck="false">MEMORANDUM
+Date: November 20, 1985
+To: Windows Users
+From: Microsoft Corporation
+
+Welcome to Microsoft Windows Operating Environment Version 1.01.
+Windows provides a graphical user interface and multitasking for MS-DOS computers.</textarea>
+      </div>
+    </div>
+
+    <!-- Tile 6: Control Panel -->
+    <div class="tiled-window hidden" id="tile-control">
+      <div class="tiled-header">
+        <span>Control Panel</span>
+        <button class="tiled-menu-btn btn-close-tile" data-target="tile-control" title="Close Tile">[X]</button>
+      </div>
+      <div class="tiled-body" style="font-size:12px;">
+        <p style="font-weight:bold; margin-bottom:10px;">Preferences</p>
+        <div style="margin-bottom:10px;">
+          <label style="display:block; margin-bottom:4px; font-weight:bold;">Display Palette:</label>
+          <select id="control-palette-sel" style="width:100%; font-family:monospace; padding:3px; background:#fff; color:#000; border:2px solid #000;">
+            <option value="cga-default">CGA Classic (Blue &amp; Cyan)</option>
+            <option value="cga-palette1">CGA Palette 1 (Cyan &amp; Magenta)</option>
+            <option value="cga-palette2">CGA Palette 2 (Green &amp; Red)</option>
+            <option value="cga-mono">Monochrome Amber</option>
+          </select>
+        </div>
+        <div style="margin-bottom:10px;">
+          <label style="display:block; margin-bottom:4px; font-weight:bold;">Cursor Blink Rate:</label>
+          <input type="range" min="1" max="5" value="3" style="width:100%;">
+        </div>
+        <div style="margin-bottom:10px;">
+          <label style="display:block; margin-bottom:4px; font-weight:bold;">System Beep:</label>
+          <label><input type="checkbox" id="control-beep-chk" checked> Enable PC Speaker Beeps</label>
+        </div>
+        <div style="margin-top:14px; padding:6px; border:2px dashed #00aaaa; background:#f0f0f0;">
+          <strong>Date / Time:</strong>
+          <div id="control-live-time">12:00:00 PM</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tile 7: Paint 1.0 -->
+    <div class="tiled-window hidden" id="tile-paint">
+      <div class="tiled-header">
+        <span>Paint - (untitled.msp)</span>
+        <button class="tiled-menu-btn btn-close-tile" data-target="tile-paint" title="Close Tile">[X]</button>
+      </div>
+      <div class="tiled-menubar">
+        <button class="tiled-menu-btn" id="paint-cga-clear">Clear</button>
+        <button class="tiled-menu-btn" id="paint-cga-invert">Invert</button>
+      </div>
+      <div class="tiled-body" style="padding:4px; display:flex; flex-direction:column; gap:6px;">
+        <div style="display:flex; gap:4px; flex-wrap:wrap;">
+          <button class="tiled-menu-btn paint-cga-tool active" data-tool="pencil">Pencil</button>
+          <button class="tiled-menu-btn paint-cga-tool" data-tool="brush">Brush</button>
+          <button class="tiled-menu-btn paint-cga-tool" data-tool="spray">Spray</button>
+          <button class="tiled-menu-btn paint-cga-tool" data-tool="eraser">Eraser</button>
+          <button class="tiled-menu-btn paint-cga-tool" data-tool="line">Line</button>
+          <button class="tiled-menu-btn paint-cga-tool" data-tool="rect">Box</button>
+        </div>
+        <div style="flex:1; background:#ffffff; border:2px solid #000; overflow:hidden;">
+          <canvas id="paint-cga-canvas" width="320" height="200" style="width:100%; height:100%; display:block; cursor:crosshair;"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tile 8: Cardfile 1.0 -->
+    <div class="tiled-window hidden" id="tile-cardfile">
+      <div class="tiled-header">
+        <span>Cardfile - ADDRESSES.CRD</span>
+        <button class="tiled-menu-btn btn-close-tile" data-target="tile-cardfile" title="Close Tile">[X]</button>
+      </div>
+      <div class="tiled-menubar">
+        <button class="tiled-menu-btn" id="cardfile-prev">◄ Prev</button>
+        <button class="tiled-menu-btn" id="cardfile-next">Next ►</button>
+        <button class="tiled-menu-btn" id="cardfile-new">+ New Card</button>
+      </div>
+      <div class="tiled-body" style="padding:8px; display:flex; flex-direction:column; gap:6px;">
+        <div style="border:2px solid #000; background:#fff; padding:6px; box-shadow:3px 3px 0 #555;">
+          <div style="border-bottom:1px solid #000; font-weight:bold; margin-bottom:4px;" id="cardfile-title">Gates, Bill - Microsoft Corp.</div>
+          <textarea id="cardfile-body" style="width:100%; height:100px; border:none; outline:none; font-family:monospace; resize:none;" spellcheck="false">One Microsoft Way
+Redmond, WA 98052
+Phone: (206) 882-8080
+Notes: Founder &amp; CEO of Microsoft</textarea>
+        </div>
+        <div style="font-size:11px; text-align:right;" id="cardfile-count">Card 1 of 3</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bottom icon strip -->
+  <div class="win1-icon-bar">
+    <button class="bar-icon" id="bar-dos"><img src="../assets/icons/win1/exec.png" alt=""> MS-DOS</button>
+    <button class="bar-icon" id="bar-reversi"><img src="../assets/icons/win1/reversi.png" alt=""> Reversi</button>
+    <button class="bar-icon" id="bar-clock"><img src="../assets/icons/win1/clock.png" alt=""> Clock</button>
+    <button class="bar-icon" id="bar-calc"><img src="../assets/icons/win1/calc.png" alt=""> Calc</button>
+    <button class="bar-icon" id="bar-notepad"><img src="../assets/icons/win1/notepad.png" alt=""> Notepad</button>
+    <button class="bar-icon" id="bar-paint"><img src="../assets/icons/win1/paint.png" alt=""> Paint</button>
+    <button class="bar-icon" id="bar-cardfile"><img src="../assets/icons/win1/cardfile.png" alt=""> Cardfile</button>
+    <button class="bar-icon" id="bar-control"><img src="../assets/icons/win1/control.png" alt=""> Control</button>
+  </div>
+
+  <!-- Run Dialog -->
+  <div id="win1-run-modal" class="hidden win1-modal-overlay">
+    <div class="win1-dialog-box">
+      <div class="win1-dialog-title">Run Command</div>
+      <div style="padding:14px;">
+        <p style="margin-bottom:8px;">Type the name of the program to run:</p>
+        <input type="text" id="win1-run-input" value="CALC.EXE" class="win1-input-text">
+        <div style="margin-top:14px; display:flex; justify-content:flex-end; gap:8px;">
+          <button id="btn-run-ok" class="win1-dialog-btn">OK</button>
+          <button id="btn-run-cancel" class="win1-dialog-btn">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- About Dialog -->
+  <div id="win1-about-modal" class="hidden win1-modal-overlay">
+    <div class="win1-dialog-box" style="width:380px;">
+      <div class="win1-dialog-title">About MS-DOS Executive</div>
+      <div style="padding:16px; text-align:center;">
+        <p style="font-weight:bold; font-size:14px; margin-bottom:8px;">Microsoft Windows Version 1.01</p>
+        <p style="margin-bottom:8px;">Copyright (C) 1985 Microsoft Corporation.</p>
+        <p style="font-size:11px; margin-bottom:14px; color:#555;">All rights reserved. Designed for IBM PC and compatibles.</p>
+        <button id="btn-about-ok" class="win1-dialog-btn" style="padding:4px 20px;">OK</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Exit Windows Dialog -->
+  <div id="win1-exit-modal" class="hidden win1-modal-overlay">
+    <div class="win1-dialog-box" style="width:340px; text-align:center;">
+      <div class="win1-dialog-title">Exit Windows</div>
+      <div style="padding:16px;">
+        <p style="font-weight:bold; margin-bottom:12px;">Exit Windows</p>
+        <p style="margin-bottom:16px;">This will end your Windows session and return to the Boot Manager.</p>
+        <div style="display:flex; justify-content:center; gap:10px;">
+          <button id="win1-btn-reboot" class="win1-dialog-btn" style="background:#00aaaa; color:#000;">Restart / Boot</button>
+          <button id="win1-btn-cancel" class="win1-dialog-btn">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Windows Boot Manager</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23000'/><text x='2' y='22' fill='%23fff' font-family='monospace' font-size='16'>OS</text></svg>">
+  <link rel="stylesheet" href="boot.css">
+</head>
+<body>
+
+  <div class="boot-screen" id="boot-screen">
+    <div class="boot-title">Windows Boot Manager</div>
+
+    <div class="boot-instructions">
+      Choose an operating system to start, or press TAB / DEL to enter BIOS Setup:
+    </div>
+
+    <div class="boot-sub-instruction">
+      (Use the arrow keys to highlight your choice, then press ENTER.)
+    </div>
+
+    <div class="os-list" id="os-list"></div>
+
+    <div class="boot-footer-info">
+      <div class="boot-keys-row">
+        <span>To specify an advanced option for this choice, press <kbd>F8</kbd>.</span>
+        <button id="btn-open-bios" class="boot-action-btn">[ DEL ] BIOS CMOS Setup</button>
+        <button id="btn-open-f8" class="boot-action-btn">[ F8 ] Advanced Boot Options</button>
+      </div>
+      <div id="timer-row" class="boot-timer">
+        Seconds until the selected choice will be started automatically: <span id="timer-seconds">30</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- BIOS CMOS Setup Utility Screen (DEL / F2) -->
+  <div id="bios-screen" class="bios-screen hidden">
+    <div class="bios-header">
+      <div>ROM PCI/ISA BIOS (2A69KD01)</div>
+      <div>CMOS SETUP UTILITY</div>
+      <div>AWARD SOFTWARE, INC.</div>
+    </div>
+    <div class="bios-grid">
+      <div class="bios-menu-col">
+        <div class="bios-item selected" data-desc="Set Date, Time, Floppy Format, Hard Disk Type">STANDARD CMOS SETUP</div>
+        <div class="bios-item" data-desc="Set CPU Speed, Cache, Boot Order">BIOS FEATURES SETUP</div>
+        <div class="bios-item" data-desc="Configure DRAM Timings, AGP Aperture">CHIPSET FEATURES SETUP</div>
+        <div class="bios-item" data-desc="PCI IRQ Configuration, Plug & Play OS">POWER MANAGEMENT SETUP</div>
+        <div class="bios-item" data-desc="Onboard Audio, IDE Controller, Serial Ports">INTEGRATED PERIPHERALS</div>
+      </div>
+      <div class="bios-menu-col">
+        <div class="bios-item" data-desc="Set Supervisor Password for BIOS security">SUPERVISOR PASSWORD</div>
+        <div class="bios-item" data-desc="Set User Password to boot system">USER PASSWORD</div>
+        <div class="bios-item" data-desc="Load fail-safe BIOS defaults">LOAD BIOS DEFAULTS</div>
+        <div class="bios-item" data-desc="Save all settings to CMOS memory and reboot">SAVE &amp; EXIT SETUP</div>
+        <div class="bios-item" data-desc="Abandon all changes and reboot">EXIT WITHOUT SAVING</div>
+      </div>
+    </div>
+    <div class="bios-details win-inset" id="bios-desc-panel">
+      <p>Time: <span id="bios-live-time">12:00:00</span> | Date: <span id="bios-live-date">10/05/2026</span></p>
+      <p>CPU: Intel Pentium II 450MHz | Base Memory: 640K | Extended: 130048K</p>
+      <p id="bios-item-help" style="color:#ffff55; margin-top:4px;">Set Date, Time, Floppy Format, Hard Disk Type</p>
+    </div>
+    <div class="bios-footer">
+      <div>ESC : Quit &nbsp;&nbsp;&nbsp;&nbsp; ↑ ↓ → ← : Select Item &nbsp;&nbsp;&nbsp;&nbsp; (Shift)F2 : Change Color &nbsp;&nbsp;&nbsp;&nbsp; F10 : Save &amp; Exit</div>
+      <div style="margin-top:4px;">
+        <button id="btn-bios-exit" class="bios-btn">ESC - Return to Boot Manager</button>
+        <button id="btn-bios-save" class="bios-btn">F10 - Save &amp; Boot Selected OS</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Windows Advanced Options Screen (F8) -->
+  <div id="f8-screen" class="f8-screen hidden">
+    <div class="f8-title">Windows Advanced Options Menu</div>
+    <div class="f8-subtitle">Please select an option:</div>
+    <div class="f8-list" id="f8-list">
+      <div class="f8-item selected" data-mode="normal">Start Windows Normally</div>
+      <div class="f8-item" data-mode="safe">Safe Mode</div>
+      <div class="f8-item" data-mode="network">Safe Mode with Networking</div>
+      <div class="f8-item" data-mode="cmd">Safe Mode with Command Prompt</div>
+      <div class="f8-item" data-mode="vga">Enable VGA Mode (640x480)</div>
+      <div class="f8-item" data-mode="lastgood">Last Known Good Configuration (your most recent settings that worked)</div>
+      <div class="f8-item" data-mode="reboot">Reboot System</div>
+    </div>
+    <div class="f8-footer">
+      <div>Use the up and down arrow keys to move the highlight to your choice.</div>
+      <div>Press ENTER to choose. Press ESC to return to boot manager.</div>
+      <div style="margin-top:10px;">
+        <button id="btn-f8-return" class="boot-action-btn">Return to Boot Manager</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="boot.js"></script>
+</body>
+</html>

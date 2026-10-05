@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Microsoft Windows 95</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23008080'/><text x='1' y='22' fill='%23ffffff' font-family='sans-serif' font-weight='bold' font-size='16'>95</text></svg>">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="w95-desktop" id="w95-desktop">
+
+    <!-- Desktop Icons -->
+    <div class="w95-icons">
+      <!-- My Computer -->
+      <div class="w95-icon" data-app="mycomputer">
+        <img src="../assets/icons/win95/mycomputer.png" class="w95-img" alt="My Computer">
+        <span class="w95-label">My Computer</span>
+      </div>
+
+      <!-- Network Neighborhood -->
+      <div class="w95-icon" data-app="network">
+        <img src="../assets/icons/win95/network.png" class="w95-img" alt="Network Neighborhood">
+        <span class="w95-label">Network Neighborhood</span>
+      </div>
+
+      <!-- Recycle Bin -->
+      <div class="w95-icon" data-app="recycle">
+        <img src="../assets/icons/win95/recycle_empty.png" class="w95-img" id="w95-desk-recycle-img" alt="Recycle Bin">
+        <span class="w95-label">Recycle Bin</span>
+      </div>
+
+      <!-- WordPad -->
+      <div class="w95-icon" data-app="wordpad">
+        <img src="../assets/icons/win95/wordpad.png" class="w95-img" alt="WordPad">
+        <span class="w95-label">WordPad</span>
+      </div>
+
+      <!-- Solitaire -->
+      <div class="w95-icon" data-app="solitaire">
+        <img src="../assets/icons/win95/solitaire.png" class="w95-img" alt="Solitaire">
+        <span class="w95-label">Solitaire</span>
+      </div>
+
+      <!-- FreeCell -->
+      <div class="w95-icon" data-app="freecell">
+        <img src="../assets/icons/win95/freecell.png" class="w95-img" alt="FreeCell">
+        <span class="w95-label">FreeCell</span>
+      </div>
+
+      <!-- Minesweeper -->
+      <div class="w95-icon" data-app="mines">
+        <img src="../assets/icons/win95/minesweeper.png" class="w95-img" alt="Minesweeper">
+        <span class="w95-label">Minesweeper</span>
+      </div>
+
+      <!-- Paint -->
+      <div class="w95-icon" data-app="paint">
+        <img src="../assets/icons/win95/paint.png" class="w95-img" alt="Paint">
+        <span class="w95-label">Paint</span>
+      </div>
+
+      <!-- Welcome -->
+      <div class="w95-icon" data-app="welcome">
+        <img src="../assets/icons/win95/help.png" class="w95-img" alt="Welcome">
+        <span class="w95-label">Welcome</span>
+      </div>
+
+      <!-- MS-DOS Prompt -->
+      <div class="w95-icon" data-app="dos">
+        <img src="../assets/icons/win95/dos.png" class="w95-img" alt="MS-DOS Prompt">
+        <span class="w95-label">MS-DOS Prompt</span>
+      </div>
+    </div>
+
+    <!-- WordPad Window -->
+    <div class="w95-window win-outset hidden" id="win-wordpad" data-id="wordpad" style="width: 520px; height: 350px; top: 50px; left: 140px;">
+      <div class="w95-titlebar">
+        <span>Document - WordPad</span>
+        <div class="w95-controls">
+          <button class="w95-ctrl-btn win-outset w95-ctrl-min">_</button>
+          <button class="w95-ctrl-btn win-outset w95-ctrl-close">✕</button>
+        </div>
+      </div>
+      <div class="w95-menubar">
+        <span><u>F</u>ile</span>
+        <span><u>E</u>dit</span>
+        <span><u>V</u>iew</span>
+        <span><u>I</u>nsert</span>
+        <span>F<u>o</u>rmat</span>
+        <span><u>H</u>elp</span>
+      </div>
+      <!-- WordPad Formatting Toolbar -->
+      <div class="w95-wordpad-toolbar win-outset">
+        <select id="w95-font-fam" style="font-size:11px; padding:1px;">
+          <option>Times New Roman</option>
+          <option>Arial</option>
+          <option>Courier New</option>
+        </select>
+        <select id="w95-font-sz" style="font-size:11px; padding:1px; width:45px;">
+          <option>10</option>
+          <option selected>12</option>
+          <option>14</option>
+          <option>18</option>
+        </select>
+        <button id="w95-btn-bold" class="win-outset wp-tool-btn" style="font-weight:bold;">B</button>
+        <button id="w95-btn-italic" class="win-outset wp-tool-btn" style="font-style:italic;">I</button>
+        <button id="w95-btn-under" class="win-outset wp-tool-btn" style="text-decoration:underline;">U</button>
+        <button id="w95-btn-clear" class="win-outset wp-tool-btn" style="margin-left:auto; width:auto; padding:0 6px;">Clear</button>
+      </div>
+      <div class="w95-body" style="padding:0;">
+        <div id="w95-wordpad-editor" contenteditable="true" style="width:100%; height:100%; padding:10px; font-family:'Times New Roman', serif; font-size:14px; outline:none; overflow:auto;" spellcheck="false">
+          <p><strong>Welcome to Microsoft Windows 95</strong></p>
+          <p>Release Date: August 24, 1995</p>
+          <br>
+          <p>Windows 95 introduces the revolutionary Start button, 32-bit preemptive multitasking, Plug and Play hardware support, and the Desktop user interface.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- My Computer Window -->
+    <div class="w95-window win-outset hidden" id="win-mycomputer" data-id="mycomputer" style="width: 440px; height: 290px; top: 80px; left: 160px;">
+      <div class="w95-titlebar">
+        <span id="w95-mycomp-title">My Computer</span>
+        <div class="w95-controls">
+          <button class="w95-ctrl-btn win-outset w95-ctrl-min">_</button>
+          <button class="w95-ctrl-btn win-outset w95-ctrl-close">✕</button>
+        </div>
+      </div>
+      <div class="w95-menubar">
+        <span id="mycomp-back-btn" style="cursor:pointer;"><u>B</u>ack</span>
+        <span><u>F</u>ile</span>
+        <span><u>E</u>dit</span>
+        <span><u>V</u>iew</span>
+        <span><u>H</u>elp</span>
+      </div>
+      <div class="w95-body" id="w95-mycomp-body" style="padding:14px; display:flex; flex-wrap:wrap; gap:16px;">
+        <!-- Drives injected by script -->
+      </div>
+    </div>
+
+    <!-- Solitaire Window -->
+    <div class="w95-window win-outset hidden" id="win-solitaire" data-id="solitaire" style="width: 500px; height: 400px; top: 60px; left: 180px;">
+      <div class="w95-titlebar">
+        <span>Solitaire</span>
+        <div class="w95-controls">
+          <button class="w95-ctrl-btn win-outset w95-ctrl-min">_</button>
+          <button class="w95-ctrl-btn win-outset w95-ctrl-close">✕</button>
+        </div>
+      </div>
+      <div class="w95-menubar">
+        <span id="w95-sol-deal" style="cursor:pointer;"><u>G</u>ame</span>
+        <span><u>H</u>elp</span>
+      </div>
+      <div class="w95-body" style="padding:0; background:#008000; overflow:hidden;">
+        <div style="padding:10px; display:flex; flex-direction:column; height:100%;">
+          <div style="display:flex; justify-content:space-between; margin-bottom:12px;">
+            <div style="display:flex; gap:10px;">
+              <div class="w95-card-pile" id="w95-sol-deck" style="cursor:pointer;" title="Click to deal">
+                <div style="width:100%; height:100%; background:#000080; border:2px solid #fff; border-radius:2px;"></div>
+              </div>
+              <div class="w95-card-pile" id="w95-sol-waste"></div>
+            </div>
+            <div style="display:flex; gap:6px;">
+              <div class="w95-card-pile" style="color:#fff; font-size:18px;">♠</div>
+              <div class="w95-card-pile" style="color:#fff; font-size:18px;">♥</div>
+              <div class="w95-card-pile" style="color:#fff; font-size:18px;">♦</div>
+              <div class="w95-card-pile" style="color:#fff; font-size:18px;">♣</div>
+            </div>
+          </div>
+          <div id="w95-sol-tableau" style="display:grid; grid-template-columns:repeat(7, 1fr); gap:6px; flex:1;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FreeCell 95 Window -->
+    <div class="w95-window win-outset hidden" id="win-freecell" data-id="freecell" style="width: 540px; height: 420px; top: 50px; left: 150px;">
+      <div class="w95-titlebar">
+        <span>FreeCell Game #1995</span>
+        <div class="w95-controls">
+          <button class="w95-ctrl-btn win-outset w95-ctrl-min">_</button>
+          <button class="w95-ctrl-btn win-outset w95-ctrl-close">✕</button>
+        </div>
+      </div>
+      <div class="w95-menubar">
+        <span id="fc-menu-new" style="cursor:pointer;"><u>G</u>ame</span>
+        <span><u>H</u>elp</span>
+      </div>
+      <div class="w95-body" style="padding:8px; background:#008000; display:flex; flex-direction:column; height:calc(100% - 48px); user-select:none;">
+        <div style="display:flex; justify-content:space-between; margin-bottom:10px;">
+          <!-- 4 Free Cells -->
+          <div style="display:flex; gap:6px;">
+            <div class="fc-cell" id="fc-free-0"></div>
+            <div class="fc-cell" id="fc-free-1"></div>
+            <div class="fc-cell" id="fc-free-2"></div>
+            <div class="fc-cell" id="fc-free-3"></div>
+          </div>
+          <!-- 4 Foundations -->
+          <div style="display:flex; gap:6px;">
+            <div class="fc-cell" id="fc-found-0" style="color:#fff;">♠</div>
+            <div class="fc-cell" id="fc-found-1" style="color:#fff;">♥</div>
+            <div class="fc-cell" id="fc-found-2" style="color:#fff;">♦</div>
+            <div class="fc-cell" id="fc-found-3" style="color:#fff;">♣</div>
+          </div>
+        </div>
+        <!-- 8 Cascades -->
+        <div id="fc-cascades" style="flex:1; display:grid; grid-template-columns:repeat(8, 1fr); gap:4px; overflow-y:auto;"></div>
+      </div>
+    </div>
+
+    <!-- Minesweeper Window -->
+    <div class="w95-window win-outset hidden" id="win-mines" data-id="mines" style="width: 240px; top: 90px; left: 240px;">
+      <div class="w95-titlebar">
+        <span>Minesweeper</span>
+        <div class="w95-controls">
+          <button class="w95-ctrl-btn win-outset w95-ctrl-min">_</button>
+          <button class="w95-ctrl-btn win-outset w95-ctrl-close">✕</button>
+        </div>
+      </div>
+      <div class="w95-menubar">
+        <span id="w95-mines-new" style="cursor:pointer;"><u>G</u>ame</span>
+        <span><u>H</u>elp</span>
+      </div>
+      <div class="w95-body" style="padding:8px; background:#c0c0c0;">
+        <div style="display:flex; justify-content:space-between; align-items:center; background:#c0c0c0; border:2px inset #fff; padding:4px 6px; margin-bottom:6px;">
+          <div class="w95-lcd" id="w95-bomb-count">010</div>
+          <button id="w95-mines-face" class="win-outset" style="width:26px; height:26px; font-size:16px; cursor:pointer;">🙂</button>
+          <div class="w95-lcd" id="w95-timer-count">000</div>
+        </div>
+        <div class="w95-mines-grid" id="w95-mines-grid"></div>
+      </div>
+    </div>
+
+    <!-- MS-DOS Prompt Window (Fixed and properly closed!) -->
+    <div class="w95-window win-outset hidden" id="win-dos" data-id="dos" style="width: 500px; height: 320px; top: 70px; left: 200px;">
+      <div class="w95-titlebar">
+        <span>MS-DOS Prompt</span>
+        <div class="w95-controls">
+          <button class="w95-ctrl-btn win-outset w95-ctrl-min">_</button>
+          <button class="w95-ctrl-btn win-outset w95-ctrl-close">✕</button>
+        </div>
+      </div>
+      <div class="w95-body" style="background:#000; color:#c0c0c0; font-family:monospace; padding:8px;">
+        <p>Microsoft(R) Windows 95</p>
+        <p>(C)Copyright Microsoft Corp 1981-1995.</p>
+        <br>
+        <div id="w95-dos-output"></div>
+        <div style="display:flex;">
+          <span>C:\WINDOWS&gt;&nbsp;</span>
+          <input type="text" id="w95-dos-input" style="flex:1; background:transparent; border:none; outline:none; color:#fff; font-family:monospace;" autofocus spellcheck="false">
+        </div>
+      </div>
+    </div>
+
+    <!-- Paint 95 window top-level window!) -->
+    <div class="w95-window win-outset hidden" id="win-paint" data-id="paint" style="width: 560px; height: 400px; top: 60px; left: 180px;">
+      <div class="w95-titlebar">
+        <span>untitled - Paint</span>
+        <div class="w95-controls">
+          <button class="w95-ctrl-btn win-outset w95-ctrl-min">_</button>
+          <button class="w95-ctrl-btn win-outset w95-ctrl-close">✕</button>
+        </div>
+      </div>
+      <div class="w95-menubar">
+        <span><u>F</u>ile</span>
+        <span><u>E</u>dit</span>
+        <span><u>V</u>iew</span>
+        <span><u>I</u>mage</span>
+        <span><u>O</u>ptions</span>
+        <span><u>H</u>elp</span>
+      </div>
+      <div style="display:flex; height:calc(100% - 70px); background:#c0c0c0;">
+        <div style="width:54px; border-right:1px solid #808080; padding:4px; display:grid; grid-template-columns:1fr 1fr; gap:3px; align-content:start;">
+          <button class="win-outset w95-paint-tool active" data-tool="pencil" title="Pencil">✏</button>
+          <button class="win-outset w95-paint-tool" data-tool="brush" title="Brush">🖌</button>
+          <button class="win-outset w95-paint-tool" data-tool="eraser" title="Eraser">◻</button>
+          <button class="win-outset w95-paint-tool" data-tool="bucket" title="Fill">⌸</button>
+          <button class="win-outset w95-paint-tool" data-tool="spray" title="Airbrush">░</button>
+          <button class="win-outset w95-paint-tool" data-tool="line" title="Line">╱</button>
+          <button class="win-outset w95-paint-tool" data-tool="rect" title="Rectangle">▭</button>
+          <button id="w95-paint-clear" class="win-outset" style="grid-column:span 2; font-size:9px; padding:2px;">CLR</button>
+        </div>
+        <div style="flex:1; background:#808080; padding:8px; overflow:auto; display:flex;">
+          <canvas id="w95-paint-canvas" width="460" height="260" style="background:#fff; border:1px solid #000; cursor:crosshair;"></canvas>
+        </div>
+      </div>
+      <!-- 28-color palette -->
+      <div id="w95-paint-palette" style="height:32px; background:#c0c0c0; border-top:1px solid #808080; display:flex; align-items:center; padding:2px 8px; gap:2px; overflow-x:auto;"></div>
+    </div>
+
+    <!-- Welcome to Windows 95 Tour Window -->
+    <div class="w95-window win-outset hidden" id="win-welcome" data-id="welcome" style="width: 500px; height: 340px; top: 80px; left: 150px;">
+      <div class="w95-titlebar">
+        <span>Welcome</span>
+        <div class="w95-controls">
+          <button class="w95-ctrl-btn win-outset w95-ctrl-close">✕</button>
+        </div>
+      </div>
+      <div style="background:#000080; color:#fff; padding:12px 18px; display:flex; align-items:center; justify-content:space-between; border-bottom:2px solid #fff;">
+        <h2 style="font-size:22px; font-style:italic; font-family:'Times New Roman', serif;">Welcome to Windows 95</h2>
+        <svg viewBox="0 0 32 32" width="36" height="36">
+          <path fill="#ff0000" d="M2 4h12v10H2z"/>
+          <path fill="#00aa00" d="M18 4h12v10H18z"/>
+          <path fill="#0000d8" d="M2 18h12v10H2z"/>
+          <path fill="#f8f800" d="M18 18h12v10H18z"/>
+        </svg>
+      </div>
+      <div style="padding:16px; background:#c0c0c0; display:flex; gap:16px; height:calc(100% - 105px);">
+        <div style="flex:1; border:2px inset #fff; background:#fff; padding:12px; font-size:12px;">
+          <p style="font-weight:bold; margin-bottom:8px;" id="w95-tip-title">Did you know...</p>
+          <p id="w95-tip-text">To open a program, you just click the Start button, and then point to Programs.</p>
+          <div style="margin-top:20px;">
+            <button id="w95-btn-next-tip" class="win-outset" style="padding:4px 10px; cursor:pointer;">Next Tip ►</button>
+          </div>
+        </div>
+        <div style="width:160px; display:flex; flex-direction:column; gap:6px;">
+          <button class="win-outset" style="padding:5px; text-align:left; cursor:pointer;" onclick="alert('Windows 95 features: 32-bit architecture, Plug and Play, preemptive multitasking, and modern taskbar!')">What's New</button>
+          <button class="win-outset" style="padding:5px; text-align:left; cursor:pointer;" onclick="alert('Online User Guide: Explore accessories like WordPad, Paint, and Games.')">Online Guide</button>
+          <button id="w95-btn-close-welcome" class="win-outset" style="margin-top:auto; padding:5px; font-weight:bold; cursor:pointer;">Close</button>
+        </div>
+      </div>
+      <div style="background:#c0c0c0; padding:6px 16px; font-size:11px; display:flex; align-items:center;">
+        <label><input type="checkbox" checked> Show this Welcome screen next time you start Windows</label>
+      </div>
+    </div>
+
+    <!-- Recycle Bin Window -->
+    <div class="w95-window win-outset hidden" id="win-recycle" data-id="recycle" style="width: 440px; height: 280px; top: 100px; left: 190px;">
+      <div class="w95-titlebar">
+        <span>Recycle Bin</span>
+        <div class="w95-controls">
+          <button class="w95-ctrl-btn win-outset w95-ctrl-min">_</button>
+          <button class="w95-ctrl-btn win-outset w95-ctrl-close">✕</button>
+        </div>
+      </div>
+      <div class="w95-menubar">
+        <span id="recycle-empty-btn" style="cursor:pointer; font-weight:bold;"><u>E</u>mpty Recycle Bin</span>
+        <span><u>F</u>ile</span>
+        <span><u>E</u>dit</span>
+        <span><u>V</u>iew</span>
+        <span><u>H</u>elp</span>
+      </div>
+      <div class="w95-body" style="padding:14px; background:#fff; height:calc(100% - 50px); overflow:auto;" id="recycle-items-container">
+        <p style="color:#555;" id="recycle-status-msg">The Recycle Bin is empty.</p>
+      </div>
+    </div>
+
+    <!-- Network Neighborhood Window -->
+    <div class="w95-window win-outset hidden" id="win-network" data-id="network" style="width: 420px; height: 260px; top: 110px; left: 170px;">
+      <div class="w95-titlebar">
+        <span>Network Neighborhood</span>
+        <div class="w95-controls">
+          <button class="w95-ctrl-btn win-outset w95-ctrl-min">_</button>
+          <button class="w95-ctrl-btn win-outset w95-ctrl-close">✕</button>
+        </div>
+      </div>
+      <div class="w95-menubar">
+        <span><u>F</u>ile</span>
+        <span><u>E</u>dit</span>
+        <span><u>V</u>iew</span>
+        <span><u>H</u>elp</span>
+      </div>
+      <div class="w95-body" style="padding:16px; background:#fff; display:flex; gap:20px; height:calc(100% - 50px);">
+        <div style="text-align:center; cursor:pointer;" onclick="alert('Entire Network: Microsoft Windows Network')">
+          <img src="../assets/icons/win95/network.png" style="width:32px; height:32px; display:block; margin:0 auto 4px;" alt="">
+          <span>Entire Network</span>
+        </div>
+        <div style="text-align:center; cursor:pointer;" onclick="alert('Workgroup: WORKGROUP\nConnected to local LAN')">
+          <img src="../assets/icons/win95/mycomputer.png" style="width:32px; height:32px; display:block; margin:0 auto 4px;" alt="">
+          <span>Workgroup</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Display Properties Dialog -->
+    <div class="w95-window win-outset hidden" id="win-properties" data-id="properties" style="width: 380px; top: 70px; left: 220px;">
+      <div class="w95-titlebar">
+        <span>Display Properties</span>
+        <div class="w95-controls">
+          <button class="w95-ctrl-btn win-outset w95-ctrl-close">✕</button>
+        </div>
+      </div>
+      <div style="background:#c0c0c0; padding:6px 6px 0 6px; display:flex; gap:2px; border-bottom:1px solid #808080;">
+        <button class="win-outset disp-tab active" data-tab="bg" style="padding:3px 8px; font-weight:bold; font-size:11px;">Background</button>
+        <button class="win-outset disp-tab" data-tab="ss" style="padding:3px 8px; font-size:11px;">Screen Saver</button>
+        <button class="win-outset disp-tab" data-tab="app" style="padding:3px 8px; font-size:11px;">Appearance</button>
+      </div>
+      <div class="w95-body" style="padding:12px; background:#c0c0c0;">
+        <div style="text-align:center; margin-bottom:12px;">
+          <!-- Mini monitor preview -->
+          <div style="width:140px; height:100px; background:#000; border:4px solid #808080; border-radius:4px; margin:0 auto; padding:6px; box-shadow:inset 2px 2px #555;">
+            <div id="w95-monitor-preview" style="width:100%; height:100%; background:url('../assets/win95_clouds.png') center/cover;"></div>
+          </div>
+        </div>
+        <div style="margin-bottom:10px;">
+          <label style="font-weight:bold; display:block; margin-bottom:4px;">Wallpaper:</label>
+          <select id="w95-wallpaper-select" style="width:100%; padding:2px; font-family:var(--w95-font);">
+            <option value="clouds">Clouds (Windows 95 Official)</option>
+            <option value="teal">Teal Solid (#008080)</option>
+            <option value="navy">Navy Blue (#000080)</option>
+          </select>
+        </div>
+        <div style="display:flex; justify-content:flex-end; gap:8px; margin-top:14px;">
+          <button id="btn-prop-apply" class="win-outset" style="padding:4px 14px; font-weight:bold; cursor:pointer;">Apply</button>
+          <button id="btn-prop-ok" class="win-outset" style="padding:4px 14px; cursor:pointer;">OK</button>
+          <button id="btn-prop-cancel" class="win-outset" style="padding:4px 14px; cursor:pointer;">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Run Dialog -->
+    <div class="w95-window win-outset hidden" id="win-run" data-id="run" style="width: 360px; top: 120px; left: 210px;">
+      <div class="w95-titlebar">
+        <span>Run</span>
+        <div class="w95-controls">
+          <button class="w95-ctrl-btn win-outset w95-ctrl-close">✕</button>
+        </div>
+      </div>
+      <div style="padding:14px; background:#c0c0c0;">
+        <div style="display:flex; gap:12px; align-items:center; margin-bottom:12px;">
+          <img src="../assets/icons/win95/run.png" alt="">
+          <p>Type the name of a program, folder, or document, and Windows will open it for you.</p>
+        </div>
+        <div style="display:flex; align-items:center; gap:8px; margin-bottom:14px;">
+          <span><u>O</u>pen:</span>
+          <input type="text" id="w95-run-input" value="wordpad" class="win-inset" style="flex:1; padding:3px 6px; font-family:var(--w95-font); outline:none;">
+        </div>
+        <div style="display:flex; justify-content:flex-end; gap:8px;">
+          <button id="btn-run-exec" class="win-outset" style="padding:3px 14px; font-weight:bold; cursor:pointer;">OK</button>
+          <button id="btn-run-close" class="win-outset" style="padding:3px 14px; cursor:pointer;">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Desktop Right-Click Context Menu -->
+    <div id="w95-context-menu" class="w95-start-menu win-outset hidden" style="position:fixed; z-index:99999; width:160px; padding:2px;">
+      <div class="w95-menu-item" id="ctx-arrange">Arrange Icons</div>
+      <div class="w95-menu-item" id="ctx-refresh"><u>R</u>efresh</div>
+      <div style="height:1px; background:#808080; margin:2px 0;"></div>
+      <div class="w95-menu-item" id="ctx-new"><u>N</u>ew &gt;</div>
+      <div style="height:1px; background:#808080; margin:2px 0;"></div>
+      <div class="w95-menu-item" id="ctx-properties">P<u>r</u>operties</div>
+    </div>
+
+  </div>
+
+  <!-- Safe Shutdown Screen -->
+  <div id="w95-safe-screen" class="hidden" style="position:fixed; top:0; left:0; width:100vw; height:100vh; background:#000000; color:#ff8800; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; z-index:999999; font-family:'Times New Roman', serif;">
+    <h1 style="font-size:38px; font-weight:bold; margin-bottom:12px; letter-spacing:1px;">It's now safe to turn off your computer.</h1>
+    <p style="color:#ffffff; font-family:sans-serif; font-size:14px; margin-bottom:24px;">(Or click below to restart into the Boot Manager)</p>
+    <button id="w95-btn-restart-pc" class="win-outset" style="padding:8px 22px; font-family:sans-serif; font-size:13px; font-weight:bold; cursor:pointer; background:#c0c0c0; color:#000;">Restart Computer</button>
+  </div>
+
+  <!-- Windows 95 Taskbar -->
+  <footer class="w95-taskbar win-outset">
+    <button class="w95-start-btn win-outset" id="w95-start-btn">
+      <svg viewBox="0 0 16 16" width="14" height="14">
+        <path fill="#ff0000" d="M1 2h6v5H1z"/>
+        <path fill="#00aa00" d="M9 2h6v5H9z"/>
+        <path fill="#0000d8" d="M1 9h6v5H1z"/>
+        <path fill="#f8f800" d="M9 9h6v5H9z"/>
+      </svg>
+      <span>Start</span>
+    </button>
+
+    <div class="w95-task-tabs" id="w95-task-tabs"></div>
+
+    <div class="w95-tray win-inset">
+      <svg viewBox="0 0 16 16" width="14" height="14" id="w95-tray-vol" style="cursor:pointer;" title="Volume">
+        <path d="M3 5h3l4-3v12l-4-3H3z" fill="#000"/>
+        <path d="M12 5c1 1.5 1 4.5 0 6" stroke="#000" fill="none"/>
+      </svg>
+      <span id="w95-clock" style="cursor:pointer;" title="Date/Time">00:00 PM</span>
+    </div>
+  </footer>
+
+  <!-- Start Menu -->
+  <div class="w95-start-menu win-outset hidden" id="w95-start-menu">
+    <div class="w95-banner">
+      <span class="w95-banner-text">Windows95</span>
+    </div>
+    <div class="w95-menu-list">
+      <!-- Programs with Submenu -->
+      <div class="w95-menu-item" id="w95-menu-programs">
+        <img src="../assets/icons/win95/settings.png" alt="">
+        <span><u>P</u>rograms</span>
+        <span style="margin-left:auto; font-size:9px;">▶</span>
+
+        <div class="w95-submenu win-outset hidden" id="w95-submenu-programs">
+          <div class="w95-menu-item" data-app="wordpad">
+            <img src="../assets/icons/win95/wordpad.png" alt="">
+            <span>WordPad</span>
+          </div>
+          <div class="w95-menu-item" data-app="solitaire">
+            <img src="../assets/icons/win95/solitaire.png" alt="">
+            <span>Solitaire</span>
+          </div>
+          <div class="w95-menu-item" data-app="freecell">
+            <img src="../assets/icons/win95/freecell.png" alt="">
+            <span>FreeCell</span>
+          </div>
+          <div class="w95-menu-item" data-app="mines">
+            <img src="../assets/icons/win95/minesweeper.png" alt="">
+            <span>Minesweeper</span>
+          </div>
+          <div class="w95-menu-item" data-app="paint">
+            <img src="../assets/icons/win95/paint.png" alt="">
+            <span>Paint</span>
+          </div>
+          <div class="w95-menu-item" data-app="dos">
+            <img src="../assets/icons/win95/dos.png" alt="">
+            <span>MS-DOS Prompt</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="w95-menu-item" data-app="mycomputer">
+        <img src="../assets/icons/win95/mycomputer.png" alt="">
+        <span><u>D</u>ocuments</span>
+      </div>
+
+      <div class="w95-menu-item" data-app="properties">
+        <img src="../assets/icons/win95/settings.png" alt="">
+        <span><u>S</u>ettings</span>
+      </div>
+
+      <div class="w95-menu-item" onclick="alert('Find: 0 items found on drive C:')">
+        <img src="../assets/icons/win95/help.png" alt="">
+        <span><u>F</u>ind</span>
+      </div>
+
+      <div class="w95-menu-item" data-app="welcome">
+        <img src="../assets/icons/win95/help.png" alt="">
+        <span><u>H</u>elp</span>
+      </div>
+
+      <div class="w95-menu-item" data-app="run">
+        <img src="../assets/icons/win95/run.png" alt="">
+        <span><u>R</u>un...</span>
+      </div>
+
+      <div style="height:1px; background:#808080; margin:2px 0;"></div>
+
+      <div class="w95-menu-item" id="w95-menu-shutdown">
+        <img src="../assets/icons/win95/shutdown.png" alt="">
+        <span>Sh<u>u</u>t Down...</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Shut Down Windows Dialog -->
+  <div id="w95-shutdown-dialog" class="hidden" style="position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.4); display:flex; align-items:center; justify-content:center; z-index:100000;">
+    <div class="w95-window win-outset" style="width:340px; position:static;">
+      <div class="w95-titlebar">
+        <span>Shut Down Windows</span>
+      </div>
+      <div style="padding:14px; background:#c0c0c0; color:#000;">
+        <p style="font-weight:bold; margin-bottom:12px;">What do you want the computer to do?</p>
+        <div style="margin-bottom:14px;">
+          <label style="display:block; margin-bottom:6px;">
+            <input type="radio" name="w95-shut-opt" value="shutdown"> Shut down the computer?
+          </label>
+          <label style="display:block; margin-bottom:6px;">
+            <input type="radio" name="w95-shut-opt" value="reboot" checked> Restart the computer?
+          </label>
+          <label style="display:block;">
+            <input type="radio" name="w95-shut-opt" value="dos"> Restart in MS-DOS mode?
+          </label>
+        </div>
+        <div style="display:flex; justify-content:flex-end; gap:8px;">
+          <button id="btn-shut-ok" class="win-outset" style="padding:3px 14px; cursor:pointer;">Yes</button>
+          <button id="btn-shut-cancel" class="win-outset" style="padding:3px 14px; cursor:pointer;">No</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

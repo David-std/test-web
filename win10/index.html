@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Microsoft Windows 10 Pro</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><path fill='%230078d7' d='M2 6.5 L14 4.8 L14 15 L2 15 Z M16 4.5 L30 2.5 L30 15 L16 15 Z M2 17 L14 17 L14 27.2 L2 25.5 Z M16 17 L30 17 L30 29.5 L16 27.5 Z'/></svg>">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="w10-desktop">
+
+    <!-- Desktop icons -->
+    <div class="w10-icons">
+      <!-- Este equipo -->
+      <div class="w10-icon" data-win="win-pc">
+        <div class="w10-icon-img">
+          <img src="../assets/icons/win10/thispc.png" alt="Este equipo" class="w10-icon-pic">
+        </div>
+        <span class="w10-icon-label">Este equipo</span>
+      </div>
+
+      <!-- Papelera de reciclaje -->
+      <div class="w10-icon" id="w10-recycle" data-win="win-recycle">
+        <div class="w10-icon-img">
+          <img src="../assets/icons/win10/recycle_empty.png" alt="Papelera de reciclaje" class="w10-icon-pic" id="w10-recycle-img">
+        </div>
+        <span class="w10-icon-label">Papelera de reciclaje</span>
+      </div>
+
+      <!-- Microsoft Edge -->
+      <div class="w10-icon" data-win="win-edge">
+        <div class="w10-icon-img">
+          <img src="../assets/icons/win10/edge.png" alt="Microsoft Edge" class="w10-icon-pic">
+        </div>
+        <span class="w10-icon-label">Microsoft Edge</span>
+      </div>
+
+      <!-- Calculadora -->
+      <div class="w10-icon" data-win="win-calc">
+        <div class="w10-icon-img">
+          <img src="../assets/icons/win10/calc.png" alt="Calculadora" class="w10-icon-pic">
+        </div>
+        <span class="w10-icon-label">Calculadora</span>
+      </div>
+
+      <!-- Administrador de tareas -->
+      <div class="w10-icon" data-win="win-taskmgr">
+        <div class="w10-icon-img">
+          <img src="../assets/icons/win10/taskmgr.png" alt="Administrador de tareas" class="w10-icon-pic">
+        </div>
+        <span class="w10-icon-label">Administrador de tareas</span>
+      </div>
+
+      <!-- Bloc de notas -->
+      <div class="w10-icon" data-win="win-notepad">
+        <div class="w10-icon-img">
+          <img src="../assets/icons/win10/notepad.png" alt="Bloc de notas" class="w10-icon-pic">
+        </div>
+        <span class="w10-icon-label">Bloc de notas</span>
+      </div>
+
+      <!-- Configuración -->
+      <div class="w10-icon" data-win="win-settings">
+        <div class="w10-icon-img">
+          <img src="../assets/icons/win10/settings.png" alt="Configuración" class="w10-icon-pic">
+        </div>
+        <span class="w10-icon-label">Configuración</span>
+      </div>
+    </div>
+
+    <!-- This PC window -->
+    <div class="w10-window hidden" id="win-pc" style="width: 680px; height: 440px; top: 50px; left: 140px;">
+      <div class="w10-titlebar">
+        <div class="w10-titlebar-text">
+          <img src="../assets/icons/win10/thispc.png" width="16" height="16" alt="Icon" style="vertical-align:middle; margin-right:4px;">
+          <span>Este equipo</span>
+        </div>
+        <div class="w10-controls">
+          <button class="w10-ctrl-btn w10-ctrl-min" title="Minimizar">─</button>
+          <button class="w10-ctrl-btn w10-ctrl-max" title="Maximizar">□</button>
+          <button class="w10-ctrl-btn w10-ctrl-close" title="Cerrar">✕</button>
+        </div>
+      </div>
+      <div class="w10-ribbon">
+        <div class="w10-ribbon-tabs">
+          <span class="active">Equipo</span>
+          <span>Vista</span>
+          <span>Herramientas</span>
+        </div>
+        <div class="w10-address-bar">
+          <button class="w10-nav-arrow" title="Atrás">
+            <svg viewBox="0 0 16 16" width="12" height="12"><path d="M10 3 L5 8 L10 13" fill="none" stroke="#555" stroke-width="2"/></svg>
+          </button>
+          <button class="w10-nav-arrow" title="Adelante">
+            <svg viewBox="0 0 16 16" width="12" height="12"><path d="M6 3 L11 8 L6 13" fill="none" stroke="#555" stroke-width="2"/></svg>
+          </button>
+          <div class="w10-path-box">
+            <svg viewBox="0 0 16 16" width="13" height="13"><rect x="2" y="3" width="12" height="9" fill="#0078d7"/></svg>
+            <span id="win-pc-path">Este equipo</span>
+          </div>
+          <input type="text" class="w10-search-input" placeholder="Buscar en Este equipo">
+        </div>
+      </div>
+      <div class="w10-explorer-body">
+        <div class="w10-sidebar">
+          <div class="w10-side-item active">
+            <svg viewBox="0 0 16 16" width="14" height="14"><rect x="2" y="3" width="12" height="9" fill="#0078d7"/></svg>
+            <span>Este equipo</span>
+          </div>
+          <div class="w10-side-item">
+            <svg viewBox="0 0 16 16" width="14" height="14"><path d="M2 3 L6 3 L8 5 L14 5 L14 13 L2 13 Z" fill="#0284c7"/></svg>
+            <span>Descargas</span>
+          </div>
+          <div class="w10-side-item">
+            <svg viewBox="0 0 16 16" width="14" height="14"><path d="M2 3 L6 3 L8 5 L14 5 L14 13 L2 13 Z" fill="#059669"/></svg>
+            <span>Documentos</span>
+          </div>
+          <div class="w10-side-item">
+            <svg viewBox="0 0 16 16" width="14" height="14"><path d="M2 3 L6 3 L8 5 L14 5 L14 13 L2 13 Z" fill="#d97706"/></svg>
+            <span>Imágenes</span>
+          </div>
+          <div class="w10-side-item">
+            <svg viewBox="0 0 16 16" width="14" height="14"><path d="M2 3 L6 3 L8 5 L14 5 L14 13 L2 13 Z" fill="#dc2626"/></svg>
+            <span>Vídeos</span>
+          </div>
+        </div>
+        <div class="w10-main-content">
+          <div class="w10-section-title">Carpetas (5)</div>
+          <div class="w10-folder-grid">
+            <div class="w10-folder-card">
+              <svg viewBox="0 0 32 32" width="28" height="28"><path d="M4 6 L12 6 L15 10 L28 10 L28 26 L4 26 Z" fill="#0284c7"/></svg>
+              <span>Descargas</span>
+            </div>
+            <div class="w10-folder-card">
+              <svg viewBox="0 0 32 32" width="28" height="28"><path d="M4 6 L12 6 L15 10 L28 10 L28 26 L4 26 Z" fill="#059669"/></svg>
+              <span>Documentos</span>
+            </div>
+            <div class="w10-folder-card">
+              <svg viewBox="0 0 32 32" width="28" height="28"><path d="M4 6 L12 6 L15 10 L28 10 L28 26 L4 26 Z" fill="#d97706"/></svg>
+              <span>Imágenes</span>
+            </div>
+            <div class="w10-folder-card">
+              <svg viewBox="0 0 32 32" width="28" height="28"><path d="M4 6 L12 6 L15 10 L28 10 L28 26 L4 26 Z" fill="#7c3aed"/></svg>
+              <span>Música</span>
+            </div>
+            <div class="w10-folder-card">
+              <svg viewBox="0 0 32 32" width="28" height="28"><path d="M4 6 L12 6 L15 10 L28 10 L28 26 L4 26 Z" fill="#dc2626"/></svg>
+              <span>Vídeos</span>
+            </div>
+          </div>
+
+          <div class="w10-section-title" style="margin-top:16px;">Dispositivos y unidades (2)</div>
+          <div class="w10-drives-grid">
+            <div class="w10-drive-card">
+              <svg viewBox="0 0 40 40" width="36" height="36">
+                <rect x="6" y="8" width="28" height="22" rx="2" fill="#94a3b8" stroke="#475569" stroke-width="1.5"/>
+                <rect x="8" y="10" width="24" height="14" fill="#cbd5e1"/>
+                <circle cx="20" cy="17" r="4" fill="#64748b"/>
+                <circle cx="28" cy="26" r="1.5" fill="#22c55e"/>
+              </svg>
+              <div class="w10-drive-info">
+                <strong>Disco local (C:)</strong>
+                <div class="w10-progress-bar">
+                  <div class="w10-progress-fill" style="width: 58%;"></div>
+                </div>
+                <small>218 GB disponibles de 476 GB</small>
+              </div>
+            </div>
+
+            <div class="w10-drive-card">
+              <svg viewBox="0 0 40 40" width="36" height="36">
+                <rect x="6" y="8" width="28" height="22" rx="2" fill="#94a3b8" stroke="#475569" stroke-width="1.5"/>
+                <rect x="8" y="10" width="24" height="14" fill="#cbd5e1"/>
+                <circle cx="20" cy="17" r="4" fill="#64748b"/>
+                <circle cx="28" cy="26" r="1.5" fill="#3b82f6"/>
+              </svg>
+              <div class="w10-drive-info">
+                <strong>Datos (D:)</strong>
+                <div class="w10-progress-bar">
+                  <div class="w10-progress-fill" style="width: 32%;"></div>
+                </div>
+                <small>680 GB disponibles de 1000 GB</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="w10-statusbar">
+        <span>7 elementos</span>
+        <span>Estado: En línea</span>
+      </div>
+    </div>
+
+    <!-- Ventana Papelera de reciclaje Windows 10 -->
+    <div class="w10-window hidden" id="win-recycle" style="width: 660px; height: 420px; top: 60px; left: 160px;">
+      <div class="w10-titlebar">
+        <div class="w10-titlebar-text">
+          <img src="../assets/icons/win10/recycle_empty.png" width="16" height="16" alt="Icon" style="vertical-align:middle; margin-right:4px;">
+          <span>Papelera de reciclaje</span>
+        </div>
+        <div class="w10-controls">
+          <button class="w10-ctrl-btn w10-ctrl-min" title="Minimizar">─</button>
+          <button class="w10-ctrl-btn w10-ctrl-max" title="Maximizar">□</button>
+          <button class="w10-ctrl-btn w10-ctrl-close" title="Cerrar">✕</button>
+        </div>
+      </div>
+      <div class="w10-ribbon">
+        <div class="w10-ribbon-tabs">
+          <span class="active">Herramientas de Papelera de reciclaje</span>
+        </div>
+        <div style="padding:6px 12px; display:flex; gap:10px; align-items:center; background:#f5f6f7; border-bottom:1px solid #e1e2e3;">
+          <button id="w10-empty-recycle-btn" style="padding:4px 12px; background:#0078d7; color:#fff; border:none; border-radius:2px; cursor:pointer; font-size:11px;">Vaciar Papelera de reciclaje</button>
+          <button id="w10-restore-recycle-btn" style="padding:4px 12px; background:#fff; border:1px solid #cbd5e1; border-radius:2px; cursor:pointer; font-size:11px;">Restaurar todos los elementos</button>
+        </div>
+      </div>
+      <div style="padding:14px; background:#fff; height:calc(100% - 90px); overflow-y:auto;" id="w10-recycle-content">
+        <div id="w10-recycle-table">
+          <div style="display:grid; grid-template-columns:2fr 2fr 1fr; padding:6px; border-bottom:1px solid #e2e8f0; font-size:11px; font-weight:600; color:#64748b;">
+            <span>Nombre</span>
+            <span>Ubicación original</span>
+            <span style="text-align:right;">Tamaño</span>
+          </div>
+          <div class="w10-recycle-item" style="display:grid; grid-template-columns:2fr 2fr 1fr; padding:8px 6px; border-bottom:1px solid #f1f5f9; font-size:11px;">
+            <span>📄 Presentacion_Proyecto_v1.pptx</span>
+            <span style="color:#64748b;">C:\Users\Usuario\Documents</span>
+            <span style="text-align:right;">2,450 KB</span>
+          </div>
+          <div class="w10-recycle-item" style="display:grid; grid-template-columns:2fr 2fr 1fr; padding:8px 6px; border-bottom:1px solid #f1f5f9; font-size:11px;">
+            <span>📊 Analisis_Financiero_Borrador.xlsx</span>
+            <span style="color:#64748b;">C:\Users\Usuario\Desktop</span>
+            <span style="text-align:right;">890 KB</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ventana Microsoft Edge -->
+    <div class="w10-window hidden" id="win-edge" style="width: 720px; height: 460px; top: 60px; left: 160px;">
+      <div class="w10-titlebar">
+        <div class="w10-titlebar-text">
+          <img src="../assets/icons/win10/edge.png" width="16" height="16" alt="Icon" style="vertical-align:middle; margin-right:4px;">
+          <span>MSN y Bing - Microsoft Edge</span>
+        </div>
+        <div class="w10-controls">
+          <button class="w10-ctrl-btn w10-ctrl-min" title="Minimizar">─</button>
+          <button class="w10-ctrl-btn w10-ctrl-max" title="Maximizar">□</button>
+          <button class="w10-ctrl-btn w10-ctrl-close" title="Cerrar">✕</button>
+        </div>
+      </div>
+      <div class="w10-edge-nav">
+        <button class="w10-nav-btn" id="edge-btn-back" title="Atrás">
+          <svg viewBox="0 0 16 16" width="13" height="13"><path d="M10 3 L5 8 L10 13" fill="none" stroke="#555" stroke-width="2"/></svg>
+        </button>
+        <button class="w10-nav-btn" id="edge-btn-forward" title="Adelante">
+          <svg viewBox="0 0 16 16" width="13" height="13"><path d="M6 3 L11 8 L6 13" fill="none" stroke="#555" stroke-width="2"/></svg>
+        </button>
+        <button class="w10-nav-btn" id="edge-btn-reload" title="Actualizar">
+          <svg viewBox="0 0 16 16" width="13" height="13"><path d="M13 8 A5 5 0 1 1 8 3 L10 5" fill="none" stroke="#555" stroke-width="2"/><path d="M10 2 L10 6 L6 6" fill="#555"/></svg>
+        </button>
+        <input type="text" id="edge-address" value="https://www.bing.com/" class="w10-edge-url" readonly>
+      </div>
+      <div class="w10-edge-content">
+        <div class="w10-bing-hero">
+          <h1 style="color:#0078d7; font-weight:300; font-size:42px; margin-bottom:12px; letter-spacing:0.5px;">Bing</h1>
+          <div class="w10-bing-searchbox">
+            <input type="text" id="bing-input" placeholder="Buscar en la web con Bing...">
+            <button id="bing-search-btn" title="Buscar">
+              <svg viewBox="0 0 16 16" width="15" height="15"><circle cx="6.5" cy="6.5" r="4.5" fill="none" stroke="#fff" stroke-width="2"/><line x1="10" y1="10" x2="14" y2="14" stroke="#fff" stroke-width="2"/></svg>
+            </button>
+          </div>
+        </div>
+        <div class="w10-news-feed">
+          <div class="w10-news-card">
+            <span class="w10-badge" style="background:#0078d7;">Windows 10</span>
+            <strong>Actualización Creators Update y soporte de aplicaciones</strong>
+            <p>Windows 10 combina la versatilidad de la nube con la robustez del menú Inicio clásico de Microsoft.</p>
+          </div>
+          <div class="w10-news-card">
+            <span class="w10-badge" style="background:#059669;">Tecnología</span>
+            <strong>Navegación moderna y segura</strong>
+            <p>Microsoft Edge ofrece compatibilidad estándar, aceleración de hardware y velocidad optimizada para la web.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ventana Calculadora Moderna Windows 10 -->
+    <div class="w10-window hidden" id="win-calc" style="width: 320px; height: 460px; top: 70px; left: 240px;">
+      <div class="w10-titlebar">
+        <div class="w10-titlebar-text">
+          <img src="../assets/icons/win10/calc.png" width="16" height="16" alt="Icon" style="vertical-align:middle; margin-right:4px;">
+          <span>Calculadora</span>
+        </div>
+        <div class="w10-controls">
+          <button class="w10-ctrl-btn w10-ctrl-min" title="Minimizar">─</button>
+          <button class="w10-ctrl-btn w10-ctrl-max" title="Maximizar">□</button>
+          <button class="w10-ctrl-btn w10-ctrl-close" title="Cerrar">✕</button>
+        </div>
+      </div>
+      <div class="w10-calc-container">
+        <div class="w10-calc-header">
+          <span>Estándar</span>
+        </div>
+        <div class="w10-calc-display">
+          <div class="w10-calc-history" id="w10-calc-history"></div>
+          <div class="w10-calc-main" id="w10-calc-main">0</div>
+        </div>
+        <div class="w10-calc-grid">
+          <button class="w10-cbtn" data-act="percent">%</button>
+          <button class="w10-cbtn" data-act="ce">CE</button>
+          <button class="w10-cbtn" data-act="c">C</button>
+          <button class="w10-cbtn" data-act="back">⌫</button>
+
+          <button class="w10-cbtn" data-act="recip">¹/x</button>
+          <button class="w10-cbtn" data-act="sqr">x²</button>
+          <button class="w10-cbtn" data-act="sqrt">√x</button>
+          <button class="w10-cbtn op" data-act="op" data-val="/">÷</button>
+
+          <button class="w10-cbtn num" data-val="7">7</button>
+          <button class="w10-cbtn num" data-val="8">8</button>
+          <button class="w10-cbtn num" data-val="9">9</button>
+          <button class="w10-cbtn op" data-act="op" data-val="*">×</button>
+
+          <button class="w10-cbtn num" data-val="4">4</button>
+          <button class="w10-cbtn num" data-val="5">5</button>
+          <button class="w10-cbtn num" data-val="6">6</button>
+          <button class="w10-cbtn op" data-act="op" data-val="-">−</button>
+
+          <button class="w10-cbtn num" data-val="1">1</button>
+          <button class="w10-cbtn num" data-val="2">2</button>
+          <button class="w10-cbtn num" data-val="3">3</button>
+          <button class="w10-cbtn op" data-act="op" data-val="+">+</button>
+
+          <button class="w10-cbtn" data-act="neg">±</button>
+          <button class="w10-cbtn num" data-val="0">0</button>
+          <button class="w10-cbtn" data-act="dot">.</button>
+          <button class="w10-cbtn eq" data-act="eq">=</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Task Manager window 10 (con gráficos reales) -->
+    <div class="w10-window hidden" id="win-taskmgr" style="width: 640px; height: 440px; top: 80px; left: 200px;">
+      <div class="w10-titlebar">
+        <div class="w10-titlebar-text">
+          <img src="../assets/icons/win10/taskmgr.png" width="16" height="16" alt="Icon" style="vertical-align:middle; margin-right:4px;">
+          <span>Administrador de tareas</span>
+        </div>
+        <div class="w10-controls">
+          <button class="w10-ctrl-btn w10-ctrl-min" title="Minimizar">─</button>
+          <button class="w10-ctrl-btn w10-ctrl-max" title="Maximizar">□</button>
+          <button class="w10-ctrl-btn w10-ctrl-close" title="Cerrar">✕</button>
+        </div>
+      </div>
+      <div class="w10-tm-menu">
+        <span>Archivo</span>
+        <span>Opciones</span>
+        <span>Ver</span>
+      </div>
+      <div class="w10-tm-tabs">
+        <button class="w10-tm-tab-btn active" data-tab="tm-processes">Procesos</button>
+        <button class="w10-tm-tab-btn" data-tab="tm-performance">Rendimiento</button>
+        <button class="w10-tm-tab-btn" data-tab="tm-details">Detalles</button>
+      </div>
+
+      <!-- Pestaña Procesos -->
+      <div class="w10-tm-panel active" id="tm-processes">
+        <div class="w10-tm-table-header">
+          <span style="flex:2;">Nombre</span>
+          <span style="flex:1; text-align:right;">Estado</span>
+          <span style="flex:1; text-align:right;">CPU %</span>
+          <span style="flex:1; text-align:right;">Memoria</span>
+          <span style="flex:1; text-align:right;">Disco</span>
+        </div>
+        <div class="w10-tm-process-list" id="w10-proc-list">
+          <div class="w10-proc-row selected">
+            <span style="flex:2;">Explorador de Windows</span>
+            <span style="flex:1; text-align:right; color:#22c55e;">Activo</span>
+            <span style="flex:1; text-align:right;" id="tm-cpu-explorer">1.2 %</span>
+            <span style="flex:1; text-align:right;">64.5 MB</span>
+            <span style="flex:1; text-align:right;">0.1 MB/s</span>
+          </div>
+          <div class="w10-proc-row">
+            <span style="flex:2;">Microsoft Edge</span>
+            <span style="flex:1; text-align:right; color:#22c55e;">Activo</span>
+            <span style="flex:1; text-align:right;" id="tm-cpu-edge">2.8 %</span>
+            <span style="flex:1; text-align:right;">142.0 MB</span>
+            <span style="flex:1; text-align:right;">0.0 MB/s</span>
+          </div>
+          <div class="w10-proc-row">
+            <span style="flex:2;">Calculadora</span>
+            <span style="flex:1; text-align:right; color:#64748b;">En espera</span>
+            <span style="flex:1; text-align:right;">0.0 %</span>
+            <span style="flex:1; text-align:right;">22.4 MB</span>
+            <span style="flex:1; text-align:right;">0.0 MB/s</span>
+          </div>
+          <div class="w10-proc-row">
+            <span style="flex:2;">Administrador de tareas</span>
+            <span style="flex:1; text-align:right; color:#22c55e;">Activo</span>
+            <span style="flex:1; text-align:right;" id="tm-cpu-tm">0.9 %</span>
+            <span style="flex:1; text-align:right;">31.2 MB</span>
+            <span style="flex:1; text-align:right;">0.0 MB/s</span>
+          </div>
+          <div class="w10-proc-row">
+            <span style="flex:2;">Cortana Search UI</span>
+            <span style="flex:1; text-align:right; color:#64748b;">En espera</span>
+            <span style="flex:1; text-align:right;">0.1 %</span>
+            <span style="flex:1; text-align:right;">48.1 MB</span>
+            <span style="flex:1; text-align:right;">0.0 MB/s</span>
+          </div>
+          <div class="w10-proc-row">
+            <span style="flex:2;">Host de servicio: Audio de Windows</span>
+            <span style="flex:1; text-align:right; color:#22c55e;">En ejecución</span>
+            <span style="flex:1; text-align:right;">0.4 %</span>
+            <span style="flex:1; text-align:right;">18.6 MB</span>
+            <span style="flex:1; text-align:right;">0.0 MB/s</span>
+          </div>
+        </div>
+        <div class="w10-tm-footer">
+          <button class="w10-tm-btn" id="tm-end-task-btn">Finalizar tarea</button>
+        </div>
+      </div>
+
+      <!-- Pestaña Rendimiento (Gráfico en tiempo real) -->
+      <div class="w10-tm-panel" id="tm-performance">
+        <div class="w10-perf-container">
+          <div class="w10-perf-left">
+            <div class="w10-perf-card active" id="perf-card-cpu">
+              <strong>CPU</strong>
+              <div class="w10-perf-sub" id="perf-cpu-pct">12% 2.80 GHz</div>
+            </div>
+            <div class="w10-perf-card" id="perf-card-mem">
+              <strong>Memoria</strong>
+              <div class="w10-perf-sub">4.2 / 16.0 GB (26%)</div>
+            </div>
+          </div>
+          <div class="w10-perf-graph-area">
+            <div class="w10-perf-header">
+              <span style="font-weight:600; font-size:14px;">CPU</span>
+              <span id="perf-cpu-title-pct" style="color:#0078d7; font-weight:600;">% de utilización (últimos 60 segundos)</span>
+            </div>
+            <svg id="w10-cpu-graph" class="w10-graph-svg" viewBox="0 0 360 160">
+              <defs>
+                <pattern id="tm-grid" width="30" height="20" patternUnits="userSpaceOnUse">
+                  <path d="M 30 0 L 0 0 0 20" fill="none" stroke="rgba(0, 120, 215, 0.15)" stroke-width="1"/>
+                </pattern>
+              </defs>
+              <rect width="100%" height="100%" fill="#0a192f"/>
+              <rect width="100%" height="100%" fill="url(#tm-grid)"/>
+              <polyline id="w10-cpu-polyline" fill="none" stroke="#22c55e" stroke-width="2" points="0,150 360,150"/>
+            </svg>
+            <div class="w10-perf-stats">
+              <div><span>Velocidad:</span> <strong>3.20 GHz</strong></div>
+              <div><span>Procesos:</span> <strong>148</strong></div>
+              <div><span>Subprocesos:</span> <strong>1820</strong></div>
+              <div><span>Tiempo activo:</span> <strong id="w10-uptime">0:01:25</strong></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pestaña Detalles -->
+      <div class="w10-tm-panel" id="tm-details">
+        <div style="padding:16px; font-family:monospace; font-size:11px; line-height:1.6; color:#333;">
+          <p>PID | Nombre de la imagen | Sesión | Uso de memoria</p>
+          <p>4488 | explorer.exe | Console | 64,520 K</p>
+          <p>5120 | msedge.exe | Console | 142,080 K</p>
+          <p>6012 | calculator.exe | Console | 22,410 K</p>
+          <p>7240 | taskmgr.exe | Console | 31,200 K</p>
+          <p>1024 | svchost.exe | Services | 18,600 K</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ventana Bloc de notas -->
+    <div class="w10-window hidden" id="win-notepad" style="width: 520px; height: 380px; top: 100px; left: 220px;">
+      <div class="w10-titlebar">
+        <div class="w10-titlebar-text">
+          <img src="../assets/icons/win10/notepad.png" width="16" height="16" alt="Icon" style="vertical-align:middle; margin-right:4px;">
+          <span>Sin título: Bloc de notas</span>
+        </div>
+        <div class="w10-controls">
+          <button class="w10-ctrl-btn w10-ctrl-min" title="Minimizar">─</button>
+          <button class="w10-ctrl-btn w10-ctrl-max" title="Maximizar">□</button>
+          <button class="w10-ctrl-btn w10-ctrl-close" title="Cerrar">✕</button>
+        </div>
+      </div>
+      <div class="w10-np-menubar">
+        <span>Archivo</span>
+        <span>Edición</span>
+        <span>Formato</span>
+        <span>Ver</span>
+        <span>Ayuda</span>
+      </div>
+      <textarea class="w10-np-text" id="w10-np-input" placeholder="Escriba aquí sus notas..."></textarea>
+      <div class="w10-np-statusbar">
+        <span id="np-line-col">Lín. 1, Col. 1</span>
+        <span>100%</span>
+        <span>Windows (CRLF)</span>
+        <span>UTF-8</span>
+      </div>
+    </div>
+
+    <!-- Settings windowón de Windows 10 -->
+    <div class="w10-window hidden" id="win-settings" style="width: 720px; height: 480px; top: 70px; left: 180px;">
+      <div class="w10-titlebar">
+        <div class="w10-titlebar-text">
+          <img src="../assets/icons/win10/settings.png" width="16" height="16" alt="Icon" style="vertical-align:middle; margin-right:4px;">
+          <span>Configuración</span>
+        </div>
+        <div class="w10-controls">
+          <button class="w10-ctrl-btn w10-ctrl-min" title="Minimizar">─</button>
+          <button class="w10-ctrl-btn w10-ctrl-max" title="Maximizar">□</button>
+          <button class="w10-ctrl-btn w10-ctrl-close" title="Cerrar">✕</button>
+        </div>
+      </div>
+      <div style="background:#f3f3f3; height:calc(100% - 32px); overflow-y:auto; padding:24px 32px; color:#1e293b;">
+        <div style="text-align:center; margin-bottom:24px;">
+          <h2 style="font-weight:400; font-size:22px; margin-bottom:12px;">Configuración de Windows</h2>
+          <div style="max-width:400px; margin:0 auto; position:relative;">
+            <input type="text" placeholder="Buscar una opción..." style="width:100%; padding:8px 12px; border:1px solid #cbd5e1; border-radius:2px; font-size:12px;">
+          </div>
+        </div>
+
+        <div class="w10-settings-grid">
+          <div class="settings-card" data-section="system">
+            <div class="settings-icon">💻</div>
+            <div>
+              <strong>Sistema</strong>
+              <p>Pantalla, notificaciones, energía</p>
+            </div>
+          </div>
+          <div class="settings-card" data-section="personalization">
+            <div class="settings-icon">🎨</div>
+            <div>
+              <strong>Personalización</strong>
+              <p>Fondo, colores, temas</p>
+            </div>
+          </div>
+          <div class="settings-card" data-section="update">
+            <div class="settings-icon">🔄</div>
+            <div>
+              <strong>Actualización y seguridad</strong>
+              <p>Windows Update, recuperación</p>
+            </div>
+          </div>
+          <div class="settings-card" data-section="network">
+            <div class="settings-icon">🌐</div>
+            <div>
+              <strong>Red e Internet</strong>
+              <p>Wi-Fi, modo avión, VPN</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel de detalle interactivo de Personalización -->
+        <div class="settings-detail-box" style="margin-top:20px; background:#fff; padding:16px; border:1px solid #cbd5e1; border-radius:3px;">
+          <strong style="font-size:14px; color:#0078d7;">Tema y Apariencia de Windows 10</strong>
+          <p style="font-size:11px; color:#64748b; margin:6px 0 14px 0;">Elige el modo de color para las ventanas y aplicaciones:</p>
+          <div style="display:flex; gap:12px;">
+            <button class="theme-choice-btn active" id="btn-theme-dark" style="padding:8px 16px; background:#1e293b; color:#fff; border:2px solid #0078d7; border-radius:3px; cursor:pointer; font-weight:600;">Modo Oscuro</button>
+            <button class="theme-choice-btn" id="btn-theme-light" style="padding:8px 16px; background:#f8fafc; color:#1e293b; border:1px solid #cbd5e1; border-radius:3px; cursor:pointer;">Modo Claro</button>
+          </div>
+        </div>
+
+        <!-- Windows Update Box -->
+        <div class="settings-detail-box" style="margin-top:16px; background:#fff; padding:16px; border:1px solid #cbd5e1; border-radius:3px;">
+          <div style="display:flex; align-items:center; gap:10px;">
+            <span style="color:#16a34a; font-size:20px;">✔</span>
+            <div>
+              <strong>Todo está actualizado</strong>
+              <div style="font-size:11px; color:#64748b;" id="w10-update-status">Última comprobación: Hoy</div>
+            </div>
+            <button id="btn-check-updates" style="margin-left:auto; padding:6px 14px; background:#0078d7; color:#fff; border:none; border-radius:2px; cursor:pointer; font-size:11px;">Buscar actualizaciones</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Barra de tareas de Windows 10 -->
+  <footer class="w10-taskbar">
+    <div class="w10-taskbar-left">
+      <!-- Botón Inicio de Windows 10 -->
+      <button class="w10-start-btn" id="w10-start-btn" title="Inicio">
+        <svg viewBox="0 0 16 16" width="18" height="18">
+          <path fill="#ffffff" d="M1 2.5 L7 1.7 L7 7.5 L1 7.5 Z M8 1.6 L15 0.6 L15 7.5 L8 7.5 Z M1 8.5 L7 8.5 L7 14.3 L1 13.5 Z M8 8.5 L15 8.5 L15 15.4 L8 14.4 Z"/>
+        </svg>
+      </button>
+
+      <!-- Barra de búsqueda Cortana -->
+      <div class="w10-cortana-bar">
+        <svg viewBox="0 0 16 16" width="14" height="14" class="w10-cortana-search-icon">
+          <circle cx="6.5" cy="6.5" r="4.5" fill="none" stroke="#64748b" stroke-width="1.8"/>
+          <line x1="10" y1="10" x2="14" y2="14" stroke="#64748b" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+        <input type="text" id="w10-search-field" placeholder="Escribe aquí para buscar">
+      </div>
+
+      <!-- Vista de tareas -->
+      <div class="w10-taskview-btn" id="w10-taskview-btn" title="Vista de tareas">
+        <svg viewBox="0 0 16 16" width="16" height="16">
+          <rect x="2" y="3" width="7" height="10" fill="none" stroke="#ffffff" stroke-width="1.2"/>
+          <rect x="7" y="3" width="7" height="10" fill="none" stroke="#ffffff" stroke-width="1.2"/>
+        </svg>
+      </div>
+
+      <!-- Taskbar tab stripámico de pestañas de ventanas abiertas / ancladas -->
+      <div class="w10-pinned-apps" id="w10-taskbar-items">
+        <div class="w10-task-item" data-win="win-pc" title="Explorador de archivos">
+          <img src="../assets/icons/win10/explorer.png" alt="Explorador">
+        </div>
+        <div class="w10-task-item" data-win="win-edge" title="Microsoft Edge">
+          <img src="../assets/icons/win10/edge.png" alt="Edge">
+        </div>
+        <div class="w10-task-item" data-win="win-calc" title="Calculadora">
+          <img src="../assets/icons/win10/calc.png" alt="Calculadora">
+        </div>
+        <div class="w10-task-item" data-win="win-taskmgr" title="Administrador de tareas">
+          <img src="../assets/icons/win10/taskmgr.png" alt="Task Manager">
+        </div>
+      </div>
+    </div>
+
+    <!-- Bandeja del sistema (sin ningún emoji) -->
+    <div class="w10-tray">
+      <!-- Icono de red Wi-Fi SVG -->
+      <div class="w10-tray-icon" title="Acceso a Internet: Red conectada">
+        <svg viewBox="0 0 16 16" width="16" height="16">
+          <path d="M1 5 C4.5 2, 11.5 2, 15 5 M3 8 C5.8 5.6, 10.2 5.6, 13 8 M5.5 11 C7 9.8, 9 9.8, 10.5 11" fill="none" stroke="#ffffff" stroke-width="1.4" stroke-linecap="round"/>
+          <circle cx="8" cy="13.5" r="1.2" fill="#ffffff"/>
+        </svg>
+      </div>
+
+      <!-- Icono de altavoces SVG -->
+      <div class="w10-tray-icon" title="Altavoces: 100%">
+        <svg viewBox="0 0 16 16" width="16" height="16">
+          <path d="M2 5 L5 5 L9 2 L9 14 L5 11 L2 11 Z" fill="#ffffff"/>
+          <path d="M11 5 C12.5 6.5, 12.5 9.5, 11 11 M13 3 C15.5 5.5, 15.5 10.5, 13 13" fill="none" stroke="#ffffff" stroke-width="1.3" stroke-linecap="round"/>
+        </svg>
+      </div>
+
+      <!-- Reloj con fecha -->
+      <div class="w10-clock" id="w10-clock" title="Fecha y hora de Windows">00:00 PM</div>
+
+      <!-- Botón de Centro de Actividades SVG -->
+      <div class="w10-action-center-btn" id="w10-action-center-btn" title="Centro de actividades">
+        <svg viewBox="0 0 16 16" width="16" height="16">
+          <path d="M2 3 L14 3 L14 11 L6 11 L2 14 Z" fill="none" stroke="#ffffff" stroke-width="1.3" stroke-linejoin="round"/>
+          <line x1="5" y1="6" x2="11" y2="6" stroke="#ffffff" stroke-width="1.2"/>
+          <line x1="5" y1="8.5" x2="9" y2="8.5" stroke="#ffffff" stroke-width="1.2"/>
+        </svg>
+      </div>
+
+      <!-- Barra Mostrar escritorio -->
+      <div class="w10-show-desktop" id="w10-show-desktop" title="Mostrar escritorio"></div>
+    </div>
+  </footer>
+
+  <!-- Menú Inicio de Windows 10 -->
+  <div class="w10-start-menu hidden" id="w10-start-menu">
+    <!-- Riel izquierdo de iconos -->
+    <div class="start-rail">
+      <div class="start-rail-btn" title="Expandir">
+        <svg viewBox="0 0 16 16" width="16" height="16">
+          <line x1="2" y1="4" x2="14" y2="4" stroke="#ffffff" stroke-width="1.5"/>
+          <line x1="2" y1="8" x2="14" y2="8" stroke="#ffffff" stroke-width="1.5"/>
+          <line x1="2" y1="12" x2="14" y2="12" stroke="#ffffff" stroke-width="1.5"/>
+        </svg>
+      </div>
+      <div>
+        <div class="start-rail-btn" title="Usuario">
+          <svg viewBox="0 0 16 16" width="16" height="16">
+            <circle cx="8" cy="5" r="3" fill="#ffffff"/>
+            <path d="M2 14 C2 10.5, 5 9.5, 8 9.5 C11 9.5, 14 10.5, 14 14 Z" fill="#ffffff"/>
+          </svg>
+        </div>
+        <div class="start-rail-btn" data-win="win-pc" title="Documentos">
+          <svg viewBox="0 0 16 16" width="16" height="16">
+            <path d="M3 2 L10 2 L13 5 L13 14 L3 14 Z" fill="none" stroke="#ffffff" stroke-width="1.3"/>
+            <polyline points="10,2 10,5 13,5" fill="none" stroke="#ffffff" stroke-width="1.3"/>
+          </svg>
+        </div>
+        <div class="start-rail-btn" data-win="win-settings" title="Configuración">
+          <svg viewBox="0 0 16 16" width="16" height="16">
+            <circle cx="8" cy="8" r="3" fill="none" stroke="#ffffff" stroke-width="1.5"/>
+            <path d="M8 1 L8 3 M8 13 L8 15 M1 8 L3 8 M13 8 L15 8 M3 3 L4.5 4.5 M11.5 11.5 L13 13 M3 13 L4.5 11.5 M11.5 4.5 L13 3" stroke="#ffffff" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <div class="start-rail-btn" id="w10-power-btn" title="Inicio/Apagado">
+          <svg viewBox="0 0 16 16" width="16" height="16">
+            <path d="M8 2 L8 8 M5 4.5 C3 6, 2.5 9, 4 11.5 C5.5 14, 9 14.5, 11.5 13 C13.5 11.5, 14 8.5, 12 6" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- Menú emergente de encendido/apagado -->
+    <div class="w10-power-menu hidden" id="w10-power-menu">
+      <div class="power-menu-item" id="w10-action-sleep">Suspender</div>
+      <div class="power-menu-item" id="w10-action-shutdown">Apagar</div>
+      <div class="power-menu-item" id="w10-action-restart">Reiniciar</div>
+    </div>
+
+    <!-- Lista alfabética de aplicaciones de Windows 10 -->
+    <div class="start-app-list">
+      <div class="start-app-row" data-win="win-calc">
+        <img src="../assets/icons/win10/calc.png" alt="Calculadora">
+        <span>Calculadora</span>
+      </div>
+      <div class="start-app-row" data-win="win-notepad">
+        <img src="../assets/icons/win10/notepad.png" alt="Bloc de notas">
+        <span>Bloc de notas</span>
+      </div>
+      <div class="start-app-row" data-win="win-pc">
+        <img src="../assets/icons/win10/explorer.png" alt="Explorador">
+        <span>Explorador de archivos</span>
+      </div>
+      <div class="start-app-row" data-win="win-edge">
+        <img src="../assets/icons/win10/edge.png" alt="Edge">
+        <span>Microsoft Edge</span>
+      </div>
+      <div class="start-app-row" data-win="win-taskmgr">
+        <img src="../assets/icons/win10/taskmgr.png" alt="Task Manager">
+        <span>Administrador de tareas</span>
+      </div>
+      <div class="start-app-row" data-win="win-settings">
+        <img src="../assets/icons/win10/settings.png" alt="Configuración">
+        <span>Configuración</span>
+      </div>
+    </div>
+
+    <!-- Columna de Live Tiles de Windows 10 -->
+    <div class="start-tiles-col">
+      <div class="tile-group-title">Vida en un vistazo</div>
+      <div class="tiles-grid-10">
+        <div class="tile-10 wide" style="background:#0078d7;" data-win="win-edge">
+          <img src="../assets/icons/win10/edge.png" alt="Edge">
+          <span style="font-weight:600; font-size:11px;">Microsoft Edge</span>
+        </div>
+        <div class="tile-10" style="background:#008299;">
+          <img src="../assets/icons/win8/weather.png" alt="Tiempo">
+          <span style="font-size:11px;">22° Soleado</span>
+        </div>
+        <div class="tile-10" style="background:#d83b01;">
+          <img src="../assets/icons/win10/mail.png" alt="Correo">
+          <span style="font-size:11px;">Correo</span>
+        </div>
+        <div class="tile-10 wide" style="background:#107c10;" data-win="win-taskmgr">
+          <img src="../assets/icons/win10/taskmgr.png" alt="Task Manager">
+          <span style="font-weight:600; font-size:11px;">Rendimiento</span>
+        </div>
+        <div class="tile-10" style="background:#68217a;">
+          <img src="../assets/icons/win10/photos.png" alt="Fotos">
+          <span style="font-size:11px;">Fotos</span>
+        </div>
+        <div class="tile-10" style="background:#0078d7;">
+          <img src="../assets/icons/win10/store.png" alt="Tienda">
+          <span style="font-size:11px;">Microsoft Store</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Centro de Actividades (Action Center) sin emojis -->
+  <div class="w10-action-center" id="w10-action-center">
+    <div class="action-center-header">
+      <span style="font-weight:600; font-size:13px;">Centro de actividades</span>
+      <span style="font-size:11px; color:#0078d7; cursor:pointer;" id="action-center-clear">Borrar todo</span>
+    </div>
+    <div class="action-center-notifications" id="notif-container">
+      <div class="notif-card">
+        <strong>Seguridad de Windows</strong>
+        <p style="font-size:11px; color:#cbd5e1; margin-top:4px;">No se requieren acciones. El equipo y las unidades están protegidos.</p>
+      </div>
+      <div class="notif-card">
+        <strong>OneDrive</strong>
+        <p style="font-size:11px; color:#cbd5e1; margin-top:4px;">Tus archivos y documentos están sincronizados con la nube.</p>
+      </div>
+    </div>
+    <div class="action-center-toggles">
+      <div class="toggle-btn active">
+        <svg viewBox="0 0 16 16" width="16" height="16"><path d="M1 5 C4.5 2, 11.5 2, 15 5 M3 8 C5.8 5.6, 10.2 5.6, 13 8 M5.5 11 C7 9.8, 9 9.8, 10.5 11" fill="none" stroke="#ffffff" stroke-width="1.4"/><circle cx="8" cy="13.5" r="1.2" fill="#ffffff"/></svg>
+        <span>Red</span>
+      </div>
+      <div class="toggle-btn">
+        <svg viewBox="0 0 16 16" width="16" height="16"><path d="M12 2 A6 6 0 1 1 5 13 A7 7 0 0 0 12 2 Z" fill="#ffffff"/></svg>
+        <span>Luz nocturna</span>
+      </div>
+      <div class="toggle-btn">
+        <svg viewBox="0 0 16 16" width="16" height="16"><path d="M8 2 L9 7 L14 9 L9 10 L8 14 L7 10 L2 9 L7 7 Z" fill="#ffffff"/></svg>
+        <span>Modo avión</span>
+      </div>
+      <div class="toggle-btn active" data-win="win-settings">
+        <svg viewBox="0 0 16 16" width="16" height="16"><circle cx="8" cy="8" r="3" fill="none" stroke="#ffffff" stroke-width="1.5"/><path d="M8 1 L8 3 M8 13 L8 15 M1 8 L3 8 M13 8 L15 8" stroke="#ffffff" stroke-width="1.5"/></svg>
+        <span>Configuración</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pantalla de reinicio de Windows 10 -->
+  <div class="w10-restart-overlay hidden" id="w10-restart-screen">
+    <div class="w10-spinner"></div>
+    <div style="font-size:24px; font-weight:300;">Reiniciando</div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

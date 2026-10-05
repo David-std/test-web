@@ -1,0 +1,472 @@
+:root {
+  --w95-bg: #008080;
+  --w95-gray: #c0c0c0;
+  --w95-title: #000080;
+  --w95-dark: #808080;
+  --w95-light: #ffffff;
+  --w95-font: 'MS Sans Serif', Tahoma, Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+body, html {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: var(--w95-bg);
+  font-family: var(--w95-font);
+  font-size: 11px;
+}
+
+.win-outset {
+  background-color: var(--w95-gray);
+  box-shadow: inset -1px -1px #000000,
+              inset 1px 1px var(--w95-light),
+              inset -2px -2px var(--w95-dark),
+              inset 2px 2px #dfdfdf;
+}
+
+.win-inset {
+  background-color: var(--w95-gray);
+  box-shadow: inset -1px -1px var(--w95-light),
+              inset 1px 1px #000000,
+              inset -2px -2px #dfdfdf,
+              inset 2px 2px var(--w95-dark);
+}
+
+.w95-desktop {
+  width: 100vw;
+  height: calc(100vh - 28px);
+  position: relative;
+  overflow: hidden;
+}
+
+.w95-desktop {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  background: var(--w95-bg) url("../assets/win95_clouds.png") center center / cover no-repeat;
+}
+
+.w95-icons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 10px;
+  width: max-content;
+}
+
+.w95-icon {
+  width: 76px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.w95-icon:hover {
+  outline: 1px dotted #ffff80;
+}
+
+.w95-icon.selected {
+  outline: 1px dotted #ffffff;
+}
+.w95-icon.selected .w95-label {
+  background-color: #000080;
+  color: #ffffff;
+}
+
+.w95-img, .w95-icon img {
+  width: 32px;
+  height: 32px;
+  margin-bottom: 4px;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  display: block;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.w95-menu-item img, .w95-tray-icon img {
+  width: 16px;
+  height: 16px;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+
+.w95-label {
+  color: #ffffff;
+  font-size: 11px;
+  text-shadow: 1px 1px 1px #000;
+  padding: 1px 3px;
+}
+
+.w95-window {
+  position: absolute;
+  background-color: var(--w95-gray);
+  padding: 3px;
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+}
+
+.w95-titlebar {
+  height: 18px;
+  background-color: var(--w95-title);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 3px;
+  font-weight: bold;
+  cursor: move;
+}
+
+.w95-titlebar.inactive {
+  background-color: var(--w95-dark);
+}
+
+.w95-controls {
+  display: flex;
+  gap: 2px;
+}
+
+.w95-ctrl-btn {
+  width: 16px;
+  height: 14px;
+  padding: 0;
+  font-size: 9px;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+}
+
+.w95-menubar {
+  background-color: var(--w95-gray);
+  border-bottom: 1px solid var(--w95-dark);
+  padding: 2px 6px;
+  display: flex;
+  gap: 10px;
+}
+
+.w95-wordpad-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 6px;
+  border-bottom: 1px solid var(--w95-dark);
+}
+
+.wp-tool-btn {
+  width: 22px;
+  height: 20px;
+  border: none;
+  cursor: pointer;
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.w95-body {
+  flex: 1;
+  background-color: #ffffff;
+  overflow: auto;
+  position: relative;
+}
+
+.w95-drive-item {
+  width: 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.w95-drive-item:hover {
+  outline: 1px dotted #000;
+}
+
+.w95-card-pile {
+  width: 48px;
+  height: 68px;
+  border: 1px solid #000;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.w95-card {
+  width: 48px;
+  height: 68px;
+  background-color: #fff;
+  border: 1px solid #000;
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2px 4px;
+  font-family: sans-serif;
+  font-size: 11px;
+  font-weight: bold;
+  box-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+}
+
+.w95-card.red {
+  color: #cc0000;
+}
+
+.w95-card.black {
+  color: #000000;
+}
+
+.w95-lcd {
+  background: #000;
+  color: #f00;
+  font-family: monospace;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 2px 6px;
+  border: 1px inset #808080;
+}
+
+.w95-mines-grid {
+  display: grid;
+  grid-template-columns: repeat(9, 20px);
+  grid-template-rows: repeat(9, 20px);
+  gap: 1px;
+  border: 2px inset #fff;
+  background: #808080;
+  padding: 2px;
+  margin: 0 auto;
+  width: max-content;
+}
+
+.w95-mine-cell {
+  width: 20px;
+  height: 20px;
+  background: #c0c0c0;
+  border: 2px outset #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.w95-mine-cell.revealed {
+  border: 1px solid #808080;
+  background: #d4d0c8;
+}
+
+.w95-taskbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  padding: 2px;
+  z-index: 99999;
+}
+
+.w95-start-btn {
+  height: 22px;
+  padding: 0 6px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  border: none;
+  font-size: 11px;
+  font-family: var(--w95-font);
+}
+
+.w95-start-btn:active, .w95-start-btn.active {
+  box-shadow: inset -1px -1px var(--w95-light),
+              inset 1px 1px #000000,
+              inset -2px -2px #dfdfdf,
+              inset 2px 2px var(--w95-dark);
+}
+
+.w95-task-tabs {
+  flex: 1;
+  display: flex;
+  gap: 4px;
+  margin: 0 4px;
+  overflow-x: auto;
+}
+
+.w95-task-tab {
+  height: 22px;
+  width: 140px;
+  padding: 0 6px;
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  border: none;
+}
+
+.w95-task-tab.active {
+  background-color: #dfdfdf;
+  box-shadow: inset -1px -1px var(--w95-light),
+              inset 1px 1px #000000,
+              inset -2px -2px #dfdfdf,
+              inset 2px 2px var(--w95-dark);
+  font-weight: bold;
+}
+
+.w95-tray {
+  height: 22px;
+  padding: 0 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+}
+
+.w95-start-menu {
+  position: fixed;
+  bottom: 28px;
+  left: 2px;
+  width: 180px;
+  display: flex;
+  z-index: 100000;
+  border: none;
+}
+
+.w95-banner {
+  width: 24px;
+  background-color: #808080;
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: 6px;
+}
+
+.w95-banner-text {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
+.w95-menu-list {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 2px;
+  background-color: var(--w95-gray);
+}
+
+.w95-menu-item {
+  padding: 5px 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  position: relative;
+}
+
+.w95-menu-item:hover {
+  background-color: var(--w95-title);
+  color: #ffffff;
+}
+
+.w95-submenu {
+  position: absolute;
+  left: 100%;
+  top: 0;
+  width: 160px;
+  background-color: var(--w95-gray);
+  padding: 2px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.4);
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* FreeCell 95 */
+.fc-cell {
+  width: 50px;
+  height: 68px;
+  border: 2px inset #ffffff;
+  background-color: #006000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  border-radius: 3px;
+}
+
+.fc-card {
+  width: 100%;
+  height: 64px;
+  background: #ffffff;
+  border: 1px solid #000000;
+  border-radius: 3px;
+  box-shadow: 1px 1px 0 #000;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2px 4px;
+  font-weight: bold;
+  font-size: 11px;
+  cursor: pointer;
+  margin-top: -46px;
+}
+
+.fc-card:first-child {
+  margin-top: 0;
+}
+
+.fc-card.red {
+  color: #d00000;
+}
+
+.fc-card.black {
+  color: #000000;
+}
+
+.fc-card:hover {
+  outline: 1px solid #000080;
+}
+
+.disp-tab {
+  border-bottom: none;
+  cursor: pointer;
+  background: #c0c0c0;
+}
+
+.disp-tab.active {
+  background: #dfdfdf;
+  font-weight: bold;
+}
+

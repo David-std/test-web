@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Microsoft Windows 3.11</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23008080'/><text x='1' y='22' fill='%23ffffff' font-family='monospace' font-weight='bold' font-size='15'>3.1</text></svg>">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="w31-desktop" id="w31-desktop">
+
+    <!-- Minimized Icons Container on Desktop -->
+    <div class="w31-minimized-dock" id="w31-minimized-dock"></div>
+
+    <!-- Program Manager Window -->
+    <div class="w31-window" id="win-progman" data-title="Program Manager" style="width: 580px; height: 420px; top: 30px; left: 40px;">
+      <div class="w31-titlebar">
+        <div class="w31-sysmenu" title="System Menu">[-]</div>
+        <span class="w31-title-text">Program Manager</span>
+        <div class="w31-title-btns">
+          <button class="w31-btn w31-btn-min" title="Minimize">▼</button>
+          <button class="w31-btn w31-btn-max" title="Maximize">▲</button>
+        </div>
+      </div>
+      <div class="w31-menubar">
+        <span class="w31-menu-item" id="progman-file-menu">File</span>
+        <span class="w31-menu-item">Options</span>
+        <span class="w31-menu-item">Window</span>
+        <span class="w31-menu-item" id="progman-help-menu">Help</span>
+      </div>
+      <div class="w31-content" style="background:#fff;">
+        <!-- Group 1: Main -->
+        <div class="w31-group-box">
+          <div class="w31-group-title">Main</div>
+          <div class="group-container">
+            <div class="prog-item" data-win="win-fileman">
+              <img src="../assets/icons/win31/winfile.png" class="prog-svg" alt="File Manager">
+              <span>File Manager</span>
+            </div>
+            <div class="prog-item" data-win="win-dos">
+              <img src="../assets/icons/win31/dos.png" class="prog-svg" alt="MS-DOS Prompt">
+              <span>MS-DOS Prompt</span>
+            </div>
+            <div class="prog-item" data-win="win-notepad">
+              <img src="../assets/icons/win31/notepad.png" class="prog-svg" alt="Read Me">
+              <span>Read Me</span>
+            </div>
+            <div class="prog-item" id="prog-exit">
+              <img src="../assets/icons/win31/shutdown.png" class="prog-svg" alt="Exit Windows">
+              <span>Exit Windows</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Group 2: Accessories -->
+        <div class="w31-group-box">
+          <div class="w31-group-title">Accessories</div>
+          <div class="group-container">
+            <div class="prog-item" data-win="win-pbrush">
+              <img src="../assets/icons/win31/pbrush.png" class="prog-svg" alt="Paintbrush">
+              <span>Paintbrush</span>
+            </div>
+            <div class="prog-item" data-win="win-calc">
+              <img src="../assets/icons/win31/calc.png" class="prog-svg" alt="Calculator">
+              <span>Calculator</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Group 3: Games -->
+        <div class="w31-group-box">
+          <div class="w31-group-title">Games</div>
+          <div class="group-container">
+            <div class="prog-item" data-win="win-solitaire">
+              <img src="../assets/icons/win31/solitaire.png" class="prog-svg" alt="Solitaire">
+              <span>Solitaire</span>
+            </div>
+            <div class="prog-item" data-win="win-mines">
+              <img src="../assets/icons/win31/minesweeper.png" class="prog-svg" alt="Minesweeper">
+              <span>Minesweeper</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Solitaire Window -->
+    <div class="w31-window hidden" id="win-solitaire" data-title="Solitaire" style="width: 520px; height: 420px; top: 50px; left: 140px;">
+      <div class="w31-titlebar">
+        <div class="w31-sysmenu" title="System Menu">[-]</div>
+        <span class="w31-title-text">Solitaire</span>
+        <div class="w31-title-btns">
+          <button class="w31-btn w31-btn-min">▼</button>
+          <button class="w31-btn w31-btn-max">▲</button>
+        </div>
+      </div>
+      <div class="w31-menubar">
+        <span class="w31-menu-item" id="sol-menu-deal">Game</span>
+        <span class="w31-menu-item" id="sol-menu-help">Help</span>
+      </div>
+      <div class="w31-content" style="padding:0; background-color:#008000; overflow:hidden;">
+        <div class="solitaire-field">
+          <div class="solitaire-top-row">
+            <div style="display:flex; gap:10px;">
+              <div class="card-pile" id="sol-deck" title="Click to deal">
+                <div class="card-back-pattern"></div>
+              </div>
+              <div class="card-pile" id="sol-waste"></div>
+            </div>
+            <div style="display:flex; gap:6px;">
+              <div class="card-pile foundation-pile" data-suit="♠">♠</div>
+              <div class="card-pile foundation-pile" data-suit="♥">♥</div>
+              <div class="card-pile foundation-pile" data-suit="♦">♦</div>
+              <div class="card-pile foundation-pile" data-suit="♣">♣</div>
+            </div>
+          </div>
+          <!-- 7 Tableau Columns -->
+          <div class="solitaire-tableau" id="sol-tableau"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Paintbrush Window -->
+    <div class="w31-window hidden" id="win-pbrush" data-title="Paintbrush - [Untitled]" style="width: 540px; height: 380px; top: 70px; left: 180px;">
+      <div class="w31-titlebar">
+        <div class="w31-sysmenu" title="System Menu">[-]</div>
+        <span class="w31-title-text">Paintbrush - [Untitled]</span>
+        <div class="w31-title-btns">
+          <button class="w31-btn w31-btn-min">▼</button>
+          <button class="w31-btn w31-btn-max">▲</button>
+        </div>
+      </div>
+      <div class="w31-menubar">
+        <span class="w31-menu-item">File</span>
+        <span class="w31-menu-item">Edit</span>
+        <span class="w31-menu-item">View</span>
+        <span class="w31-menu-item">Text</span>
+        <span class="w31-menu-item">Pick</span>
+        <span class="w31-menu-item">Options</span>
+        <span class="w31-menu-item">Help</span>
+      </div>
+      <div class="pbrush-layout">
+        <!-- Tools Rail -->
+        <div class="pbrush-tools">
+          <button class="pbrush-tool-btn active" data-tool="pencil" title="Pencil">✏</button>
+          <button class="pbrush-tool-btn" data-tool="brush" title="Brush">🖌</button>
+          <button class="pbrush-tool-btn" data-tool="eraser" title="Eraser">◻</button>
+          <button class="pbrush-tool-btn" data-tool="bucket" title="Fill">⌸</button>
+          <button class="pbrush-tool-btn" data-tool="line" title="Line">╱</button>
+          <button class="pbrush-tool-btn" data-tool="rect" title="Box">▭</button>
+          <button id="pbrush-clear-btn" class="pbrush-tool-btn" title="Clear Canvas" style="font-size:9px;">CLR</button>
+        </div>
+        <!-- Canvas Area -->
+        <div class="pbrush-canvas-wrap">
+          <canvas id="pbrush-canvas" width="460" height="270" class="pbrush-canvas"></canvas>
+        </div>
+      </div>
+      <!-- 16-color VGA palette bar -->
+      <div class="pbrush-palette" id="pbrush-palette"></div>
+    </div>
+
+    <!-- Minesweeper Window -->
+    <div class="w31-window hidden" id="win-mines" data-title="Minesweeper" style="width: 250px; top: 90px; left: 280px;">
+      <div class="w31-titlebar">
+        <div class="w31-sysmenu" title="System Menu">[-]</div>
+        <span class="w31-title-text">Minesweeper</span>
+        <div class="w31-title-btns">
+          <button class="w31-btn w31-btn-min">▼</button>
+          <button class="w31-btn w31-btn-max">▲</button>
+        </div>
+      </div>
+      <div class="w31-menubar">
+        <span class="w31-menu-item" id="mines-menu-new">Game</span>
+        <span class="w31-menu-item">Help</span>
+      </div>
+      <div class="w31-content" style="padding:8px; background:#c0c0c0;">
+        <div class="mines-header-bar">
+          <div class="mines-counter" id="mines-bomb-count">010</div>
+          <button class="mines-face-btn" id="mines-face-btn">🙂</button>
+          <div class="mines-counter" id="mines-timer-count">000</div>
+        </div>
+        <div class="mines-grid" id="mines-grid"></div>
+      </div>
+    </div>
+
+    <!-- Calculator Window -->
+    <div class="w31-window hidden" id="win-calc" data-title="Calculator" style="width: 240px; top: 120px; left: 240px;">
+      <div class="w31-titlebar">
+        <div class="w31-sysmenu" title="System Menu">[-]</div>
+        <span class="w31-title-text">Calculator</span>
+        <div class="w31-title-btns">
+          <button class="w31-btn w31-btn-min">▼</button>
+          <button class="w31-btn w31-btn-max">▲</button>
+        </div>
+      </div>
+      <div class="w31-menubar">
+        <span class="w31-menu-item">Edit</span>
+        <span class="w31-menu-item">View</span>
+        <span class="w31-menu-item">Help</span>
+      </div>
+      <div class="w31-content" style="padding:6px; background-color:var(--w31-gray);">
+        <div class="calc-grid">
+          <div id="calc-display" class="calc-display">0</div>
+          <button class="calc-btn">7</button>
+          <button class="calc-btn">8</button>
+          <button class="calc-btn">9</button>
+          <button class="calc-btn">/</button>
+          <button class="calc-btn">4</button>
+          <button class="calc-btn">5</button>
+          <button class="calc-btn">6</button>
+          <button class="calc-btn">*</button>
+          <button class="calc-btn">1</button>
+          <button class="calc-btn">2</button>
+          <button class="calc-btn">3</button>
+          <button class="calc-btn">-</button>
+          <button class="calc-btn">0</button>
+          <button class="calc-btn">C</button>
+          <button class="calc-btn">=</button>
+          <button class="calc-btn">+</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- File Manager Window -->
+    <div class="w31-window hidden" id="win-fileman" data-title="File Manager - [C:\WINDOWS\*.*]" style="width: 460px; height: 300px; top: 110px; left: 160px;">
+      <div class="w31-titlebar">
+        <div class="w31-sysmenu" title="System Menu">[-]</div>
+        <span class="w31-title-text">File Manager - [C:\WINDOWS\*.*]</span>
+        <div class="w31-title-btns">
+          <button class="w31-btn w31-btn-min">▼</button>
+          <button class="w31-btn w31-btn-max">▲</button>
+        </div>
+      </div>
+      <div class="w31-menubar">
+        <span class="w31-menu-item">File</span>
+        <span class="w31-menu-item">Disk</span>
+        <span class="w31-menu-item">Tree</span>
+        <span class="w31-menu-item">View</span>
+      </div>
+      <div class="w31-content" style="font-family:monospace; display:flex;">
+        <div style="width:130px; border-right:1px solid #808080; padding-right:8px;">
+          <p style="font-weight:bold;">C: [MS-DOS_622]</p>
+          <p>├─ DOS</p>
+          <p>└┬ WINDOWS</p>
+          <p>&nbsp;├─ SYSTEM</p>
+          <p>&nbsp;└─ TEMP</p>
+        </div>
+        <div style="flex:1; padding-left:8px; overflow:auto;">
+          <table style="width:100%; border-collapse:collapse; font-size:11px;">
+            <thead>
+              <tr style="text-align:left; border-bottom:1px solid #808080;">
+                <th>Name</th>
+                <th>Size</th>
+                <th>Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>PROGMAN.EXE</td><td>115,312</td><td>11/01/93</td></tr>
+              <tr><td>SOL.EXE</td><td>180,688</td><td>11/01/93</td></tr>
+              <tr><td>WINMINE.EXE</td><td>27,968</td><td>11/01/93</td></tr>
+              <tr><td>PBRUSH.EXE</td><td>183,168</td><td>11/01/93</td></tr>
+              <tr><td>CALC.EXE</td><td>43,072</td><td>11/01/93</td></tr>
+              <tr><td>NOTEPAD.EXE</td><td>32,736</td><td>11/01/93</td></tr>
+              <tr><td>SYSTEM.INI</td><td>4,120</td><td>11/01/93</td></tr>
+              <tr><td>WIN.INI</td><td>8,422</td><td>11/01/93</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Notepad Window -->
+    <div class="w31-window hidden" id="win-notepad" data-title="Notepad - README.TXT" style="width: 420px; height: 280px; top: 140px; left: 200px;">
+      <div class="w31-titlebar">
+        <div class="w31-sysmenu" title="System Menu">[-]</div>
+        <span class="w31-title-text">Notepad - README.TXT</span>
+        <div class="w31-title-btns">
+          <button class="w31-btn w31-btn-min">▼</button>
+          <button class="w31-btn w31-btn-max">▲</button>
+        </div>
+      </div>
+      <div class="w31-menubar">
+        <span class="w31-menu-item">File</span>
+        <span class="w31-menu-item">Edit</span>
+        <span class="w31-menu-item">Search</span>
+        <span class="w31-menu-item">Help</span>
+      </div>
+      <div class="w31-content" style="padding:0;">
+        <textarea style="width:100%; height:100%; border:none; resize:none; padding:6px; font-family:monospace; outline:none;" spellcheck="false">Microsoft Windows Version 3.11
+For Workgroups and Personal Computing.
+Copyright (C) Microsoft Corporation 1985-1993.
+
+Welcome to Windows 3.11! This system includes 32-bit file access, peer-to-peer networking, Solitaire, Minesweeper, and Paintbrush.</textarea>
+      </div>
+    </div>
+
+    <!-- MS-DOS Prompt Window -->
+    <div class="w31-window hidden" id="win-dos" data-title="MS-DOS Prompt" style="width: 480px; height: 300px; top: 100px; left: 220px;">
+      <div class="w31-titlebar">
+        <div class="w31-sysmenu" title="System Menu">[-]</div>
+        <span class="w31-title-text">MS-DOS Prompt</span>
+        <div class="w31-title-btns">
+          <button class="w31-btn w31-btn-min">▼</button>
+          <button class="w31-btn w31-btn-max">▲</button>
+        </div>
+      </div>
+      <div class="w31-content" style="padding:8px; background:#000; color:#fff; font-family:monospace;">
+        <p>Starting MS-DOS 6.22...</p>
+        <p>Type EXIT to return to Windows.</p>
+        <br>
+        <div id="w31-dos-output"></div>
+        <div style="display:flex;">
+          <span>C:\WINDOWS&gt;&nbsp;</span>
+          <input type="text" id="w31-dos-input" style="flex:1; background:transparent; border:none; outline:none; color:#fff; font-family:monospace;" autofocus spellcheck="false">
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Exit Windows Dialog -->
+  <div id="w31-exit-dialog" class="hidden" style="position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.4); display:flex; align-items:center; justify-content:center; z-index:100000;">
+    <div class="w31-window" style="width:340px; position:static;">
+      <div class="w31-titlebar">
+        <div class="w31-sysmenu">[-]</div>
+        <span class="w31-title-text">Exit Windows</span>
+      </div>
+      <div style="padding:14px; background:#c0c0c0; color:#000;">
+        <p style="margin-bottom:12px; font-weight:bold;">This will end your Windows session.</p>
+        <div style="margin-bottom:14px;">
+          <label style="display:block; margin-bottom:6px;">
+            <input type="radio" name="w31-exit-opt" value="reboot" checked> Restart and choose another OS
+          </label>
+          <label style="display:block;">
+            <input type="radio" name="w31-exit-opt" value="dos"> Exit to MS-DOS
+          </label>
+        </div>
+        <div style="display:flex; justify-content:flex-end; gap:8px;">
+          <button id="w31-btn-exit-ok" style="padding:3px 14px; border:1px solid #000; cursor:pointer; background:#c0c0c0;">OK</button>
+          <button id="w31-btn-exit-cancel" style="padding:3px 14px; border:1px solid #000; cursor:pointer; background:#c0c0c0;">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

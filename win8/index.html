@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Microsoft Windows 8.1 Pro</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><path fill='%230078d7' d='M2 6.5 L14 4.8 L14 15 L2 15 Z M16 4.5 L30 2.5 L30 15 L16 15 Z M2 17 L14 17 L14 27.2 L2 25.5 Z M16 17 L30 17 L30 29.5 L16 27.5 Z'/></svg>">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="w8-container">
+
+    <!-- Modo Escritorio -->
+    <div class="w8-desktop" id="w8-desktop">
+      <!-- Iconos del escritorio -->
+      <div class="w8-icons">
+        <div class="w8-icon" data-win="win-pc">
+          <div class="w8-icon-img">
+            <img src="../assets/icons/win8/thispc.png" alt="Este equipo" class="w8-icon-pic">
+          </div>
+          <span class="w8-icon-label">Este equipo</span>
+        </div>
+
+        <div class="w8-icon" id="w8-recycle" data-win="win-recycle">
+          <div class="w8-icon-img">
+            <img src="../assets/icons/win8/recycle_empty.png" alt="Papelera de reciclaje" class="w8-icon-pic" id="w8-recycle-img">
+          </div>
+          <span class="w8-icon-label">Papelera de reciclaje</span>
+        </div>
+
+        <div class="w8-icon" data-win="win-ie">
+          <div class="w8-icon-img">
+            <img src="../assets/icons/win8/ie.png" alt="Internet Explorer" class="w8-icon-pic">
+          </div>
+          <span class="w8-icon-label">Internet Explorer</span>
+        </div>
+
+        <div class="w8-icon" data-win="win-calc">
+          <div class="w8-icon-img">
+            <img src="../assets/icons/win8/calc.png" alt="Calculadora" class="w8-icon-pic">
+          </div>
+          <span class="w8-icon-label">Calculadora</span>
+        </div>
+      </div>
+
+      <!-- Ventana Este equipo -->
+      <div class="w8-window hidden" id="win-pc" style="width: 560px; height: 360px; top: 60px; left: 160px;">
+        <div class="w8-titlebar">
+          <div style="display:flex; align-items:center; gap:6px;">
+            <img src="../assets/icons/win8/thispc.png" width="16" height="16" alt="Icon">
+            <span>Este equipo</span>
+          </div>
+          <div class="w8-controls">
+            <button class="w8-ctrl-btn w8-ctrl-min">─</button>
+            <button class="w8-ctrl-btn w8-ctrl-close">✕</button>
+          </div>
+        </div>
+        <!-- Cinta Ribbon de Windows 8.1 -->
+        <div style="background:#f5f6f7; border-bottom:1px solid #e1e2e3; padding:4px 8px; font-size:11px; display:flex; gap:12px;">
+          <span style="color:#0078d7; font-weight:600; border-bottom:2px solid #0078d7; padding-bottom:2px;">Equipo</span>
+          <span style="color:#444;">Vista</span>
+          <span style="color:#444;">Administrar</span>
+        </div>
+        <div style="padding:16px; background:#fff; height:calc(100% - 60px); overflow:auto;">
+          <div style="font-weight:600; color:#0078d7; margin-bottom:10px;">Dispositivos y unidades (1)</div>
+          <div style="display:flex; align-items:center; gap:12px; padding:10px; border:1px solid #d9d9d9; width:300px;">
+            <svg viewBox="0 0 32 32" width="36" height="36">
+              <rect x="3" y="6" width="26" height="20" rx="3" fill="#3b82f6" stroke="#1d4ed8"/>
+              <rect x="6" y="9" width="20" height="6" fill="#fff" opacity="0.8"/>
+              <circle cx="16" cy="20" r="3" fill="#1d4ed8"/>
+            </svg>
+            <div style="flex:1;">
+              <div><strong>Disco local (C:)</strong></div>
+              <div style="height:10px; background:#e5e5e5; margin:5px 0;">
+                <div style="width:40%; height:100%; background:#0078d7;"></div>
+              </div>
+              <small style="color:#666;">145 GB disponibles de 250 GB</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ventana Internet Explorer 11 -->
+      <div class="w8-window hidden" id="win-ie" style="width: 600px; height: 400px; top: 70px; left: 180px;">
+        <div class="w8-titlebar">
+          <div style="display:flex; align-items:center; gap:6px;">
+            <img src="../assets/icons/win8/ie.png" width="16" height="16" alt="Icon">
+            <span>MSN - Internet Explorer</span>
+          </div>
+          <div class="w8-controls">
+            <button class="w8-ctrl-btn w8-ctrl-min">─</button>
+            <button class="w8-ctrl-btn w8-ctrl-close">✕</button>
+          </div>
+        </div>
+        <div style="background:#f0f0f0; padding:6px 10px; display:flex; gap:8px; align-items:center; border-bottom:1px solid #ccc;">
+          <button style="padding:2px 8px; cursor:pointer;">◄</button>
+          <button style="padding:2px 8px; cursor:pointer;">►</button>
+          <input type="text" value="https://www.bing.com/" readonly style="flex:1; padding:3px 8px; border:1px solid #aaa; font-size:11px; background:#fff;">
+        </div>
+        <div style="padding:16px; background:#fff; height:calc(100% - 70px); overflow:auto;">
+          <div style="text-align:center; margin:16px 0;">
+            <h1 style="color:#0078d7; font-weight:300; font-size:32px; letter-spacing:1px;">Bing</h1>
+            <input type="text" placeholder="Buscar en la web..." style="width:340px; padding:8px 12px; border:1px solid #0078d7; margin-top:8px;">
+          </div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:20px;">
+            <div style="border:1px solid #eee; padding:10px;">
+              <strong style="color:#0078d7;">Noticias Destacadas</strong>
+              <p style="font-size:11px; color:#555; margin-top:4px;">Windows 8.1 introduce la vuelta del botón de Inicio y la integración con OneDrive en la nube.</p>
+            </div>
+            <div style="border:1px solid #eee; padding:10px;">
+              <strong style="color:#008299;">El Tiempo</strong>
+              <p style="font-size:11px; color:#555; margin-top:4px;">Madrid: 21°C - Cielo despejado y brisa suave.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ventana Calculadora -->
+      <div class="w8-window hidden" id="win-calc" style="width: 260px; top: 100px; left: 240px;">
+        <div class="w8-titlebar">
+          <div style="display:flex; align-items:center; gap:6px;">
+            <img src="../assets/icons/win8/calc.png" width="16" height="16" alt="Icon">
+            <span>Calculadora</span>
+          </div>
+          <div class="w8-controls">
+            <button class="w8-ctrl-btn w8-ctrl-min">─</button>
+            <button class="w8-ctrl-btn w8-ctrl-close">✕</button>
+          </div>
+        </div>
+        <div style="padding:12px; background:#f9f9f9;">
+          <input type="text" id="w8-calc-display" value="0" readonly style="width:100%; height:38px; font-size:20px; text-align:right; padding:4px 8px; margin-bottom:10px; border:1px solid #ccc; background:#fff; font-family:monospace; font-weight:bold;">
+          <div class="w8-calc-grid">
+            <button class="w8-btn-c" data-val="C">C</button>
+            <button class="w8-btn-c" data-val="CE">CE</button>
+            <button class="w8-btn-c" data-val="±">±</button>
+            <button class="w8-btn-c op" data-val="/">/</button>
+            <button class="w8-btn-c num" data-val="7">7</button>
+            <button class="w8-btn-c num" data-val="8">8</button>
+            <button class="w8-btn-c num" data-val="9">9</button>
+            <button class="w8-btn-c op" data-val="*">*</button>
+            <button class="w8-btn-c num" data-val="4">4</button>
+            <button class="w8-btn-c num" data-val="5">5</button>
+            <button class="w8-btn-c num" data-val="6">6</button>
+            <button class="w8-btn-c op" data-val="-">-</button>
+            <button class="w8-btn-c num" data-val="1">1</button>
+            <button class="w8-btn-c num" data-val="2">2</button>
+            <button class="w8-btn-c num" data-val="3">3</button>
+            <button class="w8-btn-c op" data-val="+">+</button>
+            <button class="w8-btn-c num" data-val="0" style="grid-column:span 2;">0</button>
+            <button class="w8-btn-c num" data-val=".">.</button>
+            <button class="w8-btn-c eq" data-val="=">=</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ventana Papelera de reciclaje Windows 8.1 -->
+      <div class="w8-window hidden" id="win-recycle" style="width: 580px; height: 380px; top: 80px; left: 180px;">
+        <div class="w8-titlebar">
+          <div style="display:flex; align-items:center; gap:6px;">
+            <img src="../assets/icons/win8/recycle_empty.png" width="16" height="16" alt="Icon">
+            <span>Papelera de reciclaje</span>
+          </div>
+          <div class="w8-controls">
+            <button class="w8-ctrl-btn w8-ctrl-min">─</button>
+            <button class="w8-ctrl-btn w8-ctrl-close">✕</button>
+          </div>
+        </div>
+        <div style="background:#f5f6f7; border-bottom:1px solid #e1e2e3; padding:4px 8px; font-size:11px; display:flex; gap:12px; align-items:center;">
+          <button id="w8-btn-empty-recycle" style="padding:3px 10px; background:#0078d7; color:#fff; border:none; cursor:pointer;">Vaciar papelera de reciclaje</button>
+          <button id="w8-btn-restore-recycle" style="padding:3px 10px; background:#fff; border:1px solid #ccc; cursor:pointer;">Restaurar todos los elementos</button>
+        </div>
+        <div style="padding:16px; background:#fff; height:calc(100% - 70px); overflow:auto;" id="w8-recycle-content">
+          <div id="w8-recycle-list">
+            <div style="display:flex; align-items:center; gap:8px; padding:6px 0; border-bottom:1px solid #eee; font-size:12px;">
+              <span>📄 Documento_antiguo.docx</span>
+              <span style="margin-left:auto; color:#888; font-size:11px;">14 KB</span>
+            </div>
+            <div style="display:flex; align-items:center; gap:8px; padding:6px 0; border-bottom:1px solid #eee; font-size:12px;">
+              <span>🖼 Captura_pantalla.png</span>
+              <span style="margin-left:auto; color:#888; font-size:11px;">120 KB</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Barra de tareas de Windows 8.1 -->
+    <footer class="w8-taskbar">
+      <!-- Botón de Inicio característico de Windows 8.1 -->
+      <button class="w8-start-btn" id="w8-start-btn" title="Inicio">
+        <svg viewBox="0 0 32 32" width="22" height="22">
+          <path fill="#0078d7" d="M2 6.5 L14 4.8 L14 15 L2 15 Z M16 4.5 L30 2.5 L30 15 L16 15 Z M2 17 L14 17 L14 27.2 L2 25.5 Z M16 17 L30 17 L30 29.5 L16 27.5 Z"/>
+        </svg>
+      </button>
+
+      <div class="w8-taskbar-apps">
+        <div class="w8-task-item" data-win="win-ie" title="Internet Explorer">
+          <img src="../assets/icons/win8/ie.png" alt="IE">
+        </div>
+        <div class="w8-task-item" data-win="win-pc" title="Explorador de archivos">
+          <img src="../assets/icons/win8/explorer.png" alt="Explorador">
+        </div>
+        <div class="w8-task-item" data-win="win-calc" title="Calculadora">
+          <img src="../assets/icons/win8/calc.png" alt="Calculadora">
+        </div>
+      </div>
+
+      <!-- Dynamic Open Windows in Taskbar -->
+      <div class="w8-taskbar-dynamic" id="w8-taskbar-dynamic"></div>
+
+      <div class="w8-tray">
+        <svg viewBox="0 0 16 16" width="14" height="14">
+          <path d="M3 5h3l4-3v12l-4-3H3z" fill="#fff"/>
+          <path d="M12 5c1 1.5 1 4.5 0 6" stroke="#fff" fill="none"/>
+        </svg>
+        <svg viewBox="0 0 16 16" width="14" height="14">
+          <path d="M8 12 A 4 4 0 0 1 12 12 M6 10 A 7 7 0 0 1 14 10 M4 8 A 10 10 0 0 1 16 8" stroke="#fff" stroke-width="1.5" fill="none"/>
+          <circle cx="8" cy="13" r="1.5" fill="#fff"/>
+        </svg>
+        <div id="w8-clock" style="text-align:right; line-height:1.2;">00:00 PM</div>
+      </div>
+    </footer>
+
+    <!-- Pantalla de Inicio (Start Screen Metro Modern UI) -->
+    <div class="w8-start-screen" id="w8-start-screen">
+      <div class="start-header">
+        <div class="start-title">Inicio</div>
+        <div class="start-user-controls">
+          <div class="start-user-name">Usuario</div>
+          <button class="start-ctrl-btn" id="w8-search-icon" title="Buscar">
+            <svg viewBox="0 0 16 16" width="14" height="14">
+              <circle cx="6" cy="6" r="4" fill="none" stroke="#fff" stroke-width="1.8"/>
+              <line x1="9" y1="9" x2="14" y2="14" stroke="#fff" stroke-width="1.8"/>
+            </svg>
+          </button>
+          <button class="start-ctrl-btn" id="w8-power-icon" title="Apagado">
+            <svg viewBox="0 0 16 16" width="16" height="16">
+              <circle cx="8" cy="8" r="6" fill="none" stroke="#fff" stroke-width="1.8"/>
+              <line x1="8" y1="2" x2="8" y2="8" stroke="#fff" stroke-width="1.8"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Menú emergente de apagado en Start Screen -->
+      <div class="w8-power-popup hidden" id="w8-power-popup">
+        <div class="power-option" id="w8-action-sleep">Suspender</div>
+        <div class="power-option" id="w8-action-shutdown">Apagar</div>
+        <div class="power-option" id="w8-action-restart">Reiniciar</div>
+      </div>
+
+      <!-- Cuadrícula de Live Tiles de Windows 8.1 -->
+      <div class="start-tiles-grid">
+        <!-- Escritorio Tile -->
+        <div class="metro-tile tile-wide tile-desktop" id="tile-desktop" title="Volver al escritorio">
+          <div class="tile-icon">
+            <img src="../assets/icons/win8/desktop.png" alt="Escritorio">
+          </div>
+          <div class="tile-label">Escritorio</div>
+        </div>
+
+        <!-- Correo Tile -->
+        <div class="metro-tile tile-wide tile-mail" id="tile-mail">
+          <div class="tile-icon">
+            <img src="../assets/icons/win8/mail.png" alt="Correo">
+          </div>
+          <div>
+            <div style="font-size:11px; opacity:0.95;">Reunión de equipo</div>
+            <div class="tile-label">Correo</div>
+          </div>
+          <div class="tile-badge">3</div>
+        </div>
+
+        <!-- El Tiempo Live Tile -->
+        <div class="metro-tile tile-square tile-weather" id="tile-weather">
+          <div class="tile-icon">
+            <img src="../assets/icons/win8/weather.png" alt="Tiempo">
+          </div>
+          <div style="font-size:22px; font-weight:bold; margin-top:8px;">21°</div>
+          <div class="tile-label">Madrid</div>
+        </div>
+
+        <!-- Fotos Tile -->
+        <div class="metro-tile tile-square tile-photos" id="tile-photos">
+          <div class="tile-icon">
+            <img src="../assets/icons/win8/photos.png" alt="Fotos">
+          </div>
+          <div class="tile-label">Fotos</div>
+        </div>
+
+        <!-- Tienda Tile -->
+        <div class="metro-tile tile-wide tile-store" id="tile-store">
+          <div class="tile-icon">
+            <img src="../assets/icons/win8/store.png" alt="Tienda">
+          </div>
+          <div class="tile-label">Tienda Windows</div>
+        </div>
+
+        <!-- Calculadora Tile -->
+        <div class="metro-tile tile-square" style="background:#004e8c;" data-win="win-calc">
+          <div class="tile-icon">
+            <img src="../assets/icons/win8/calc.png" alt="Calculadora">
+          </div>
+          <div class="tile-label">Calculadora</div>
+        </div>
+
+        <!-- Noticias Tile -->
+        <div class="metro-tile tile-wide" style="background:#d83b01;" id="tile-news">
+          <div class="tile-icon">
+            <img src="../assets/icons/win8/news.png" alt="Noticias">
+          </div>
+          <div>
+            <div style="font-size:11px; opacity:0.95;">Microsoft anuncia novedades</div>
+            <div class="tile-label">Noticias</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Aplicación Metro El Tiempo (Modern UI) -->
+    <div class="w8-metro-app hidden" id="w8-app-weather">
+      <div class="metro-app-header">
+        <button class="metro-back-btn" id="w8-weather-back" title="Volver">←</button>
+        <div class="metro-app-title">El Tiempo</div>
+        <div class="metro-tabs">
+          <button class="metro-tab-btn active" data-city="madrid">Madrid</button>
+          <button class="metro-tab-btn" data-city="barcelona">Barcelona</button>
+          <button class="metro-tab-btn" data-city="buenosaires">Buenos Aires</button>
+          <button class="metro-tab-btn" data-city="mexico">Ciudad de México</button>
+        </div>
+      </div>
+      <div class="metro-weather-content" id="weather-details-container">
+        <div class="weather-hero">
+          <div class="weather-temp-main" id="weather-temp">21°</div>
+          <div>
+            <div class="weather-city-name" id="weather-city">Madrid, España</div>
+            <div class="weather-cond" id="weather-cond">Cielo despejado</div>
+            <div class="weather-range" id="weather-range">Máx: 24° · Mín: 14° · Sensación 22°</div>
+          </div>
+        </div>
+        <!-- Pronóstico por horas -->
+        <div class="weather-section-title">Pronóstico por horas</div>
+        <div class="weather-hourly" id="weather-hourly">
+          <div class="hourly-item"><span>12:00</span><strong>21°</strong><small>Soleado</small></div>
+          <div class="hourly-item"><span>15:00</span><strong>24°</strong><small>Despejado</small></div>
+          <div class="hourly-item"><span>18:00</span><strong>22°</strong><small>Soleado</small></div>
+          <div class="hourly-item"><span>21:00</span><strong>18°</strong><small>Nubes altas</small></div>
+          <div class="hourly-item"><span>00:00</span><strong>15°</strong><small>Despejado</small></div>
+        </div>
+        <!-- Métricas meteorológicas -->
+        <div class="weather-metrics">
+          <div class="metric-card"><span>Humedad</span><strong id="w-humidity">48%</strong></div>
+          <div class="metric-card"><span>Viento</span><strong id="w-wind">14 km/h NE</strong></div>
+          <div class="metric-card"><span>Índice UV</span><strong id="w-uv">5 (Moderado)</strong></div>
+          <div class="metric-card"><span>Presión</span><strong id="w-baro">1018 hPa</strong></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Aplicación Metro Tienda Windows -->
+    <div class="w8-metro-app hidden" id="w8-app-store">
+      <div class="metro-app-header">
+        <button class="metro-back-btn" id="w8-store-back" title="Volver">←</button>
+        <div class="metro-app-title">Tienda Windows</div>
+        <div style="margin-left:auto; display:flex; align-items:center; gap:8px;">
+          <input type="text" placeholder="Buscar aplicaciones..." style="padding:6px 12px; background:rgba(255,255,255,0.15); border:1px solid rgba(255,255,255,0.3); color:#fff; font-size:12px; border-radius:2px; outline:none;">
+        </div>
+      </div>
+      <div class="metro-store-content">
+        <div class="store-spotlight">
+          <div style="font-size:11px; text-transform:uppercase; letter-spacing:1px; opacity:0.8;">Destacado del día</div>
+          <h2 style="font-size:26px; font-weight:300; margin:6px 0;">Halo: Spartan Assault</h2>
+          <p style="font-size:12px; max-width:480px; opacity:0.9;">Experimenta la adrenalina del combate contra los Covenant en esta emocionante entrega táctica diseñada para Windows 8.1.</p>
+          <button style="margin-top:12px; padding:6px 18px; background:#fff; color:#0078d7; font-weight:bold; border:none; cursor:pointer; font-size:12px;">Instalar</button>
+        </div>
+        <div class="store-grid">
+          <div class="store-card">
+            <div class="store-card-icon" style="background:#e50914;">N</div>
+            <div><strong>Netflix</strong><div style="font-size:11px; opacity:0.7;">Entretenimiento · Gratis</div></div>
+          </div>
+          <div class="store-card">
+            <div class="store-card-icon" style="background:#1da1f2;">T</div>
+            <div><strong>Twitter</strong><div style="font-size:11px; opacity:0.7;">Redes sociales · Gratis</div></div>
+          </div>
+          <div class="store-card">
+            <div class="store-card-icon" style="background:#00aff0;">S</div>
+            <div><strong>Skype</strong><div style="font-size:11px; opacity:0.7;">Comunicación · Gratis</div></div>
+          </div>
+          <div class="store-card">
+            <div class="store-card-icon" style="background:#22c55e;">F</div>
+            <div><strong>Fruit Ninja</strong><div style="font-size:11px; opacity:0.7;">Juegos · Instalado</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Aplicación Metro Correo (Modern UI) -->
+    <div class="w8-metro-app hidden" id="w8-app-mail">
+      <div class="metro-app-header" style="background:#004e8c;">
+        <button class="metro-back-btn" id="w8-mail-back" title="Volver">←</button>
+        <div class="metro-app-title">Correo</div>
+      </div>
+      <div style="display:flex; height:calc(100% - 50px); background:#0078d7; color:#fff;">
+        <div style="width:260px; background:rgba(0,0,0,0.15); border-right:1px solid rgba(255,255,255,0.2); padding:16px;">
+          <div style="font-size:16px; font-weight:600; margin-bottom:14px;">Bandeja de entrada (3)</div>
+          <div style="background:rgba(255,255,255,0.2); padding:10px; border-radius:2px; margin-bottom:8px; cursor:pointer;">
+            <div style="font-weight:600; font-size:12px;">Equipo de Microsoft</div>
+            <div style="font-size:11px; opacity:0.9;">Bienvenido a tu nueva cuenta</div>
+          </div>
+          <div style="padding:10px; margin-bottom:8px; opacity:0.8; cursor:pointer;">
+            <div style="font-weight:600; font-size:12px;">OneDrive</div>
+            <div style="font-size:11px;">Tus fotos se están sincronizando</div>
+          </div>
+        </div>
+        <div style="flex:1; padding:24px; overflow-y:auto;">
+          <h2 style="font-size:22px; font-weight:300;">Bienvenido a tu nuevo equipo con Windows 8.1</h2>
+          <div style="margin:12px 0; font-size:11px; opacity:0.7;">De: Microsoft &lt;no-reply@microsoft.com&gt;</div>
+          <p style="font-size:13px; line-height:1.6; max-width:600px;">Windows 8.1 te ofrece lo mejor del trabajo y del entretenimiento. Puedes alternar fácilmente entre la pantalla de Inicio con Live Tiles y el escritorio clásico que ya conoces.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Aplicación Metro Fotos (Modern UI) -->
+    <div class="w8-metro-app hidden" id="w8-app-photos">
+      <div class="metro-app-header" style="background:#68217a;">
+        <button class="metro-back-btn" id="w8-photos-back" title="Volver">←</button>
+        <div class="metro-app-title">Fotos</div>
+      </div>
+      <div style="padding:24px; background:#4e1458; color:#fff; height:calc(100% - 50px); overflow-y:auto;">
+        <h2 style="font-size:20px; font-weight:300; margin-bottom:16px;">Colección de imágenes</h2>
+        <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(200px, 1fr)); gap:16px;">
+          <div style="background:rgba(255,255,255,0.1); padding:8px; border-radius:2px;">
+            <div style="height:140px; background:linear-gradient(135deg, #0078d7, #008299); border-radius:2px; display:flex; align-items:center; justify-content:center; font-size:32px;">🌄</div>
+            <div style="font-size:12px; margin-top:8px;">Paisajes de Windows 8.1</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.1); padding:8px; border-radius:2px;">
+            <div style="height:140px; background:linear-gradient(135deg, #d83b01, #e81123); border-radius:2px; display:flex; align-items:center; justify-content:center; font-size:32px;">🌅</div>
+            <div style="font-size:12px; margin-top:8px;">Atardecer en el desierto</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.1); padding:8px; border-radius:2px;">
+            <div style="height:140px; background:linear-gradient(135deg, #107c10, #008299); border-radius:2px; display:flex; align-items:center; justify-content:center; font-size:32px;">🌲</div>
+            <div style="font-size:12px; margin-top:8px;">Bosques naturales</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Aplicación Metro Noticias (Modern UI) -->
+    <div class="w8-metro-app hidden" id="w8-app-news">
+      <div class="metro-app-header" style="background:#b91c1c;">
+        <button class="metro-back-btn" id="w8-news-back" title="Volver">←</button>
+        <div class="metro-app-title">Bing Noticias</div>
+      </div>
+      <div style="padding:24px; background:#991b1b; color:#fff; height:calc(100% - 50px); overflow-y:auto;">
+        <h2 style="font-size:24px; font-weight:300; margin-bottom:16px;">Titulares del día</h2>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+          <div style="background:rgba(0,0,0,0.2); padding:16px; border-radius:2px;">
+            <h3 style="font-size:16px;">Innovaciones en tecnología personal</h3>
+            <p style="font-size:12px; opacity:0.9; margin-top:8px; line-height:1.5;">La convergencia entre dispositivos táctiles y equipos de escritorio marca una nueva etapa en la informática moderna.</p>
+          </div>
+          <div style="background:rgba(0,0,0,0.2); padding:16px; border-radius:2px;">
+            <h3 style="font-size:16px;">Avances científicos y espaciales</h3>
+            <p style="font-size:12px; opacity:0.9; margin-top:8px; line-height:1.5;">Nuevas misiones robóticas exploran los confines del sistema solar recopilando datos sin precedentes.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Flyout de Configuración de PC (Charms Settings) -->
+    <div class="w8-settings-charm-flyout hidden" id="w8-settings-charm-flyout" style="position:fixed; top:0; right:0; width:300px; height:100vh; background:#222; z-index:10000; box-shadow:-4px 0 16px rgba(0,0,0,0.5);">
+      <div style="padding:24px; color:#fff; height:100%; box-sizing:border-box;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+          <h3 style="font-size:20px; font-weight:300;">Configuración</h3>
+          <button id="w8-settings-close" style="background:none; border:none; color:#fff; font-size:16px; cursor:pointer;">✕</button>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:16px; font-size:13px;">
+          <div class="charm-setting-link" data-win="win-pc" style="cursor:pointer; padding:6px 0; border-bottom:1px solid #444;">Información de Este equipo</div>
+          <div class="charm-setting-link" style="cursor:pointer; padding:6px 0; border-bottom:1px solid #444;" id="w8-toggle-personalize">Personalización de Pantalla</div>
+          <div class="charm-setting-link" style="cursor:pointer; padding:6px 0; border-bottom:1px solid #444;" id="w8-toggle-notifications">Notificaciones: Activadas</div>
+        </div>
+        <hr style="border:none; border-top:1px solid rgba(255,255,255,0.2); margin:24px 0;">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <span style="font-size:12px;">Opciones de energía</span>
+          <button id="w8-charm-power-btn" style="padding:6px 12px; background:#0078d7; color:#fff; border:none; cursor:pointer; font-size:11px;">Apagado</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Barra de Charms de Windows 8.1 -->
+    <div class="w8-charms-bar" id="w8-charms-bar">
+      <div class="charm-item" id="charm-search">
+        <svg viewBox="0 0 24 24" width="22" height="22">
+          <circle cx="10" cy="10" r="6" fill="none" stroke="#fff" stroke-width="2"/>
+          <line x1="14" y1="14" x2="20" y2="20" stroke="#fff" stroke-width="2"/>
+        </svg>
+        <span>Buscar</span>
+      </div>
+      <div class="charm-item" id="charm-share">
+        <svg viewBox="0 0 24 24" width="22" height="22">
+          <circle cx="6" cy="12" r="3" fill="#fff"/>
+          <circle cx="18" cy="6" r="3" fill="#fff"/>
+          <circle cx="18" cy="18" r="3" fill="#fff"/>
+          <line x1="8" y1="11" x2="16" y2="7" stroke="#fff" stroke-width="2"/>
+          <line x1="8" y1="13" x2="16" y2="17" stroke="#fff" stroke-width="2"/>
+        </svg>
+        <span>Compartir</span>
+      </div>
+      <div class="charm-item" id="charm-start">
+        <svg viewBox="0 0 24 24" width="22" height="22">
+          <path fill="#0078d7" d="M2 5 L10 3.8 L10 11 L2 11 Z M12 3.5 L22 2 L22 11 L12 11 Z M2 13 L10 13 L10 20.2 L2 19 Z M12 13 L22 13 L22 22 L12 20.5 Z"/>
+        </svg>
+        <span>Inicio</span>
+      </div>
+      <div class="charm-item" id="charm-devices">
+        <svg viewBox="0 0 24 24" width="22" height="22">
+          <rect x="4" y="4" width="16" height="12" rx="2" fill="none" stroke="#fff" stroke-width="2"/>
+          <rect x="8" y="16" width="8" height="4" fill="#fff"/>
+        </svg>
+        <span>Dispositivos</span>
+      </div>
+      <div class="charm-item" id="charm-settings">
+        <svg viewBox="0 0 24 24" width="22" height="22">
+          <circle cx="12" cy="12" r="4" fill="none" stroke="#fff" stroke-width="2"/>
+          <path d="M12 2 L12 5 M12 19 L12 22 M2 12 L5 12 M19 12 L22 12" stroke="#fff" stroke-width="2"/>
+        </svg>
+        <span>Configuración</span>
+      </div>
+    </div>
+
+    <!-- Charms Time Overlay -->
+    <div class="w8-charms-time hidden" id="w8-charms-time">
+      <div class="charms-clock-huge" id="w8-huge-clock">12:00</div>
+      <div class="charms-date-line" id="w8-huge-date">miércoles, 23 de septiembre</div>
+    </div>
+
+    <!-- Pantalla de reinicio de Windows 8.1 -->
+    <div class="w8-restart-overlay hidden" id="w8-restart-screen">
+      <div class="w8-spinner"></div>
+      <div style="font-size:24px; font-weight:300;">Reiniciando</div>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Microsoft Windows 11 Pro</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect x='3' y='3' width='12' height='12' rx='1' fill='%230067c0'/><rect x='17' y='3' width='12' height='12' rx='1' fill='%230067c0'/><rect x='3' y='17' width='12' height='12' rx='1' fill='%230067c0'/><rect x='17' y='17' width='12' height='12' rx='1' fill='%230067c0'/></svg>">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="light-mode">
+
+  <div class="w11-desktop">
+
+    <!-- Desktop iconsño Fluent auténtico -->
+    <div class="w11-icons">
+      <!-- Este equipo -->
+      <div class="w11-icon" data-win="win-pc">
+        <div class="w11-icon-img">
+          <img src="../assets/icons/win11/thispc.png" alt="Este equipo" class="w11-icon-pic">
+        </div>
+        <span class="w11-icon-label">Este equipo</span>
+      </div>
+
+      <!-- Papelera de reciclaje -->
+      <div class="w11-icon" id="w11-recycle" data-win="win-recycle">
+        <div class="w11-icon-img">
+          <img src="../assets/icons/win11/recycle_empty.png" alt="Papelera de reciclaje" class="w11-icon-pic" id="w11-recycle-img">
+        </div>
+        <span class="w11-icon-label">Papelera de reciclaje</span>
+      </div>
+
+      <!-- Microsoft Edge -->
+      <div class="w11-icon" data-win="win-edge">
+        <div class="w11-icon-img">
+          <img src="../assets/icons/win11/edge.png" alt="Microsoft Edge" class="w11-icon-pic">
+        </div>
+        <span class="w11-icon-label">Microsoft Edge</span>
+      </div>
+
+      <!-- Configuración -->
+      <div class="w11-icon" data-win="win-settings">
+        <div class="w11-icon-img">
+          <img src="../assets/icons/win11/settings.png" alt="Configuración" class="w11-icon-pic">
+        </div>
+        <span class="w11-icon-label">Configuración</span>
+      </div>
+
+      <!-- Administrador de tareas -->
+      <div class="w11-icon" data-win="win-taskmgr">
+        <div class="w11-icon-img">
+          <img src="../assets/icons/win11/taskmgr.png" alt="Administrador de tareas" class="w11-icon-pic">
+        </div>
+        <span class="w11-icon-label">Administrador de tareas</span>
+      </div>
+
+      <!-- Terminal de Windows -->
+      <div class="w11-icon" data-win="win-terminal">
+        <div class="w11-icon-img">
+          <img src="../assets/icons/win11/terminal.png" alt="Terminal" class="w11-icon-pic">
+        </div>
+        <span class="w11-icon-label">Terminal</span>
+      </div>
+    </div>
+
+    <!-- Desktop right-click context menu -->
+    <div class="w11-ctx-menu hidden" id="w11-ctx-menu">
+      <div class="ctx-item" id="ctx-view">
+        <svg viewBox="0 0 16 16" width="14" height="14"><rect x="2" y="2" width="5" height="5" rx="1" fill="currentColor"/><rect x="9" y="2" width="5" height="5" rx="1" fill="currentColor"/><rect x="2" y="9" width="5" height="5" rx="1" fill="currentColor"/><rect x="9" y="9" width="5" height="5" rx="1" fill="currentColor"/></svg>
+        Vista de iconos
+        <svg viewBox="0 0 8 8" width="8" height="8" style="margin-left:auto"><path d="M3 2l2 2-2 2" stroke="currentColor" stroke-width="1.2" fill="none"/></svg>
+      </div>
+      <div class="ctx-item" id="ctx-sort">
+        <svg viewBox="0 0 16 16" width="14" height="14"><path d="M2 4h8M2 8h6M2 12h4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M13 3l-2 2h4l-2-2zM13 13l-2-2h4l-2 2z" fill="currentColor"/></svg>
+        Ordenar por
+        <svg viewBox="0 0 8 8" width="8" height="8" style="margin-left:auto"><path d="M3 2l2 2-2 2" stroke="currentColor" stroke-width="1.2" fill="none"/></svg>
+      </div>
+      <div class="ctx-sep"></div>
+      <div class="ctx-item" id="ctx-refresh">
+        <svg viewBox="0 0 16 16" width="14" height="14"><path d="M13 8A5 5 0 113.5 4.5L5 3H1V7l1.5-1.5A7 7 0 1015 8z" fill="currentColor"/></svg>
+        Actualizar
+      </div>
+      <div class="ctx-sep"></div>
+      <div class="ctx-item" id="ctx-new-folder">
+        <svg viewBox="0 0 16 16" width="14" height="14"><path d="M2 4a1 1 0 011-1h4l2 2h5a1 1 0 011 1v6a1 1 0 01-1 1H3a1 1 0 01-1-1V4z" fill="currentColor" opacity="0.7"/><path d="M8 8v4M6 10h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        Nueva carpeta
+      </div>
+      <div class="ctx-item" id="ctx-terminal">
+        <svg viewBox="0 0 16 16" width="14" height="14"><rect x="2" y="2" width="12" height="12" rx="2" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M5 6l3 3-3 3M9 12h3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+        Abrir en Terminal
+      </div>
+      <div class="ctx-sep"></div>
+      <div class="ctx-item" id="ctx-personalize" data-win="win-settings">
+        <svg viewBox="0 0 16 16" width="14" height="14"><circle cx="8" cy="8" r="5" fill="none" stroke="currentColor" stroke-width="1.3"/><circle cx="8" cy="8" r="2" fill="currentColor"/></svg>
+        Personalizar
+      </div>
+      <div class="ctx-item" id="ctx-display" data-win="win-settings">
+        <svg viewBox="0 0 16 16" width="14" height="14"><rect x="2" y="3" width="12" height="9" rx="1" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M6 14h4M8 12v2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+        Configuración de pantalla
+      </div>
+    </div>
+
+
+    <div class="w11-window hidden" id="win-pc" style="width: 740px; height: 480px; top: 50px; left: 140px;">
+      <!-- Barra de pestañas Fluent -->
+      <div class="w11-tab-bar">
+        <div class="w11-tab active" data-tab-name="Inicio">
+          <img src="../assets/icons/win11/explorer.png" width="14" height="14" alt="Icon">
+          <span>Inicio</span>
+          <button class="w11-tab-close">✕</button>
+        </div>
+        <div class="w11-tab" data-tab-name="Documentos">
+          <img src="../assets/icons/win11/explorer.png" width="14" height="14" alt="Icon">
+          <span>Documentos</span>
+          <button class="w11-tab-close">✕</button>
+        </div>
+        <div class="w11-tab-add" title="Nueva pestaña">+</div>
+        <div class="w11-controls" style="margin-left:auto;">
+          <button class="w11-ctrl-btn w11-ctrl-min" title="Minimizar">─</button>
+          <button class="w11-ctrl-btn w11-ctrl-max" title="Maximizar">□</button>
+          <button class="w11-ctrl-btn w11-ctrl-close" title="Cerrar">✕</button>
+        </div>
+      </div>
+
+      <!-- Barra de comandos moderna (Command Bar) -->
+      <div class="w11-command-bar">
+        <button class="w11-cmd-btn primary">
+          <svg viewBox="0 0 16 16" width="14" height="14"><line x1="8" y1="3" x2="8" y2="13" stroke="#fff" stroke-width="2"/><line x1="3" y1="8" x2="13" y2="8" stroke="#fff" stroke-width="2"/></svg>
+          <span>Nuevo</span>
+        </button>
+        <div class="w11-cmd-sep"></div>
+        <button class="w11-cmd-btn" title="Cortar">
+          <svg viewBox="0 0 16 16" width="14" height="14"><circle cx="5" cy="11" r="2.5" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="11" cy="11" r="2.5" fill="none" stroke="currentColor" stroke-width="1.5"/><line x1="5" y1="9" x2="11" y2="3" stroke="currentColor" stroke-width="1.5"/><line x1="11" y1="9" x2="5" y2="3" stroke="currentColor" stroke-width="1.5"/></svg>
+        </button>
+        <button class="w11-cmd-btn" title="Copiar">
+          <svg viewBox="0 0 16 16" width="14" height="14"><rect x="3" y="5" width="8" height="9" rx="1" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M6 3 L12 3 L14 5 L14 12" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+        </button>
+        <button class="w11-cmd-btn" title="Pegar">
+          <svg viewBox="0 0 16 16" width="14" height="14"><rect x="3" y="4" width="10" height="10" rx="1" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M6 2 L10 2 L10 4 L6 4 Z" fill="currentColor"/></svg>
+        </button>
+        <button class="w11-cmd-btn" title="Eliminar">
+          <svg viewBox="0 0 16 16" width="14" height="14"><path d="M3 4 L13 4 M6 4 L6 2 L10 2 L10 4 M5 4 L6 13 L10 13 L11 4" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+        </button>
+        <div class="w11-cmd-sep"></div>
+        <button class="w11-cmd-btn">
+          <span>Ordenar</span>
+          <svg viewBox="0 0 16 16" width="10" height="10"><path d="M4 6 L8 10 L12 6" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+        </button>
+        <button class="w11-cmd-btn">
+          <span>Ver</span>
+          <svg viewBox="0 0 16 16" width="10" height="10"><path d="M4 6 L8 10 L12 6" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+        </button>
+      </div>
+
+      <!-- Barra de navegación y búsqueda -->
+      <div class="w11-nav-bar">
+        <button class="w11-nav-arrow" title="Atrás">
+          <svg viewBox="0 0 16 16" width="12" height="12"><path d="M10 3 L5 8 L10 13" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+        </button>
+        <button class="w11-nav-arrow" title="Adelante">
+          <svg viewBox="0 0 16 16" width="12" height="12"><path d="M6 3 L11 8 L6 13" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+        </button>
+        <div class="w11-breadcrumb">
+          <svg viewBox="0 0 16 16" width="14" height="14"><path d="M2 4 L7 4 L9 6 L14 6 L14 13 L2 13 Z" fill="#0067c0"/></svg>
+          <span>Este equipo</span>
+        </div>
+        <div class="w11-search-box-exp">
+          <svg viewBox="0 0 16 16" width="13" height="13"><circle cx="6.5" cy="6.5" r="4.5" fill="none" stroke="currentColor" stroke-width="1.5"/><line x1="10" y1="10" x2="14" y2="14" stroke="currentColor" stroke-width="1.5"/></svg>
+          <input type="text" placeholder="Buscar en Este equipo">
+        </div>
+      </div>
+
+      <!-- Cuerpo del explorador -->
+      <div class="w11-exp-body">
+        <div class="w11-side-pane">
+          <div class="w11-side-header">Acceso rápido</div>
+          <div class="w11-nav-item active">
+            <svg viewBox="0 0 16 16" width="14" height="14"><path d="M2 4 L7 4 L9 6 L14 6 L14 13 L2 13 Z" fill="#0067c0"/></svg>
+            <span>Este equipo</span>
+          </div>
+          <div class="w11-nav-item">
+            <svg viewBox="0 0 16 16" width="14" height="14"><path d="M2 4 L7 4 L9 6 L14 6 L14 13 L2 13 Z" fill="#0284c7"/></svg>
+            <span>Descargas</span>
+          </div>
+          <div class="w11-nav-item">
+            <svg viewBox="0 0 16 16" width="14" height="14"><path d="M2 4 L7 4 L9 6 L14 6 L14 13 L2 13 Z" fill="#059669"/></svg>
+            <span>Documentos</span>
+          </div>
+          <div class="w11-nav-item">
+            <svg viewBox="0 0 16 16" width="14" height="14"><path d="M2 4 L7 4 L9 6 L14 6 L14 13 L2 13 Z" fill="#d97706"/></svg>
+            <span>Imágenes</span>
+          </div>
+          <div class="w11-side-header" style="margin-top:14px;">Unidades</div>
+          <div class="w11-nav-item">
+            <svg viewBox="0 0 16 16" width="14" height="14"><rect x="2" y="4" width="12" height="8" rx="1" fill="#64748b"/></svg>
+            <span>Disco local (C:)</span>
+          </div>
+          <div class="w11-nav-item">
+            <svg viewBox="0 0 16 16" width="14" height="14"><rect x="2" y="4" width="12" height="8" rx="1" fill="#64748b"/></svg>
+            <span>Datos (D:)</span>
+          </div>
+        </div>
+
+        <div class="w11-content-pane">
+          <div class="w11-exp-section">Carpetas</div>
+          <div class="w11-grid-folders">
+            <div class="w11-folder-pill">
+              <svg viewBox="0 0 32 32" width="28" height="28"><path d="M4 6 L12 6 L15 10 L28 10 L28 26 L4 26 Z" fill="#0284c7"/></svg>
+              <span>Descargas</span>
+            </div>
+            <div class="w11-folder-pill">
+              <svg viewBox="0 0 32 32" width="28" height="28"><path d="M4 6 L12 6 L15 10 L28 10 L28 26 L4 26 Z" fill="#059669"/></svg>
+              <span>Documentos</span>
+            </div>
+            <div class="w11-folder-pill">
+              <svg viewBox="0 0 32 32" width="28" height="28"><path d="M4 6 L12 6 L15 10 L28 10 L28 26 L4 26 Z" fill="#d97706"/></svg>
+              <span>Imágenes</span>
+            </div>
+            <div class="w11-folder-pill">
+              <svg viewBox="0 0 32 32" width="28" height="28"><path d="M4 6 L12 6 L15 10 L28 10 L28 26 L4 26 Z" fill="#7c3aed"/></svg>
+              <span>Música</span>
+            </div>
+            <div class="w11-folder-pill">
+              <svg viewBox="0 0 32 32" width="28" height="28"><path d="M4 6 L12 6 L15 10 L28 10 L28 26 L4 26 Z" fill="#dc2626"/></svg>
+              <span>Vídeos</span>
+            </div>
+          </div>
+
+          <div class="w11-exp-section" style="margin-top:20px;">Dispositivos y unidades</div>
+          <div class="w11-grid-drives">
+            <div class="w11-drive-pill">
+              <svg viewBox="0 0 40 40" width="38" height="38">
+                <rect x="6" y="8" width="28" height="22" rx="3" fill="#cbd5e1" stroke="#64748b" stroke-width="1.5"/>
+                <rect x="9" y="11" width="22" height="12" rx="1" fill="#f1f5f9"/>
+                <circle cx="20" cy="17" r="4" fill="#94a3b8"/>
+                <circle cx="28" cy="26" r="1.5" fill="#0067c0"/>
+              </svg>
+              <div class="w11-drive-desc">
+                <strong>Disco local (C:)</strong>
+                <div class="w11-drive-bar">
+                  <div class="w11-drive-bar-fill" style="width: 52%;"></div>
+                </div>
+                <small>248 GB disponibles de 512 GB</small>
+              </div>
+            </div>
+
+            <div class="w11-drive-pill">
+              <svg viewBox="0 0 40 40" width="38" height="38">
+                <rect x="6" y="8" width="28" height="22" rx="3" fill="#cbd5e1" stroke="#64748b" stroke-width="1.5"/>
+                <rect x="9" y="11" width="22" height="12" rx="1" fill="#f1f5f9"/>
+                <circle cx="20" cy="17" r="4" fill="#94a3b8"/>
+                <circle cx="28" cy="17" r="1.5" fill="#107c41"/>
+              </svg>
+              <div class="w11-drive-desc">
+                <strong>Almacenamiento (D:)</strong>
+                <div class="w11-drive-bar">
+                  <div class="w11-drive-bar-fill" style="width: 25%; background:#107c41;"></div>
+                </div>
+                <small>750 GB disponibles de 1.0 TB</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="w11-exp-statusbar">
+        <span>7 elementos</span>
+        <span>Windows 11 Pro 64-bit</span>
+      </div>
+    </div>
+
+    <!-- Ventana Papelera de reciclaje Fluent Windows 11 -->
+    <div class="w11-window hidden" id="win-recycle" style="width: 700px; height: 440px; top: 60px; left: 160px;">
+      <div class="w11-titlebar">
+        <div style="display:flex; align-items:center; gap:8px;">
+          <img src="../assets/icons/win11/recycle_empty.png" width="16" height="16" alt="Icon">
+          <span style="font-weight:600;">Papelera de reciclaje</span>
+        </div>
+        <div class="w11-controls">
+          <button class="w11-ctrl-btn w11-ctrl-min" title="Minimizar">─</button>
+          <button class="w11-ctrl-btn w11-ctrl-max" title="Maximizar">□</button>
+          <button class="w11-ctrl-btn w11-ctrl-close" title="Cerrar">✕</button>
+        </div>
+      </div>
+      <div class="w11-command-bar">
+        <button class="w11-cmd-btn primary" id="w11-empty-bin-btn">
+          <span>Vaciar papelera de reciclaje</span>
+        </button>
+        <button class="w11-cmd-btn" id="w11-restore-bin-btn">
+          <span>Restaurar todos</span>
+        </button>
+      </div>
+      <div style="padding:16px; background:var(--w11-bg, #ffffff); height:calc(100% - 90px); overflow-y:auto;">
+        <div id="w11-bin-list">
+          <div style="display:flex; align-items:center; gap:10px; padding:10px; border-radius:6px; border:1px solid rgba(0,0,0,0.06); margin-bottom:8px;">
+            <svg viewBox="0 0 24 24" width="22" height="22"><path d="M4 4 L14 4 L20 10 L20 20 L4 20 Z" fill="#0284c7"/></svg>
+            <div style="flex:1;">
+              <strong>Borrador_Estrategia_2026.docx</strong>
+              <div style="font-size:11px; opacity:0.6;">Ubicación: C:\Users\Usuario\OneDrive</div>
+            </div>
+            <span style="font-size:11px; opacity:0.7;">1.2 MB</span>
+          </div>
+          <div style="display:flex; align-items:center; gap:10px; padding:10px; border-radius:6px; border:1px solid rgba(0,0,0,0.06); margin-bottom:8px;">
+            <svg viewBox="0 0 24 24" width="22" height="22"><path d="M4 4 L14 4 L20 10 L20 20 L4 20 Z" fill="#059669"/></svg>
+            <div style="flex:1;">
+              <strong>Datos_Exportados.csv</strong>
+              <div style="font-size:11px; opacity:0.6;">Ubicación: C:\Users\Usuario\Downloads</div>
+            </div>
+            <span style="font-size:11px; opacity:0.7;">450 KB</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ventana Bloc de notas Fluent Windows 11 -->
+    <div class="w11-window hidden" id="win-notepad" style="width: 580px; height: 400px; top: 80px; left: 200px;">
+      <div class="w11-titlebar">
+        <div style="display:flex; align-items:center; gap:8px;">
+          <img src="../assets/icons/win11/notepad.png" width="16" height="16" alt="Icon">
+          <span style="font-weight:600;">Sin título - Bloc de notas</span>
+        </div>
+        <div class="w11-controls">
+          <button class="w11-ctrl-btn w11-ctrl-min" title="Minimizar">─</button>
+          <button class="w11-ctrl-btn w11-ctrl-max" title="Maximizar">□</button>
+          <button class="w11-ctrl-btn w11-ctrl-close" title="Cerrar">✕</button>
+        </div>
+      </div>
+      <div style="background:var(--w11-card-bg, #f9f9f9); padding:4px 12px; font-size:11px; border-bottom:1px solid rgba(0,0,0,0.08); display:flex; gap:14px;">
+        <span>Archivo</span>
+        <span>Edición</span>
+        <span>Ver</span>
+      </div>
+      <textarea id="w11-notepad-text" style="width:100%; height:calc(100% - 65px); border:none; outline:none; padding:12px; font-family:'Segoe UI Variable', sans-serif; font-size:13px; background:transparent; color:inherit; resize:none;" placeholder="Escribe aquí..."></textarea>
+    </div>
+
+    <!-- Task Manager Fluent (con barra lateral de navegación e indicador en vivo) -->
+    <div class="w11-window hidden" id="win-taskmgr" style="width: 680px; height: 460px; top: 60px; left: 180px;">
+      <div class="w11-titlebar">
+        <div style="display:flex; align-items:center; gap:8px;">
+          <img src="../assets/icons/win11/taskmgr.png" width="16" height="16" alt="Icon">
+          <span style="font-weight:600;">Administrador de tareas</span>
+        </div>
+        <div class="w11-controls">
+          <button class="w11-ctrl-btn w11-ctrl-min" title="Minimizar">─</button>
+          <button class="w11-ctrl-btn w11-ctrl-max" title="Maximizar">□</button>
+          <button class="w11-ctrl-btn w11-ctrl-close" title="Cerrar">✕</button>
+        </div>
+      </div>
+      <div class="w11-tm-shell">
+        <!-- Riel de iconos Fluent a la izquierda -->
+        <div class="w11-tm-rail">
+          <button class="w11-tm-nav-btn active" data-tm-panel="w11-tm-proc" title="Procesos">
+            <svg viewBox="0 0 16 16" width="16" height="16"><rect x="2" y="2" width="5" height="5" rx="1" fill="currentColor"/><rect x="9" y="2" width="5" height="5" rx="1" fill="currentColor"/><rect x="2" y="9" width="5" height="5" rx="1" fill="currentColor"/><rect x="9" y="9" width="5" height="5" rx="1" fill="currentColor"/></svg>
+            <span>Procesos</span>
+          </button>
+          <button class="w11-tm-nav-btn" data-tm-panel="w11-tm-perf" title="Rendimiento">
+            <svg viewBox="0 0 16 16" width="16" height="16"><path d="M2 9 L5 9 L8 3 L11 13 L13 7 L15 9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            <span>Rendimiento</span>
+          </button>
+          <button class="w11-tm-nav-btn" data-tm-panel="w11-tm-apps" title="Aplicaciones de inicio">
+            <svg viewBox="0 0 16 16" width="16" height="16"><circle cx="8" cy="8" r="6" fill="none" stroke="currentColor" stroke-width="1.5"/><polyline points="8,4 8,8 11,8" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+            <span>Historial</span>
+          </button>
+        </div>
+
+        <div class="w11-tm-content">
+          <!-- Pestaña Procesos -->
+          <div class="w11-tm-subpanel active" id="w11-tm-proc">
+            <div class="w11-tm-table-header">
+              <span style="flex:2;">Nombre de la aplicación</span>
+              <span style="flex:1; text-align:right;">Estado</span>
+              <span style="flex:1; text-align:right;">CPU</span>
+              <span style="flex:1; text-align:right;">Memoria</span>
+            </div>
+            <div class="w11-tm-rows" id="w11-proc-list">
+              <div class="w11-tm-row selected">
+                <span style="flex:2;">Explorador de Windows</span>
+                <span style="flex:1; text-align:right; color:#00c853;">En ejecución</span>
+                <span style="flex:1; text-align:right;" id="w11-cpu-exp">1.4 %</span>
+                <span style="flex:1; text-align:right;">78.2 MB</span>
+              </div>
+              <div class="w11-tm-row">
+                <span style="flex:2;">Microsoft Edge</span>
+                <span style="flex:1; text-align:right; color:#00c853;">En ejecución</span>
+                <span style="flex:1; text-align:right;" id="w11-cpu-edge">2.1 %</span>
+                <span style="flex:1; text-align:right;">184.6 MB</span>
+              </div>
+              <div class="w11-tm-row">
+                <span style="flex:2;">Windows Terminal (PowerShell)</span>
+                <span style="flex:1; text-align:right; color:#64748b;">En espera</span>
+                <span style="flex:1; text-align:right;">0.1 %</span>
+                <span style="flex:1; text-align:right;">42.0 MB</span>
+              </div>
+              <div class="w11-tm-row">
+                <span style="flex:2;">Administrador de tareas</span>
+                <span style="flex:1; text-align:right; color:#00c853;">En ejecución</span>
+                <span style="flex:1; text-align:right;" id="w11-cpu-tm">0.8 %</span>
+                <span style="flex:1; text-align:right;">34.5 MB</span>
+              </div>
+              <div class="w11-tm-row">
+                <span style="flex:2;">Subsistema de gráficos DWM</span>
+                <span style="flex:1; text-align:right; color:#00c853;">En ejecución</span>
+                <span style="flex:1; text-align:right;">1.1 %</span>
+                <span style="flex:1; text-align:right;">95.0 MB</span>
+              </div>
+            </div>
+            <div class="w11-tm-footer">
+              <button class="w11-btn primary" id="w11-end-task-btn">Finalizar tarea</button>
+            </div>
+          </div>
+
+          <!-- Pestaña Rendimiento (Gráfico SVG animado) -->
+          <div class="w11-tm-subpanel" id="w11-tm-perf">
+            <div class="w11-perf-top">
+              <div>
+                <h3 style="font-size:18px; font-weight:600;">CPU</h3>
+                <span style="color:#0067c0; font-size:12px;" id="w11-perf-title-pct">Utilización: 14%</span>
+              </div>
+              <div style="font-size:12px; opacity:0.8;">Intel Core i7-13700K @ 3.40 GHz</div>
+            </div>
+            <svg id="w11-cpu-svg-graph" class="w11-perf-svg" viewBox="0 0 400 160">
+              <defs>
+                <linearGradient id="w11-cpu-grad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#0067c0" stop-opacity="0.45"/>
+                  <stop offset="100%" stop-color="#0067c0" stop-opacity="0.02"/>
+                </linearGradient>
+                <pattern id="w11-tm-grid" width="40" height="20" patternUnits="userSpaceOnUse">
+                  <path d="M 40 0 L 0 0 0 20" fill="none" stroke="rgba(0, 103, 192, 0.15)" stroke-width="1"/>
+                </pattern>
+              </defs>
+              <rect width="100%" height="100%" fill="transparent"/>
+              <rect width="100%" height="100%" fill="url(#w11-tm-grid)"/>
+              <polygon id="w11-cpu-polygon" fill="url(#w11-cpu-grad)" points="0,160 400,160"/>
+              <polyline id="w11-cpu-line" fill="none" stroke="#0067c0" stroke-width="2.5" points="0,150 400,150"/>
+            </svg>
+            <div class="w11-perf-specs">
+              <div><span>Velocidad base:</span> <strong>3.40 GHz</strong></div>
+              <div><span>Procesos:</span> <strong>164</strong></div>
+              <div><span>Subprocesos:</span> <strong>2140</strong></div>
+              <div><span>Tiempo activo:</span> <strong id="w11-uptime">0:02:18</strong></div>
+            </div>
+          </div>
+
+          <!-- Pestaña Historial -->
+          <div class="w11-tm-subpanel" id="w11-tm-apps">
+            <div style="padding:16px; font-size:12px; line-height:1.6;">
+              <strong>Historial de recursos de aplicaciones:</strong>
+              <p style="margin-top:8px;">Microsoft Edge: Tiempo de CPU 12 min, Red 2.4 MB</p>
+              <p>Explorador: Tiempo de CPU 4 min, Red 0.0 MB</p>
+              <p>Terminal: Tiempo de CPU 1 min, Red 0.1 MB</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Windows Terminal (PowerShell con comandos interactivos) -->
+    <div class="w11-window hidden" id="win-terminal" style="width: 640px; height: 400px; top: 70px; left: 190px;">
+      <div class="w11-terminal-titlebar">
+        <div class="w11-terminal-tab">
+          <img src="../assets/icons/win11/terminal.png" width="14" height="14" alt="Icon">
+          <span>PowerShell</span>
+          <span style="font-size:11px; margin-left:6px; cursor:pointer;">✕</span>
+        </div>
+        <div style="padding:0 8px; color:#aaa; cursor:pointer;" title="Nueva pestaña">+</div>
+        <div class="w11-controls" style="margin-left:auto;">
+          <button class="w11-ctrl-btn w11-ctrl-min" title="Minimizar">─</button>
+          <button class="w11-ctrl-btn w11-ctrl-max" title="Maximizar">□</button>
+          <button class="w11-ctrl-btn w11-ctrl-close" title="Cerrar">✕</button>
+        </div>
+      </div>
+      <div class="terminal-body" id="terminal-body">
+        <p>Windows PowerShell</p>
+        <p>Copyright (C) Microsoft Corporation. Todos los derechos reservados.</p>
+        <p style="margin-bottom:8px; color:#38bdf8;">Escriba 'help', 'dir', 'winfetch', o 'Get-Process' para comenzar.</p>
+        <div id="terminal-output"></div>
+        <div style="display:flex; align-items:center;">
+          <span style="color:#22c55e;">PS C:\Users\Usuario&gt;&nbsp;</span>
+          <input type="text" id="terminal-input" style="flex:1; background:transparent; border:none; outline:none; color:#fff; font-family:'Cascadia Code', Consolas, monospace; font-size:13px;" autofocus spellcheck="false">
+        </div>
+      </div>
+    </div>
+
+    <!-- Settings windowón Fluent con cambio de Modo Oscuro / Claro -->
+    <div class="w11-window hidden" id="win-settings" style="width: 640px; height: 460px; top: 80px; left: 210px;">
+      <div class="w11-titlebar">
+        <div style="display:flex; align-items:center; gap:8px;">
+          <img src="../assets/icons/win11/settings.png" width="16" height="16" alt="Icon">
+          <span style="font-weight:600;">Configuración</span>
+        </div>
+        <div class="w11-controls">
+          <button class="w11-ctrl-btn w11-ctrl-min" title="Minimizar">─</button>
+          <button class="w11-ctrl-btn w11-ctrl-max" title="Maximizar">□</button>
+          <button class="w11-ctrl-btn w11-ctrl-close" title="Cerrar">✕</button>
+        </div>
+      </div>
+      <div style="display:flex; height:calc(100% - 32px);">
+        <!-- Barra lateral de Configuración -->
+        <div class="w11-settings-nav">
+          <div class="w11-settings-item active">
+            <svg viewBox="0 0 16 16" width="16" height="16"><rect x="2" y="3" width="12" height="9" rx="1" fill="none" stroke="currentColor" stroke-width="1.4"/><line x1="8" y1="12" x2="8" y2="14" stroke="currentColor" stroke-width="1.4"/></svg>
+            <span>Sistema</span>
+          </div>
+          <div class="w11-settings-item">
+            <svg viewBox="0 0 16 16" width="16" height="16"><path d="M4 8 C4 5, 8 5, 8 8 C8 11, 4 11, 4 8 Z" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+            <span>Bluetooth</span>
+          </div>
+          <div class="w11-settings-item">
+            <svg viewBox="0 0 16 16" width="16" height="16"><circle cx="8" cy="8" r="6" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+            <span>Red e Internet</span>
+          </div>
+          <div class="w11-settings-item">
+            <svg viewBox="0 0 16 16" width="16" height="16"><circle cx="6" cy="6" r="3" fill="currentColor"/><circle cx="10" cy="10" r="3" fill="currentColor"/></svg>
+            <span>Personalización</span>
+          </div>
+          <div class="w11-settings-item">
+            <svg viewBox="0 0 16 16" width="16" height="16"><circle cx="8" cy="8" r="6" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M8 4 L8 8 L11 8" stroke="currentColor" stroke-width="1.4"/></svg>
+            <span>Windows Update</span>
+          </div>
+        </div>
+
+        <!-- Panel principal de Configuración -->
+        <div class="w11-settings-body">
+          <div class="w11-sys-card">
+            <div style="width:48px; height:48px; border-radius:50%; background:#0067c0; display:flex; align-items:center; justify-content:center; color:#fff; font-weight:bold; font-size:18px;">
+              PC
+            </div>
+            <div>
+              <h2 style="font-size:16px; font-weight:600;">DESKTOP-WIN11-PRO</h2>
+              <span style="font-size:11px; opacity:0.7;">Intel Core i7-13700K 3.40 GHz • 32.0 GB RAM</span>
+            </div>
+          </div>
+
+          <div class="w11-card" style="margin-top:16px;">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <div>
+                <strong>Modo de tema del sistema</strong>
+                <p style="font-size:11px; opacity:0.7; margin-top:2px;">Elige entre el tema Claro de Windows 11 o el tema Oscuro para ventanas y barra de tareas.</p>
+              </div>
+              <button class="w11-btn primary" id="settings-theme-btn">
+                Alternar Claro / Oscuro
+              </button>
+            </div>
+          </div>
+
+          <div class="w11-card" style="margin-top:12px;">
+            <strong>Especificaciones del dispositivo</strong>
+            <div style="font-size:12px; margin-top:8px; line-height:1.6;">
+              <p><strong>Edición:</strong> Windows 11 Pro</p>
+              <p><strong>Versión:</strong> 23H2</p>
+              <p><strong>Compilación del SO:</strong> 22631.3007</p>
+              <p><strong>Experiencia:</strong> Paquete de experiencia de características de Windows</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ventana Microsoft Edge -->
+    <div class="w11-window hidden" id="win-edge" style="width: 720px; height: 460px; top: 60px; left: 160px;">
+      <div class="w11-titlebar">
+        <div style="display:flex; align-items:center; gap:8px;">
+          <img src="../assets/icons/win11/edge.png" width="16" height="16" alt="Icon">
+          <span>Nueva pestaña - Microsoft Edge</span>
+        </div>
+        <div class="w11-controls">
+          <button class="w11-ctrl-btn w11-ctrl-min" title="Minimizar">─</button>
+          <button class="w11-ctrl-btn w11-ctrl-max" title="Maximizar">□</button>
+          <button class="w11-ctrl-btn w11-ctrl-close" title="Cerrar">✕</button>
+        </div>
+      </div>
+      <div class="w11-edge-nav">
+        <button class="w11-nav-arrow" title="Atrás">
+          <svg viewBox="0 0 16 16" width="12" height="12"><path d="M10 3 L5 8 L10 13" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+        </button>
+        <button class="w11-nav-arrow" title="Adelante">
+          <svg viewBox="0 0 16 16" width="12" height="12"><path d="M6 3 L11 8 L6 13" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+        </button>
+        <button class="w11-nav-arrow" id="edge-reload-btn" title="Actualizar">
+          <svg viewBox="0 0 16 16" width="12" height="12"><path d="M13 8 A5 5 0 1 1 8 3 L10 5" fill="none" stroke="currentColor" stroke-width="2"/><polyline points="10,2 10,6 6,6" fill="currentColor"/></svg>
+        </button>
+        <input type="text" value="https://www.bing.com/" class="w11-edge-url-box" id="edge-url-input" readonly>
+      </div>
+      <div class="w11-edge-body">
+        <div style="text-align:center; max-width:540px; margin:0 auto;">
+          <h1 style="color:#0067c0; font-weight:300; font-size:46px; margin-bottom:12px; letter-spacing:0.5px;">Bing</h1>
+          <div class="w11-bing-search">
+            <input type="text" id="w11-bing-input" placeholder="Pregúntame cualquier cosa o busca en la web...">
+            <button id="w11-bing-btn" title="Buscar con Copilot">
+              <svg viewBox="0 0 16 16" width="16" height="16"><circle cx="6.5" cy="6.5" r="4.5" fill="none" stroke="#fff" stroke-width="2"/><line x1="10" y1="10" x2="14" y2="14" stroke="#fff" stroke-width="2"/></svg>
+            </button>
+          </div>
+        </div>
+        <div class="w11-edge-cards">
+          <div class="w11-edge-card">
+            <span class="w11-pill" style="background:#0067c0;">Microsoft Copilot</span>
+            <strong>Tu compañero cotidiano con Inteligencia Artificial</strong>
+            <p style="font-size:11px; opacity:0.8; margin-top:4px;">Genera ideas, redacta borradores y resuelve consultas complejas al instante.</p>
+          </div>
+          <div class="w11-edge-card">
+            <span class="w11-pill" style="background:#059669;">Novedades</span>
+            <strong>Windows 11 Diseño Fluent y Mica</strong>
+            <p style="font-size:11px; opacity:0.8; margin-top:4px;">Transparencias sutiles, esquinas redondeadas y tipografía moderna en todas las ventanas.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Panel de Widgets Mica de Windows 11 -->
+    <div class="w11-widgets-board" id="w11-widgets-board">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+        <h2 style="font-size:18px; font-weight:600;">Widgets</h2>
+        <button id="widgets-close-btn" class="w11-icon-btn" title="Cerrar">✕</button>
+      </div>
+
+      <div class="widget-card">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <div>
+            <div style="font-size:12px; opacity:0.7;">El Tiempo • Madrid</div>
+            <div style="font-size:32px; font-weight:300; margin:4px 0;">21°C</div>
+            <div style="font-size:12px;">Mayormente soleado</div>
+          </div>
+          <svg viewBox="0 0 32 32" width="44" height="44">
+            <circle cx="16" cy="16" r="7" fill="#f59e0b"/>
+            <path d="M16 4 L16 8 M16 24 L16 28 M4 16 L8 16 M24 16 L28 16 M7.5 7.5 L10.5 10.5 M21.5 21.5 L24.5 24.5 M7.5 24.5 L10.5 21.5 M21.5 10.5 L24.5 7.5" stroke="#f59e0b" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="widget-card">
+        <div style="font-weight:600; font-size:13px; margin-bottom:10px;">Mercados Financieros</div>
+        <div style="display:flex; justify-content:space-between; font-size:12px; margin-bottom:6px;">
+          <span>NASDAQ</span>
+          <span style="color:#22c55e; font-weight:600;">+1.42% ▲</span>
+        </div>
+        <div style="display:flex; justify-content:space-between; font-size:12px; margin-bottom:6px;">
+          <span>S&P 500</span>
+          <span style="color:#22c55e; font-weight:600;">+0.85% ▲</span>
+        </div>
+        <div style="display:flex; justify-content:space-between; font-size:12px;">
+          <span>IBEX 35</span>
+          <span style="color:#22c55e; font-weight:600;">+0.64% ▲</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Centered taskbar -->
+  <footer class="w11-taskbar">
+    <!-- Left widgets con SVG del tiempo (sin emojis) -->
+    <div class="w11-widgets-badge" id="w11-widgets-btn" title="Widgets">
+      <img src="../assets/icons/win11/widgets.png" width="20" height="20" alt="Widgets">
+      <span style="font-size:12px; font-weight:600;">21°C</span>
+    </div>
+
+    <!-- Iconos centrados Fluent con indicador de ventana activa -->
+    <div class="w11-taskbar-center" id="w11-taskbar-center">
+      <!-- Botón Inicio -->
+      <button class="w11-task-btn" id="w11-start-btn" title="Inicio">
+        <svg viewBox="0 0 16 16" width="22" height="22">
+          <rect x="1" y="1" width="6.5" height="6.5" rx="1.2" fill="#0067c0"/>
+          <rect x="8.5" y="1" width="6.5" height="6.5" rx="1.2" fill="#0067c0"/>
+          <rect x="1" y="8.5" width="6.5" height="6.5" rx="1.2" fill="#0067c0"/>
+          <rect x="8.5" y="8.5" width="6.5" height="6.5" rx="1.2" fill="#0067c0"/>
+        </svg>
+      </button>
+
+      <!-- Botón Buscar -->
+      <button class="w11-task-btn" id="w11-search-btn" title="Buscar">
+        <svg viewBox="0 0 16 16" width="18" height="18">
+          <circle cx="6.5" cy="6.5" r="4.5" fill="none" stroke="#0067c0" stroke-width="1.8"/>
+          <line x1="10" y1="10" x2="14" y2="14" stroke="#0067c0" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+      </button>
+
+      <!-- Copilot taskbar button with official icon -->
+      <button class="w11-task-btn" id="w11-copilot-btn" title="Copilot con IA (Win + C)">
+        <img src="../assets/icons/win11/copilot.png" alt="Copilot" width="22" height="22" style="border-radius:4px;object-fit:contain;">
+      </button>
+
+      <!-- Explorador de archivos -->
+      <button class="w11-task-btn" data-win="win-pc" title="Explorador de archivos">
+        <img src="../assets/icons/win11/explorer.png" alt="Explorador">
+      </button>
+
+      <!-- Microsoft Edge -->
+      <button class="w11-task-btn" data-win="win-edge" title="Microsoft Edge">
+        <img src="../assets/icons/win11/edge.png" alt="Edge">
+      </button>
+
+      <!-- Windows Terminal -->
+      <button class="w11-task-btn" data-win="win-terminal" title="Terminal">
+        <img src="../assets/icons/win11/terminal.png" alt="Terminal">
+      </button>
+
+      <!-- Administrador de tareas -->
+      <button class="w11-task-btn" data-win="win-taskmgr" title="Administrador de tareas">
+        <img src="../assets/icons/win11/taskmgr.png" alt="Tareas">
+      </button>
+
+      <!-- Configuración -->
+      <button class="w11-task-btn" data-win="win-settings" title="Configuración">
+        <img src="../assets/icons/win11/settings.png" alt="Configuración">
+      </button>
+    </div>
+
+    <!-- Bandeja del sistema derecha (sin emojis) -->
+    <div class="w11-taskbar-right">
+      <!-- Botón de cambio de tema con icono SVG -->
+      <button id="theme-toggle-btn" class="w11-tray-btn" title="Alternar Modo Claro / Oscuro">
+        <svg id="theme-toggle-icon" viewBox="0 0 16 16" width="16" height="16">
+          <circle cx="8" cy="8" r="4" fill="currentColor"/>
+          <path d="M8 1 L8 3 M8 13 L8 15 M1 8 L3 8 M13 8 L15 8 M3 3 L4.5 4.5 M11.5 11.5 L13 13 M3 13 L4.5 11.5 M11.5 4.5 L13 3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+        </svg>
+      </button>
+
+      <!-- Pill de Configuración Rápida (Wi-Fi + Altavoz + Batería) -->
+      <div class="w11-quick-pill" id="w11-quick-pill" title="Configuración rápida (Red, volumen, batería)">
+        <!-- Icono de red Wi-Fi SVG -->
+        <div class="w11-tray-icon">
+          <svg viewBox="0 0 16 16" width="16" height="16">
+            <path d="M1 5 C4.5 2, 11.5 2, 15 5 M3 8 C5.8 5.6, 10.2 5.6, 13 8 M5.5 11 C7 9.8, 9 9.8, 10.5 11" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+            <circle cx="8" cy="13.5" r="1.2" fill="currentColor"/>
+          </svg>
+        </div>
+
+        <!-- Icono de altavoz SVG -->
+        <div class="w11-tray-icon">
+          <svg viewBox="0 0 16 16" width="16" height="16">
+            <path d="M2 5 L5 5 L9 2 L9 14 L5 11 L2 11 Z" fill="currentColor"/>
+            <path d="M11 5 C12.5 6.5, 12.5 9.5, 11 11" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+          </svg>
+        </div>
+
+        <!-- Icono de batería SVG -->
+        <div class="w11-tray-icon">
+          <svg viewBox="0 0 16 16" width="16" height="16">
+            <rect x="2" y="5" width="10" height="6" rx="1" fill="none" stroke="currentColor" stroke-width="1.4"/>
+            <rect x="4" y="7" width="5" height="2" fill="currentColor"/>
+            <path d="M13 7 L13 9" stroke="currentColor" stroke-width="1.4"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Reloj con fecha -->
+      <div id="w11-clock" class="w11-clock-tray" title="Fecha y hora de Windows 11">00:00 PM</div>
+
+      <!-- Barra Mostrar escritorio -->
+      <div class="w11-show-desktop" id="w11-show-desktop" title="Mostrar escritorio"></div>
+    </div>
+  </footer>
+
+  <!-- Menú Inicio flotante de Windows 11 -->
+  <div class="w11-start-menu hidden" id="w11-start-menu">
+    <div class="w11-search-box">
+      <svg viewBox="0 0 16 16" width="15" height="15"><circle cx="6.5" cy="6.5" r="4.5" fill="none" stroke="#0067c0" stroke-width="1.8"/><line x1="10" y1="10" x2="14" y2="14" stroke="#0067c0" stroke-width="1.8" stroke-linecap="round"/></svg>
+      <input type="text" id="w11-start-search-input" placeholder="Escribe aquí para buscar aplicaciones, archivos y configuración...">
+    </div>
+
+    <div class="pinned-section-header">
+      <span style="font-weight:600;">Anclado</span>
+      <span style="font-size:11px; color:#0067c0; cursor:pointer;">Todas las aplicaciones &gt;</span>
+    </div>
+
+    <!-- Cuadrícula de aplicaciones con iconos Fluent -->
+    <div class="pinned-grid">
+      <div class="pinned-app" data-win="win-edge">
+        <div class="pinned-icon">
+          <img src="../assets/icons/win11/edge.png" alt="Edge">
+        </div>
+        <span class="pinned-label">Edge</span>
+      </div>
+
+      <div class="pinned-app" data-win="win-pc">
+        <div class="pinned-icon">
+          <img src="../assets/icons/win11/explorer.png" alt="Explorador">
+        </div>
+        <span class="pinned-label">Explorador</span>
+      </div>
+
+      <div class="pinned-app" data-win="win-terminal">
+        <div class="pinned-icon">
+          <img src="../assets/icons/win11/terminal.png" alt="Terminal">
+        </div>
+        <span class="pinned-label">Terminal</span>
+      </div>
+
+      <div class="pinned-app" data-win="win-taskmgr">
+        <div class="pinned-icon">
+          <img src="../assets/icons/win11/taskmgr.png" alt="Tareas">
+        </div>
+        <span class="pinned-label">Tareas</span>
+      </div>
+
+      <div class="pinned-app" data-win="win-settings">
+        <div class="pinned-icon">
+          <img src="../assets/icons/win11/settings.png" alt="Configuración">
+        </div>
+        <span class="pinned-label">Configuración</span>
+      </div>
+
+      <div class="pinned-app" data-win="win-notepad">
+        <div class="pinned-icon">
+          <img src="../assets/icons/win11/notepad.png" alt="Bloc de notas">
+        </div>
+        <span class="pinned-label">Bloc de notas</span>
+      </div>
+
+      <div class="pinned-app">
+        <div class="pinned-icon">
+          <img src="../assets/icons/win11/store.png" alt="Store">
+        </div>
+        <span class="pinned-label">Store</span>
+      </div>
+
+      <div class="pinned-app">
+        <div class="pinned-icon">
+          <img src="../assets/icons/win11/photos.png" alt="Fotos">
+        </div>
+        <span class="pinned-label">Fotos</span>
+      </div>
+
+      <div class="pinned-app" data-win="win-pc">
+        <div class="pinned-icon">
+          <img src="../assets/icons/win11/thispc.png" alt="Este equipo">
+        </div>
+        <span class="pinned-label">Este equipo</span>
+      </div>
+    </div>
+
+    <!-- Sección Recomendado con iconos vectoriales -->
+    <div class="recommended-section">
+      <div style="font-weight:600; font-size:13px; margin-bottom:8px;">Recomendado</div>
+      <div class="recommended-grid">
+        <div class="rec-item">
+          <svg viewBox="0 0 24 24" width="24" height="24"><path d="M4 4 L14 4 L20 10 L20 20 L4 20 Z" fill="#0284c7"/><polyline points="14,4 14,10 20,10" fill="#bae6fd"/></svg>
+          <div>
+            <div style="font-weight:600; font-size:11px;">Documento_Proyecto.docx</div>
+            <div style="font-size:10px; opacity:0.6;">Hace 12 min</div>
+          </div>
+        </div>
+        <div class="rec-item">
+          <svg viewBox="0 0 24 24" width="24" height="24"><path d="M4 4 L14 4 L20 10 L20 20 L4 20 Z" fill="#059669"/><polyline points="14,4 14,10 20,10" fill="#a7f3d0"/></svg>
+          <div>
+            <div style="font-weight:600; font-size:11px;">Presupuesto_Anual.xlsx</div>
+            <div style="font-size:10px; opacity:0.6;">Ayer a las 18:30</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pie de menú de Inicio -->
+    <div class="w11-start-footer">
+      <div class="user-profile-badge">
+        <div style="width:30px; height:30px; border-radius:50%; background:#0067c0; color:#fff; display:flex; align-items:center; justify-content:center; font-weight:bold; font-size:13px;">U</div>
+        <span style="font-weight:600; font-size:12px;">Usuario</span>
+      </div>
+
+      <div class="w11-power-btn" id="w11-power-btn" title="Inicio / Apagado">
+        <svg viewBox="0 0 16 16" width="16" height="16">
+          <path d="M8 2 L8 8 M5 4.5 C3 6, 2.5 9, 4 11.5 C5.5 14, 9 14.5, 11.5 13 C13.5 11.5, 14 8.5, 12 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+      </div>
+
+      <!-- Menú emergente de encendido -->
+      <div class="w11-power-popup hidden" id="w11-power-popup">
+        <div class="w11-power-item" id="w11-action-sleep">Suspender</div>
+        <div class="w11-power-item" id="w11-action-shutdown">Apagar</div>
+        <div class="w11-power-item" id="w11-action-restart">Reiniciar</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Flyout de Configuración Rápida de Windows 11 -->
+  <div class="w11-quick-flyout hidden" id="w11-quick-flyout">
+    <div class="quick-grid">
+      <div class="quick-tile active" id="qt-wifi">
+        <svg viewBox="0 0 16 16" width="16" height="16"><path d="M1 5 C4.5 2, 11.5 2, 15 5 M3 8 C5.8 5.6, 10.2 5.6, 13 8 M5.5 11 C7 9.8, 9 9.8, 10.5 11" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="8" cy="13.5" r="1.2" fill="currentColor"/></svg>
+        <span class="qt-name">Wi-Fi</span>
+        <small class="qt-desc">Conectado</small>
+      </div>
+      <div class="quick-tile active" id="qt-bt">
+        <svg viewBox="0 0 16 16" width="16" height="16"><path d="M5 4 L11 8 L8 11 L8 1 L11 4 L5 8" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+        <span class="qt-name">Bluetooth</span>
+        <small class="qt-desc">Surface Buds</small>
+      </div>
+      <div class="quick-tile" id="qt-plane">
+        <svg viewBox="0 0 16 16" width="16" height="16"><path d="M8 2 L9 7 L14 9 L9 10 L8 14 L7 10 L2 9 L7 7 Z" fill="currentColor"/></svg>
+        <span class="qt-name">Modo avión</span>
+        <small class="qt-desc">Desactivado</small>
+      </div>
+      <div class="quick-tile" id="qt-battery">
+        <svg viewBox="0 0 16 16" width="16" height="16"><rect x="2" y="5" width="10" height="6" rx="1" fill="none" stroke="currentColor" stroke-width="1.4"/><rect x="4" y="7" width="5" height="2" fill="currentColor"/><path d="M13 7 L13 9" stroke="currentColor" stroke-width="1.4"/></svg>
+        <span class="qt-name">Ahorro batería</span>
+        <small class="qt-desc">Desactivado</small>
+      </div>
+      <div class="quick-tile" id="qt-night">
+        <svg viewBox="0 0 16 16" width="16" height="16"><path d="M12 2 A6 6 0 1 1 5 13 A7 7 0 0 0 12 2 Z" fill="currentColor"/></svg>
+        <span class="qt-name">Luz nocturna</span>
+        <small class="qt-desc">Desactivado</small>
+      </div>
+      <div class="quick-tile" id="qt-access">
+        <svg viewBox="0 0 16 16" width="16" height="16"><circle cx="8" cy="4" r="2" fill="currentColor"/><path d="M3 7 L13 7 M8 7 L8 14 M5 14 L11 14" stroke="currentColor" stroke-width="1.4"/></svg>
+        <span class="qt-name">Accesibilidad</span>
+        <small class="qt-desc">Opciones</small>
+      </div>
+    </div>
+    <!-- Sliders -->
+    <div class="quick-sliders">
+      <div class="slider-row">
+        <svg viewBox="0 0 16 16" width="15" height="15"><circle cx="8" cy="8" r="3.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 1 L8 3 M8 13 L8 15 M1 8 L3 8 M13 8 L15 8" stroke="currentColor" stroke-width="1.5"/></svg>
+        <input type="range" min="10" max="100" value="85" class="w11-slider" id="w11-slider-bright">
+      </div>
+      <div class="slider-row">
+        <svg viewBox="0 0 16 16" width="15" height="15"><path d="M2 5 L5 5 L9 2 L9 14 L5 11 L2 11 Z" fill="currentColor"/><path d="M11 5 C12.5 6.5, 12.5 9.5, 11 11" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+        <input type="range" min="0" max="100" value="70" class="w11-slider" id="w11-slider-vol">
+      </div>
+    </div>
+    <!-- Footer -->
+    <div class="quick-footer">
+      <div style="display:flex; align-items:center; gap:6px;">
+        <svg viewBox="0 0 16 16" width="14" height="14"><rect x="2" y="5" width="10" height="6" rx="1" fill="none" stroke="currentColor" stroke-width="1.4"/><rect x="4" y="7" width="5" height="2" fill="currentColor"/><path d="M13 7 L13 9" stroke="currentColor" stroke-width="1.4"/></svg>
+        <span style="font-size:11px; font-weight:600;">85% (6 h 45 min restantes)</span>
+      </div>
+      <button class="quick-settings-link" data-win="win-settings" title="Abrir configuración">⚙</button>
+    </div>
+  </div>
+
+  <!-- Snap Layouts -->
+  <div class="w11-snap-flyout hidden" id="w11-snap-flyout">
+    <div class="snap-box" data-snap="half">
+      <div class="snap-slot" data-pos="left-half" title="Dividir izquierda (50%)"></div>
+      <div class="snap-slot" data-pos="right-half" title="Dividir derecha (50%)"></div>
+    </div>
+    <div class="snap-box" data-snap="priority">
+      <div class="snap-slot" style="flex:2;" data-pos="left-priority" title="Principal izquierda (66%)"></div>
+      <div class="snap-slot" style="flex:1;" data-pos="right-priority" title="Secundaria derecha (33%)"></div>
+    </div>
+    <div class="snap-box" data-snap="tri">
+      <div class="snap-slot" data-pos="tri-left" title="Columna izquierda (33%)"></div>
+      <div class="snap-slot" data-pos="tri-mid" title="Columna central (33%)"></div>
+      <div class="snap-slot" data-pos="tri-right" title="Columna derecha (33%)"></div>
+    </div>
+    <div class="snap-box quad" data-snap="quad">
+      <div class="snap-slot" data-pos="q-tl" title="Superior izquierda"></div>
+      <div class="snap-slot" data-pos="q-tr" title="Superior derecha"></div>
+      <div class="snap-slot" data-pos="q-bl" title="Inferior izquierda"></div>
+      <div class="snap-slot" data-pos="q-br" title="Inferior derecha"></div>
+    </div>
+  </div>
+
+  <!-- Copilot backdrop overlay -->
+  <div class="w11-copilot-backdrop hidden" id="w11-copilot-backdrop"></div>
+
+  <!-- Copilot window — two-panel layout -->
+  <div class="w11-copilot-flyout hidden" id="w11-copilot-flyout">
+
+    <!-- Left nav panel -->
+    <div class="cp-nav">
+      <div class="cp-nav-header">
+        <img src="../assets/icons/win11/copilot.png" alt="Copilot" class="cp-nav-logo">
+        <span class="cp-nav-title">Copilot</span>
+        <button id="copilot-close-btn" class="cp-nav-close" title="Cerrar">✕</button>
+      </div>
+
+      <nav class="cp-nav-items">
+        <div class="cp-nav-item cp-nav-active">
+          <svg viewBox="0 0 20 20" width="16" height="16"><path d="M2 4h16v2H2zm0 5h16v2H2zm0 5h10v2H2z" fill="currentColor"/></svg>
+          Nuevo chat
+        </div>
+        <div class="cp-nav-item">
+          <svg viewBox="0 0 20 20" width="16" height="16"><path d="M3 3h14v2H3zm0 4h14v2H3zm0 4h9v2H3zm0 4h9v2H3z" fill="currentColor"/></svg>
+          Biblioteca
+        </div>
+        <div class="cp-nav-item">
+          <svg viewBox="0 0 20 20" width="16" height="16"><path d="M10 2a8 8 0 100 16A8 8 0 0010 2zm0 14a6 6 0 110-12 6 6 0 010 12zm0-9a1 1 0 011 1v3l2 1.2-.5.9L10 11.5V7a1 1 0 00-1 1z" fill="currentColor"/></svg>
+          Tareas
+          <span class="cp-badge">VISTA PREVIA</span>
+        </div>
+        <div class="cp-nav-item">
+          <svg viewBox="0 0 20 20" width="16" height="16"><path d="M10 2l2.4 4.9 5.4.8-3.9 3.8.9 5.3L10 14.2l-4.8 2.6.9-5.3L2.2 7.7l5.4-.8z" fill="currentColor"/></svg>
+          Proyectos
+          <span class="cp-plus">+</span>
+        </div>
+      </nav>
+
+      <div class="cp-nav-sep"></div>
+
+      <nav class="cp-nav-items">
+        <div class="cp-nav-item">
+          <svg viewBox="0 0 20 20" width="16" height="16"><circle cx="10" cy="10" r="8" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M7 10l2 2 4-4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+          Descubrir
+        </div>
+        <div class="cp-nav-item">
+          <svg viewBox="0 0 20 20" width="16" height="16"><path d="M10 2L3 9h4v9h6V9h4z" fill="currentColor"/></svg>
+          Imaginar
+        </div>
+        <div class="cp-nav-item">
+          <svg viewBox="0 0 20 20" width="16" height="16"><circle cx="10" cy="10" r="3" fill="currentColor"/><path d="M10 2v2M10 16v2M2 10h2M16 10h2M4.2 4.2l1.4 1.4M14.4 14.4l1.4 1.4M4.2 15.8l1.4-1.4M14.4 5.6l1.4-1.4" stroke="currentColor" stroke-width="1.5"/></svg>
+          Experimentos
+        </div>
+      </nav>
+
+      <div class="cp-nav-sep"></div>
+
+      <!-- Recent chats -->
+      <div class="cp-recents-label">Reciente</div>
+      <div class="cp-recents">
+        <div class="cp-recent-item">Ayuda con código Python</div>
+        <div class="cp-recent-item">Redactar email formal</div>
+        <div class="cp-recent-item">Resumen de documento</div>
+        <div class="cp-recent-item">Ideas para presentación</div>
+        <div class="cp-recent-item">Traducir al inglés</div>
+        <div class="cp-recent-item">Optimizar consulta SQL</div>
+        <div class="cp-recent-item">Plan de proyecto ágil</div>
+        <div class="cp-recent-item">Análisis de datos Excel</div>
+        <div class="cp-recent-item">Configurar WSL2</div>
+      </div>
+
+      <!-- User profile row -->
+      <div class="cp-user-row">
+        <div class="cp-user-avatar">U</div>
+        <div class="cp-user-info">
+          <div class="cp-user-name">Usuario</div>
+          <div class="cp-user-plan">Plan gratuito</div>
+        </div>
+        <button class="cp-upgrade-btn">Actualizar</button>
+      </div>
+    </div>
+
+    <!-- Right main panel -->
+    <div class="cp-main">
+      <!-- Window chrome -->
+      <div class="cp-chrome">
+        <button id="copilot-clear-btn" class="cp-chrome-btn" title="Limpiar">
+          <svg viewBox="0 0 16 16" width="12" height="12"><path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="1.5"/></svg>
+        </button>
+        <button class="cp-chrome-btn" title="Minimizar">─</button>
+        <button class="cp-chrome-btn" title="Maximizar">□</button>
+        <button class="cp-chrome-close" title="Cerrar" id="copilot-close-btn2">✕</button>
+      </div>
+
+      <!-- Chat history -->
+      <div class="copilot-body" id="copilot-chat-history">
+        <div class="copilot-welcome" id="copilot-welcome-card">
+          <div class="cp-greeting">Nos alegra verte.</div>
+          <div class="cp-greeting-sub">¿Qué hay de nuevo?</div>
+
+          <!-- Suggestion chips grid -->
+          <div class="cp-chips-grid" id="copilot-chips">
+            <button class="cp-chip-card" data-action="dark-mode">
+              <svg viewBox="0 0 20 20" width="16" height="16"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" fill="currentColor"/></svg>
+              Activar modo oscuro
+            </button>
+            <button class="cp-chip-card" data-action="light-mode">
+              <svg viewBox="0 0 20 20" width="16" height="16"><circle cx="10" cy="10" r="3" fill="currentColor"/><path d="M10 2v2M10 16v2M2 10h2M16 10h2M4.2 4.2l1.4 1.4M14.4 14.4l1.4 1.4M4.2 15.8l1.4-1.4M14.4 5.6l1.4-1.4" stroke="currentColor" stroke-width="1.5"/></svg>
+              Activar modo claro
+            </button>
+            <button class="cp-chip-card" data-action="open-explorer">
+              <svg viewBox="0 0 20 20" width="16" height="16"><path d="M2 5a2 2 0 012-2h4l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V5z" fill="currentColor"/></svg>
+              Abrir Explorador
+            </button>
+            <button class="cp-chip-card" data-action="open-terminal">
+              <svg viewBox="0 0 20 20" width="16" height="16"><rect x="2" y="3" width="16" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M6 8l3 3-3 3M11 14h3" stroke="currentColor" stroke-width="1.5"/></svg>
+              Abrir Terminal
+            </button>
+            <button class="cp-chip-card" data-action="system-specs">
+              <svg viewBox="0 0 20 20" width="16" height="16"><circle cx="10" cy="10" r="8" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 9v5M10 7h.01" stroke="currentColor" stroke-width="1.5"/></svg>
+              Novedades Win 11
+            </button>
+            <button class="cp-chip-card" data-action="poem">
+              <svg viewBox="0 0 20 20" width="16" height="16"><path d="M9.663 17h4.673M12.673 15H7.22a1 1 0 01-.73-1.673L9 11V7a3 3 0 016 0v4l2.51 2.327A1 1 0 0116.78 15h-4.107z" fill="currentColor"/></svg>
+              Generar poema
+            </button>
+            <button class="cp-chip-card" data-action="open-taskmgr">
+              <svg viewBox="0 0 20 20" width="16" height="16"><path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v3a1 1 0 01-1 1H3a1 1 0 01-1-1v-3zm6-4a1 1 0 011-1h2a1 1 0 011 1v7a1 1 0 01-1 1H9a1 1 0 01-1-1V7zm6-3a1 1 0 011-1h2a1 1 0 011 1v10a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z" fill="currentColor"/></svg>
+              Abrir Task Manager
+            </button>
+            <button class="cp-chip-card" data-action="open-settings">
+              <svg viewBox="0 0 20 20" width="16" height="16"><path d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947z" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="10" cy="10" r="2" fill="currentColor"/></svg>
+              Configuración
+            </button>
+          </div>
+
+          <!-- Attach files card -->
+          <div class="cp-files-card">
+            <svg viewBox="0 0 20 20" width="16" height="16"><path d="M13.586 3.586a2 2 0 112.828 2.828l-8 8a2 2 0 01-2.828-2.828l8-8z" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+            <span>Adjuntar archivo</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Input bar -->
+      <div class="copilot-input-area">
+        <div class="copilot-input-box">
+          <button class="cp-attach-btn" title="Adjuntar">
+            <svg viewBox="0 0 16 16" width="14" height="14"><path d="M12 6l-5 5a2.5 2.5 0 01-3.5-3.5l5-5a1.5 1.5 0 012 2l-5 5a.5.5 0 01-.7-.7l4-4" fill="none" stroke="currentColor" stroke-width="1.3"/></svg>
+          </button>
+          <textarea id="copilot-user-input" placeholder="Pregunta algo a Copilot..." rows="1"></textarea>
+          <button class="cp-smart-pill">
+            <svg viewBox="0 0 12 12" width="10" height="10"><circle cx="6" cy="6" r="5" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M4 6l1.5 1.5L8 4" stroke="currentColor" stroke-width="1.2" fill="none"/></svg>
+            Smart
+            <svg viewBox="0 0 8 8" width="8" height="8"><path d="M2 3l2 2 2-2" stroke="currentColor" stroke-width="1.2" fill="none"/></svg>
+          </button>
+          <button class="cp-voice-btn" title="Dictado por voz">
+            <svg viewBox="0 0 16 16" width="14" height="14"><rect x="5" y="2" width="6" height="8" rx="3" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M3 9a5 5 0 0010 0M8 14v2" stroke="currentColor" stroke-width="1.4"/></svg>
+          </button>
+          <button id="copilot-send-btn" class="cp-send-btn" title="Enviar">
+            <svg viewBox="0 0 16 16" width="14" height="14"><path d="M2 8L14 2 9 14 7 9Z" fill="#fff"/></svg>
+          </button>
+        </div>
+        <div class="cp-footer-note">Copilot Preview · Respuestas generadas por IA</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Notification Center (Action Center) -->
+  <div class="w11-notif-center hidden" id="w11-notif-center">
+    <div class="nc-header">
+      <span class="nc-title">Notificaciones</span>
+      <button class="nc-clear-all" id="nc-clear-all">Borrar todo</button>
+    </div>
+    <div class="nc-list">
+      <div class="nc-notif">
+        <div class="nc-notif-icon" style="background:#0067c0;">
+          <svg viewBox="0 0 16 16" width="14" height="14"><path d="M2 5h12v7a2 2 0 01-2 2H4a2 2 0 01-2-2V5zm4-3h4v3H6z" fill="none" stroke="#fff" stroke-width="1.3"/></svg>
+        </div>
+        <div class="nc-notif-body">
+          <div class="nc-notif-app">Windows Update</div>
+          <div class="nc-notif-text">Actualizaciones listas para instalar</div>
+          <div class="nc-notif-time">Hace 5 min</div>
+        </div>
+        <button class="nc-notif-close">✕</button>
+      </div>
+      <div class="nc-notif">
+        <div class="nc-notif-icon" style="background:#059669;">
+          <svg viewBox="0 0 16 16" width="14" height="14"><path d="M13 5l-6 6-3-3" fill="none" stroke="#fff" stroke-width="2"/></svg>
+        </div>
+        <div class="nc-notif-body">
+          <div class="nc-notif-app">Seguridad de Windows</div>
+          <div class="nc-notif-text">El sistema está protegido</div>
+          <div class="nc-notif-time">Hace 1 h</div>
+        </div>
+        <button class="nc-notif-close">✕</button>
+      </div>
+      <div class="nc-notif">
+        <div class="nc-notif-icon" style="background:#7c3aed;">
+          <svg viewBox="0 0 16 16" width="14" height="14"><path d="M8 2a6 6 0 100 12A6 6 0 008 2zm0 3v3l2 1" fill="none" stroke="#fff" stroke-width="1.3"/></svg>
+        </div>
+        <div class="nc-notif-body">
+          <div class="nc-notif-app">Microsoft Store</div>
+          <div class="nc-notif-text">3 apps actualizadas exitosamente</div>
+          <div class="nc-notif-time">Hace 2 h</div>
+        </div>
+        <button class="nc-notif-close">✕</button>
+      </div>
+    </div>
+    <div class="nc-footer">
+      <div class="nc-calendar">
+        <div class="nc-cal-header">
+          <span>Octubre 2026</span>
+          <div style="display:flex;gap:4px;">
+            <button class="nc-cal-nav">‹</button>
+            <button class="nc-cal-nav">›</button>
+          </div>
+        </div>
+        <div class="nc-cal-grid">
+          <div class="nc-cal-day-header">L</div><div class="nc-cal-day-header">M</div><div class="nc-cal-day-header">X</div><div class="nc-cal-day-header">J</div><div class="nc-cal-day-header">V</div><div class="nc-cal-day-header">S</div><div class="nc-cal-day-header">D</div>
+          <div class="nc-cal-day"></div><div class="nc-cal-day"></div><div class="nc-cal-day nc-cal-active">1</div><div class="nc-cal-day">2</div><div class="nc-cal-day">3</div><div class="nc-cal-day">4</div><div class="nc-cal-day">5</div>
+          <div class="nc-cal-day">6</div><div class="nc-cal-day">7</div><div class="nc-cal-day">8</div><div class="nc-cal-day">9</div><div class="nc-cal-day">10</div><div class="nc-cal-day">11</div><div class="nc-cal-day">12</div>
+          <div class="nc-cal-day">13</div><div class="nc-cal-day">14</div><div class="nc-cal-day">15</div><div class="nc-cal-day">16</div><div class="nc-cal-day">17</div><div class="nc-cal-day">18</div><div class="nc-cal-day">19</div>
+          <div class="nc-cal-day">20</div><div class="nc-cal-day">21</div><div class="nc-cal-day">22</div><div class="nc-cal-day">23</div><div class="nc-cal-day">24</div><div class="nc-cal-day">25</div><div class="nc-cal-day">26</div>
+          <div class="nc-cal-day">27</div><div class="nc-cal-day">28</div><div class="nc-cal-day">29</div><div class="nc-cal-day">30</div><div class="nc-cal-day">31</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

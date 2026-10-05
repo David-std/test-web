@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Microsoft Windows XP Professional</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><path fill='%23245edb' d='M0 0h32v32H0z'/><text x='1' y='22' fill='%23ffffff' font-family='sans-serif' font-weight='bold' font-size='16'>XP</text></svg>">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="xp-desktop" id="xp-desktop">
+
+    <!-- Desktop Icons -->
+    <div class="xp-icons">
+      <!-- My Computer -->
+      <div class="xp-icon" data-app="mycomp">
+        <img src="../assets/icons/winxp/mycomputer.png" class="xp-icon-img" alt="My Computer">
+        <span class="xp-icon-label">My Computer</span>
+      </div>
+
+      <!-- Recycle Bin -->
+      <div class="xp-icon" data-app="recycle">
+        <img src="../assets/icons/winxp/recycle_empty.png" class="xp-icon-img" alt="Recycle Bin">
+        <span class="xp-icon-label">Recycle Bin</span>
+      </div>
+
+      <!-- 3D Pinball -->
+      <div class="xp-icon" data-app="pinball">
+        <img src="../assets/icons/winxp/pinball.png" class="xp-icon-img" alt="Pinball 3D">
+        <span class="xp-icon-label">Pinball 3D</span>
+      </div>
+
+      <!-- Paint -->
+      <div class="xp-icon" data-app="paint">
+        <img src="../assets/icons/winxp/paint.png" class="xp-icon-img" alt="Paint">
+        <span class="xp-icon-label">Paint</span>
+      </div>
+
+      <!-- Windows Media Player -->
+      <div class="xp-icon" data-app="wmp">
+        <img src="../assets/icons/winxp/wmp.png" class="xp-icon-img" alt="Windows Media">
+        <span class="xp-icon-label">Windows Media</span>
+      </div>
+
+      <!-- Task Manager -->
+      <div class="xp-icon" data-app="taskmgr">
+        <img src="../assets/icons/win2k/taskmgr.png" class="xp-icon-img" alt="Task Manager">
+        <span class="xp-icon-label">Task Manager</span>
+      </div>
+
+      <!-- MSN Messenger -->
+      <div class="xp-icon" data-app="msn">
+        <img src="../assets/icons/winxp/messenger.png" class="xp-icon-img" alt="MSN Messenger">
+        <span class="xp-icon-label">MSN Messenger</span>
+      </div>
+
+      <!-- Internet Explorer 6 -->
+      <div class="xp-icon" data-app="ie">
+        <img src="../assets/icons/winxp/msie.png" class="xp-icon-img" alt="Internet Explorer">
+        <span class="xp-icon-label">Internet Explorer</span>
+      </div>
+    </div>
+
+    <!-- Space Cadet Pinball Window -->
+    <div class="xp-window hidden" id="win-pinball" data-id="pinball" style="width: 370px; top: 20px; left: 140px;">
+      <div class="xp-titlebar">
+        <span>3D Pinball for Windows - Space Cadet</span>
+        <div class="xp-controls">
+          <button class="xp-btn-ctrl xp-btn-min">_</button>
+          <button class="xp-btn-ctrl xp-btn-close">✕</button>
+        </div>
+      </div>
+      <div class="xp-menubar">
+        <span class="xp-menu-item" id="pinball-new-game">Game</span>
+        <span class="xp-menu-item" id="pinball-pause-btn">Pause</span>
+        <span class="xp-menu-item" id="pinball-help-btn">Help</span>
+      </div>
+      <div class="xp-body pinball-container">
+        <div class="pinball-hud">
+          <div class="hud-item"><span class="hud-label">SCORE:</span> <span id="pinball-score-val" class="hud-val">000000</span></div>
+          <div class="hud-item"><span class="hud-label">BALL:</span> <span id="pinball-ball-val" class="hud-val">1</span></div>
+          <div class="hud-item"><span class="hud-label">RANK:</span> <span id="pinball-rank-val" class="hud-val">CADET</span></div>
+        </div>
+        <div class="pinball-canvas-wrap">
+          <canvas id="pinball-canvas" width="340" height="440"></canvas>
+        </div>
+        <div class="pinball-controls-bar">
+          <button id="btn-flipper-left" class="pinball-touch-btn" title="Flipper Izquierdo (Tecla Z)">◄ FLIPPER (Z)</button>
+          <button id="btn-pinball-launch" class="pinball-touch-btn plunger-btn" title="Lanzar Bola (Espacio)">🚀 DISPARAR</button>
+          <button id="btn-flipper-right" class="pinball-touch-btn" title="Flipper Derecho (Tecla / o Flecha)">FLIPPER (/) ►</button>
+        </div>
+        <div class="pinball-footer-hint">
+          Teclado: <b>Z</b> = Flipper Izq | <b>/</b> o <b>►</b> = Flipper Der | <b>Espacio</b> = Lanzador
+        </div>
+      </div>
+    </div>
+
+    <!-- Paint Window with 28 colors -->
+    <div class="xp-window hidden" id="win-paint" data-id="paint" style="width: 540px; height: 380px; top: 50px; left: 200px;">
+      <div class="xp-titlebar">
+        <span>untitled - Paint</span>
+        <div class="xp-controls">
+          <button class="xp-btn-ctrl xp-btn-min">_</button>
+          <button class="xp-btn-ctrl xp-btn-close">✕</button>
+        </div>
+      </div>
+      <div class="xp-menubar">
+        <span>File</span>
+        <span>Edit</span>
+        <span>View</span>
+        <span>Image</span>
+        <span>Colors</span>
+        <span>Help</span>
+      </div>
+      <div class="xp-paint-workspace">
+        <div class="xp-paint-tools">
+          <button class="xp-tool-btn active" data-tool="pencil" title="Pencil">✏</button>
+          <button class="xp-tool-btn" data-tool="brush" title="Brush">🖌</button>
+          <button class="xp-tool-btn" data-tool="eraser" title="Eraser">◻</button>
+          <button class="xp-tool-btn" data-tool="fill" title="Fill">⌸</button>
+          <button class="xp-tool-btn" data-tool="line" title="Line">╱</button>
+          <button class="xp-tool-btn" data-tool="rect" title="Rectangle">▭</button>
+          <button class="xp-tool-btn" data-tool="circle" title="Ellipse">○</button>
+          <button id="paint-clear" class="xp-tool-btn" style="font-size:9px;">CLR</button>
+        </div>
+        <div class="xp-paint-canvas-wrap">
+          <canvas id="paint-canvas" width="460" height="260" class="paint-canvas"></canvas>
+        </div>
+      </div>
+      <!-- Authentic 28-color palette -->
+      <div class="xp-palette-container" id="xp-paint-palette"></div>
+    </div>
+
+    <!-- Windows Media Player Window -->
+    <div class="xp-window hidden" id="win-wmp" data-id="wmp" style="width: 420px; top: 80px; left: 240px;">
+      <div class="xp-titlebar">
+        <span>Windows Media Player</span>
+        <div class="xp-controls">
+          <button class="xp-btn-ctrl xp-btn-min">_</button>
+          <button class="xp-btn-ctrl xp-btn-close">✕</button>
+        </div>
+      </div>
+      <div class="xp-body" style="background:#000;">
+        <div class="wmp-screen" style="height:150px; background:radial-gradient(circle, #0a2550 0%, #000 90%); display:flex; align-items:flex-end; justify-content:center; gap:3px; padding:10px;">
+          <div id="wmp-vis" style="display:flex; align-items:flex-end; gap:3px; width:100%; height:100%;"></div>
+        </div>
+        <div style="background:linear-gradient(180deg, #1f3972 0%, #0e2046 100%); color:#fff; padding:10px; display:flex; justify-content:space-between; align-items:center;">
+          <div>
+            <div style="font-weight:bold; font-size:12px;">Symphony of Spring.wma</div>
+            <div style="font-size:10px; color:#60a5fa;">Windows XP Official Sample Music</div>
+          </div>
+          <button id="xp-wmp-play" style="width:32px; height:32px; border-radius:50%; background:#2563eb; color:#fff; border:1px solid #fff; cursor:pointer; font-size:14px;">▶</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Task Manager Window -->
+    <div class="xp-window hidden" id="win-taskmgr" data-id="taskmgr" style="width: 440px; height: 340px; top: 100px; left: 260px;">
+      <div class="xp-titlebar">
+        <span>Windows Task Manager</span>
+        <div class="xp-controls">
+          <button class="xp-btn-ctrl xp-btn-min">_</button>
+          <button class="xp-btn-ctrl xp-btn-close">✕</button>
+        </div>
+      </div>
+      <div class="xp-menubar">
+        <span>File</span>
+        <span>Options</span>
+        <span>View</span>
+        <span>Help</span>
+      </div>
+      <div class="xp-taskmgr-tabs">
+        <button class="taskmgr-tab-btn" data-tab="procs">Applications</button>
+        <button class="taskmgr-tab-btn active" data-tab="perf">Performance</button>
+      </div>
+      <div class="xp-body" id="taskmgr-perf-panel" style="padding:10px; background:#ece9d8;">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+          <div style="border:1px solid #808080; padding:8px; background:#ece9d8;">
+            <div style="font-weight:bold; margin-bottom:4px;">CPU Usage</div>
+            <div style="background:#000; border:1px solid #00aa00; height:120px; position:relative; overflow:hidden;">
+              <svg id="xp-cpu-svg" viewBox="0 0 160 100" style="width:100%; height:100%; display:block;">
+                <line x1="0" y1="25" x2="160" y2="25" stroke="#003300" stroke-width="1"/>
+                <line x1="0" y1="50" x2="160" y2="50" stroke="#003300" stroke-width="1"/>
+                <line x1="0" y1="75" x2="160" y2="75" stroke="#003300" stroke-width="1"/>
+                <polyline id="xp-cpu-poly" points="0,90 20,80 40,85 60,60 80,70 100,50 120,65 140,40 160,55" fill="none" stroke="#00ff00" stroke-width="2"/>
+              </svg>
+            </div>
+            <div id="xp-cpu-num" style="text-align:center; font-weight:bold; font-size:16px; color:#006600; margin-top:4px;">24%</div>
+          </div>
+          <div style="border:1px solid #808080; padding:8px; background:#ece9d8;">
+            <div style="font-weight:bold; margin-bottom:4px;">MEM Usage</div>
+            <div style="background:#000; border:1px solid #00aa00; height:120px; display:flex; align-items:flex-end; padding:4px;">
+              <div id="xp-mem-bar" style="width:100%; height:38%; background:#00ff00;"></div>
+            </div>
+            <div style="text-align:center; font-weight:bold; font-size:14px; margin-top:4px;">194 MB / 512 MB</div>
+          </div>
+        </div>
+      </div>
+      <div class="xp-body hidden" id="taskmgr-procs-panel" style="padding:8px; background:#fff;">
+        <table style="width:100%; font-size:11px; border-collapse:collapse;">
+          <tr style="border-bottom:1px solid #ccc; font-weight:bold;">
+            <th>Task</th>
+            <th>Status</th>
+          </tr>
+          <tr><td>3D Pinball for Windows</td><td style="color:#008000;">Running</td></tr>
+          <tr><td>Paint</td><td style="color:#008000;">Running</td></tr>
+          <tr><td>Windows Media Player</td><td style="color:#008000;">Running</td></tr>
+          <tr><td>Windows Explorer</td><td style="color:#008000;">Running</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- My Computer Window -->
+    <div class="xp-window hidden" id="win-mycomp" data-id="mycomp" style="width: 500px; height: 320px; top: 90px; left: 180px;">
+      <div class="xp-titlebar">
+        <span>My Computer</span>
+        <div class="xp-controls">
+          <button class="xp-btn-ctrl xp-btn-min">_</button>
+          <button class="xp-btn-ctrl xp-btn-close">✕</button>
+        </div>
+      </div>
+      <div class="xp-menubar">
+        <span>File</span>
+        <span>Edit</span>
+        <span>View</span>
+        <span>Favorites</span>
+        <span>Tools</span>
+        <span>Help</span>
+      </div>
+      <div class="xp-body" style="padding:14px; display:flex; flex-wrap:wrap; gap:16px;">
+        <div class="xp-drive-box">
+          <svg viewBox="0 0 32 32" class="xp-icon-img">
+            <rect x="4" y="6" width="24" height="20" fill="#ece9d8" stroke="#003399"/>
+            <rect x="7" y="10" width="18" height="4" fill="#000"/>
+          </svg>
+          <div>3½ Floppy (A:)</div>
+        </div>
+        <div class="xp-drive-box">
+          <svg viewBox="0 0 32 32" class="xp-icon-img">
+            <rect x="4" y="6" width="24" height="20" fill="#fff" stroke="#003399"/>
+            <rect x="7" y="10" width="18" height="12" fill="#0055ea"/>
+            <text x="8" y="19" fill="#fff" font-size="8">NTFS</text>
+          </svg>
+          <div>Local Disk (C:)</div>
+        </div>
+        <div class="xp-drive-box">
+          <svg viewBox="0 0 32 32" class="xp-icon-img">
+            <circle cx="16" cy="16" r="12" fill="#e0e0e0" stroke="#003399"/>
+            <circle cx="16" cy="16" r="4" fill="#fff" stroke="#003399"/>
+          </svg>
+          <div>CD-ROM Drive (D:)</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Windows XP Recycle Bin Window -->
+    <div class="xp-window hidden" id="win-recycle" data-id="recycle" style="width: 520px; height: 360px; top: 70px; left: 160px;">
+      <div class="xp-titlebar">
+        <span>Recycle Bin</span>
+        <div class="xp-controls">
+          <button class="xp-btn-ctrl xp-btn-min">_</button>
+          <button class="xp-btn-ctrl xp-btn-close">✕</button>
+        </div>
+      </div>
+      <div class="xp-menubar">
+        <span>File</span>
+        <span>Edit</span>
+        <span>View</span>
+        <span>Favorites</span>
+        <span>Tools</span>
+        <span>Help</span>
+      </div>
+      <div style="background:#ece9d8; border-bottom:1px solid #aca899; padding:4px 8px; display:flex; gap:12px; font-size:11px;">
+        <button id="xp-empty-recycle-btn" style="padding:2px 8px; cursor:pointer;">Empty Recycle Bin</button>
+        <button id="xp-restore-all-btn" style="padding:2px 8px; cursor:pointer;">Restore all items</button>
+      </div>
+      <div class="xp-body" style="background:#fff; padding:12px; height:calc(100% - 75px); overflow-y:auto;" id="xp-recycle-body">
+        <div style="font-weight:bold; font-size:11px; margin-bottom:8px; color:#003399;">Recycle Bin Tasks</div>
+        <div id="xp-recycle-items" style="display:flex; flex-direction:column; gap:6px;">
+          <div class="xp-recycle-row" style="display:flex; align-items:center; gap:8px; padding:4px; border-bottom:1px solid #f0f0f0;">
+            <img src="../assets/icons/winxp/notepad.png" width="16" height="16" alt="">
+            <span style="font-size:11px; flex:1;">old_notes_2001.txt</span>
+            <span style="font-size:10px; color:#888;">C:\Documents and Settings</span>
+          </div>
+          <div class="xp-recycle-row" style="display:flex; align-items:center; gap:8px; padding:4px; border-bottom:1px solid #f0f0f0;">
+            <img src="../assets/icons/winxp/paint.png" width="16" height="16" alt="">
+            <span style="font-size:11px; flex:1;">sketch_draft.bmp</span>
+            <span style="font-size:10px; color:#888;">C:\My Documents</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MSN Messenger 6.0 Window -->
+    <div class="xp-window hidden" id="win-msn" data-id="msn" style="width: 320px; height: 460px; top: 40px; left: 180px;">
+      <div class="xp-titlebar">
+        <span>MSN Messenger</span>
+        <div class="xp-controls">
+          <button class="xp-btn-ctrl xp-btn-min">_</button>
+          <button class="xp-btn-ctrl xp-btn-close">✕</button>
+        </div>
+      </div>
+      <div class="xp-menubar">
+        <span>File</span>
+        <span>Contacts</span>
+        <span>Actions</span>
+        <span>Help</span>
+      </div>
+      <div class="xp-body" style="background:#eaf2ff; padding:8px; display:flex; flex-direction:column; height:calc(100% - 65px);">
+        <!-- User Profile Card -->
+        <div style="background:#fff; border:1px solid #7eaadb; border-radius:4px; padding:6px; margin-bottom:8px; display:flex; align-items:center; gap:8px;">
+          <div style="width:36px; height:36px; border:1px solid #0055ea; background:#0288d1; border-radius:3px; display:flex; align-items:center; justify-content:center; color:#fff; font-weight:bold; font-size:18px;">XP</div>
+          <div>
+            <div style="font-weight:bold; font-size:11px;">Administrator (Online)</div>
+            <div style="font-size:10px; color:#555;">&lt;Personal Message: Listening to Symphony of Spring&gt;</div>
+          </div>
+        </div>
+        <!-- Contact List / Chat Tab -->
+        <div style="flex:1; background:#fff; border:1px solid #7eaadb; border-radius:4px; padding:8px; overflow-y:auto; font-size:11px; margin-bottom:8px;" id="msn-chat-history">
+          <p style="color:#0055ea; font-weight:bold;">Online (2)</p>
+          <div style="padding:4px 0; display:flex; align-items:center; gap:6px; cursor:pointer;" id="msn-buddy-1">
+            <span style="color:#00aa00; font-size:14px;">●</span>
+            <strong>Bill Gates</strong> (Available)
+          </div>
+          <div style="padding:4px 0; display:flex; align-items:center; gap:6px; cursor:pointer;">
+            <span style="color:#ff9900; font-size:14px;">●</span>
+            <strong>Clippy</strong> (Busy)
+          </div>
+          <hr style="margin:8px 0; border:none; border-top:1px solid #ddd;">
+          <div id="msn-messages-box">
+            <div style="color:#888; font-size:10px; margin-bottom:4px;">Conversación iniciada con Bill Gates...</div>
+            <div style="margin-bottom:4px;"><strong>Bill Gates:</strong> ¡Hola! Bienvenido a Windows XP y a MSN Messenger.</div>
+          </div>
+        </div>
+        <!-- Chat Input & Nudge -->
+        <div style="display:flex; gap:4px;">
+          <input type="text" id="msn-msg-input" placeholder="Type a message..." style="flex:1; padding:4px; border:1px solid #7eaadb; border-radius:2px; font-size:11px;">
+          <button id="msn-btn-send" style="padding:4px 10px; background:#0055ea; color:#fff; border:1px solid #002288; border-radius:3px; cursor:pointer; font-size:11px;">Send</button>
+          <button id="msn-btn-nudge" title="Send a Nudge!" style="padding:4px 8px; background:#ff9900; color:#fff; border:1px solid #995500; border-radius:3px; cursor:pointer; font-weight:bold; font-size:11px;">💥 Nudge</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Internet Explorer 6 Window -->
+    <div class="xp-window hidden" id="win-ie" data-id="ie" style="width: 660px; height: 440px; top: 50px; left: 140px;">
+      <div class="xp-titlebar">
+        <span>MSN.com - Microsoft Internet Explorer</span>
+        <div class="xp-controls">
+          <button class="xp-btn-ctrl xp-btn-min">_</button>
+          <button class="xp-btn-ctrl xp-btn-close">✕</button>
+        </div>
+      </div>
+      <div class="xp-menubar">
+        <span>File</span>
+        <span>Edit</span>
+        <span>View</span>
+        <span>Favorites</span>
+        <span>Tools</span>
+        <span>Help</span>
+        <div style="margin-left:auto; width:20px; height:20px;">
+          <svg viewBox="0 0 16 16" width="16" height="16">
+            <path fill="#ff0000" d="M1 2h6v5H1z"/>
+            <path fill="#00aa00" d="M9 2h6v5H9z"/>
+            <path fill="#0000d8" d="M1 9h6v5H1z"/>
+            <path fill="#f8f800" d="M9 9h6v5H9z"/>
+          </svg>
+        </div>
+      </div>
+      <div style="background:#ece9d8; padding:4px 8px; display:flex; align-items:center; gap:6px; border-bottom:1px solid #aca899; font-size:11px;">
+        <span>Address:</span>
+        <input type="text" id="xp-ie-url" value="http://www.msn.com/" style="flex:1; padding:2px 6px; border:1px solid #7f9db9; font-family:sans-serif; background:#fff;">
+        <button id="xp-ie-go" style="padding:2px 8px; cursor:pointer;">Go</button>
+      </div>
+      <div class="xp-body" id="xp-ie-viewport" style="padding:16px; background:#fff; font-family:Arial, sans-serif; overflow-y:auto; height:calc(100% - 90px);">
+        <!-- MSN 2001 Portal -->
+        <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:3px solid #003399; padding-bottom:8px; margin-bottom:14px;">
+          <div style="font-size:28px; font-weight:bold; color:#003399; font-family:'Segoe UI', sans-serif;">msn<span style="color:#ff3300;">.</span></div>
+          <div style="font-size:11px; color:#555;">October 25, 2001 - Windows XP Launch Day</div>
+        </div>
+        <div style="display:grid; grid-template-columns:2fr 1fr; gap:16px; font-size:12px;">
+          <div>
+            <h2 style="color:#003399; font-size:18px; margin-bottom:8px;">Microsoft Releases Windows XP Worldwide</h2>
+            <p style="line-height:1.5; color:#333; margin-bottom:10px;">Experience the best of the digital age with Windows XP: stunning Luna interface, enhanced multimedia capabilities, stable Windows NT 5.1 kernel, and seamless home networking.</p>
+            <div style="background:#f0f4fa; border:1px solid #c0d0e8; padding:10px; border-radius:4px;">
+              <strong>Search the Web:</strong>
+              <div style="display:flex; gap:4px; margin-top:4px;">
+                <input type="text" placeholder="Search MSN..." style="flex:1; padding:3px 6px; border:1px solid #7f9db9;">
+                <button style="padding:3px 10px; background:#003399; color:#fff; border:none; cursor:pointer;">Search</button>
+              </div>
+            </div>
+          </div>
+          <div style="border-left:1px solid #ddd; padding-left:14px;">
+            <h3 style="color:#003399; font-size:13px; margin-bottom:6px;">Highlights:</h3>
+            <ul style="padding-left:16px; line-height:1.8; color:#444;">
+              <li>MSN Messenger 6.0</li>
+              <li>Windows Media Player 9</li>
+              <li>Windows Movie Maker</li>
+              <li>Remote Assistance</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Windows XP Taskbar -->
+  <footer class="xp-taskbar">
+    <button class="xp-start-btn" id="xp-start-btn">
+      <svg viewBox="0 0 16 16" width="16" height="16">
+        <path fill="#ff0000" d="M1 2h6v5H1z"/>
+        <path fill="#00aa00" d="M9 2h6v5H9z"/>
+        <path fill="#0000d8" d="M1 9h6v5H1z"/>
+        <path fill="#f8f800" d="M9 9h6v5H9z"/>
+      </svg>
+      <span>start</span>
+    </button>
+
+    <div class="xp-taskbar-tasks" id="xp-taskbar-tasks"></div>
+
+    <div class="xp-tray">
+      <svg viewBox="0 0 16 16" width="14" height="14">
+        <path d="M3 5h3l4-3v12l-4-3H3z" fill="#fff"/>
+        <path d="M12 5c1 1.5 1 4.5 0 6" stroke="#fff" fill="none"/>
+      </svg>
+      <span id="xp-clock">00:00 PM</span>
+    </div>
+  </footer>
+
+  <!-- Start Menu -->
+  <div class="xp-start-menu hidden" id="xp-start-menu">
+    <div class="xp-menu-header">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <circle cx="12" cy="8" r="4" fill="#fff"/>
+        <path d="M4 20 C4 15, 8 13, 12 13 C16 13, 20 15, 20 20 Z" fill="#fff"/>
+      </svg>
+      <span>Administrator</span>
+    </div>
+    <div class="xp-menu-columns">
+      <div class="xp-menu-left">
+        <div class="xp-menu-item-row" data-app="pinball">
+          <img src="../assets/icons/winxp/pinball.png" alt="">
+          <strong>Pinball 3D</strong>
+        </div>
+        <div class="xp-menu-item-row" data-app="paint">
+          <img src="../assets/icons/winxp/paint.png" alt="">
+          <strong>Paint</strong>
+        </div>
+        <div class="xp-menu-item-row" data-app="wmp">
+          <img src="../assets/icons/winxp/wmp.png" alt="">
+          <strong>Windows Media Player</strong>
+        </div>
+        <div class="xp-menu-item-row" data-app="taskmgr">
+          <img src="../assets/icons/win2k/taskmgr.png" alt="">
+          <strong>Task Manager</strong>
+        </div>
+        <div class="xp-menu-item-row" data-app="msn">
+          <img src="../assets/icons/winxp/messenger.png" alt="">
+          <strong>MSN Messenger</strong>
+        </div>
+      </div>
+      <div class="xp-menu-right">
+        <div class="xp-menu-item-row" data-app="mycomp">
+          <img src="../assets/icons/winxp/mycomputer.png" style="width:20px; height:20px; margin-right:6px;" alt="">
+          <span>My Computer</span>
+        </div>
+        <div class="xp-menu-item-row">
+          <img src="../assets/icons/winxp/mydocs.png" style="width:20px; height:20px; margin-right:6px;" alt="">
+          <span>My Documents</span>
+        </div>
+        <div class="xp-menu-item-row">
+          <img src="../assets/icons/winvista/gallery.png" style="width:20px; height:20px; margin-right:6px;" alt="">
+          <span>My Pictures</span>
+        </div>
+        <div class="xp-menu-item-row">
+          <img src="../assets/icons/win98/settings.png" style="width:20px; height:20px; margin-right:6px;" alt="">
+          <span>Control Panel</span>
+        </div>
+      </div>
+    </div>
+    <div class="xp-menu-footer">
+      <button class="btn-xp-shutdown" id="xp-menu-shutdown">
+        <img src="../assets/icons/win98/shutdown.png" style="width:18px; height:18px; margin-right:6px; vertical-align:middle;" alt="">
+        <span>Turn Off Computer</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Turn Off Computer Dialog with dim effect -->
+  <div id="xp-turnoff-modal" class="hidden" style="position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.55); backdrop-filter:grayscale(80%); display:flex; align-items:center; justify-content:center; z-index:100000;">
+    <div style="background:linear-gradient(180deg, #003399 0%, #001f5f 100%); border:2px solid #fff; border-radius:10px; width:380px; padding:20px; box-shadow:0 10px 30px rgba(0,0,0,0.7); color:#fff; text-align:center;">
+      <div style="font-size:16px; font-weight:bold; margin-bottom:24px; text-shadow:1px 1px 2px #000;">Turn off computer</div>
+      <div style="display:flex; justify-content:space-around; margin-bottom:24px;">
+        <div id="btn-xp-standby" style="cursor:pointer;">
+          <div style="width:38px; height:38px; border-radius:50%; background:#ff9900; margin:0 auto 6px; display:flex; align-items:center; justify-content:center; font-size:18px; border:2px solid #fff;">⏸</div>
+          <span style="font-size:11px;">Stand By</span>
+        </div>
+        <div id="btn-xp-turnoff" style="cursor:pointer;">
+          <div style="width:38px; height:38px; border-radius:50%; background:#cc0000; margin:0 auto 6px; display:flex; align-items:center; justify-content:center; font-size:18px; border:2px solid #fff;">⏻</div>
+          <span style="font-size:11px;">Turn Off</span>
+        </div>
+        <div id="btn-xp-restart" style="cursor:pointer;" title="Restart">
+          <div style="width:38px; height:38px; border-radius:50%; background:#00aa00; margin:0 auto 6px; display:flex; align-items:center; justify-content:center; font-size:18px; border:2px solid #fff;">↻</div>
+          <span style="font-size:11px;">Restart</span>
+        </div>
+      </div>
+      <div style="text-align:right;">
+        <button id="btn-xp-cancel" style="padding:4px 14px; background:#fff; color:#000; border:none; border-radius:3px; cursor:pointer;">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Microsoft Windows 98 SE</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><path fill='%23008080' d='M0 0h32v32H0z'/><path fill='%23ff0000' d='M6 6h9v9H6z'/><path fill='%2300a800' d='M17 6h9v9h-9z'/><path fill='%230000d8' d='M6 17h9v9H6z'/><path fill='%23f8f800' d='M17 17h9v9h-9z'/></svg>">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div id="desktop" class="desktop wallpaper-teal" tabindex="0">
+    
+    <div id="desktop-icons" class="desktop-icons">
+      
+      <div class="desktop-icon" data-app="my-computer" tabindex="0" id="icon-my-computer">
+        <div class="icon-img">
+          <img src="../assets/icons/win98/mycomputer.png" class="retro-icon" alt="Mi PC">
+        </div>
+        <span class="icon-label">Mi PC</span>
+      </div>
+
+      <div class="desktop-icon" data-app="recycle-bin" tabindex="0" id="icon-recycle-bin">
+        <div class="icon-img">
+          <img src="../assets/icons/win98/recycle_empty.png" class="retro-icon" alt="Papelera">
+        </div>
+        <span class="icon-label">Papelera de reciclaje</span>
+      </div>
+
+      <div class="desktop-icon" data-app="internet-explorer" tabindex="0" id="icon-internet-explorer">
+        <div class="icon-img">
+          <img src="../assets/icons/win98/msie.png" class="retro-icon" alt="Internet Explorer">
+        </div>
+        <span class="icon-label">Internet Explorer</span>
+      </div>
+
+      <div class="desktop-icon" data-app="minesweeper" tabindex="0" id="icon-minesweeper">
+        <div class="icon-img">
+          <img src="../assets/icons/win98/minesweeper.png" class="retro-icon" alt="Buscaminas">
+        </div>
+        <span class="icon-label">Buscaminas</span>
+      </div>
+
+      <div class="desktop-icon" data-app="solitaire" tabindex="0" id="icon-solitaire">
+        <div class="icon-img">
+          <img src="../assets/icons/win98/solitaire.png" class="retro-icon" alt="Solitario">
+        </div>
+        <span class="icon-label">Solitario</span>
+      </div>
+
+      <div class="desktop-icon" data-app="notepad" tabindex="0" id="icon-notepad">
+        <div class="icon-img">
+          <img src="../assets/icons/win98/notepad.png" class="retro-icon" alt="Bloc de notas">
+        </div>
+        <span class="icon-label">Bloc de notas</span>
+      </div>
+
+      <div class="desktop-icon" data-app="display-properties" tabindex="0" id="icon-display">
+        <div class="icon-img">
+          <img src="../assets/icons/win98/settings.png" class="retro-icon" alt="Propiedades">
+        </div>
+        <span class="icon-label">Propiedades de Pantalla</span>
+      </div>
+
+      <div class="desktop-icon" data-app="portfolio" tabindex="0" id="icon-portfolio">
+        <div class="icon-img">
+          <img src="../assets/icons/win98/mydocs.png" class="retro-icon" alt="Mis Documentos">
+        </div>
+        <span class="icon-label">Mis Documentos</span>
+      </div>
+
+      <div class="desktop-icon" data-app="paint" tabindex="0" id="icon-paint">
+        <div class="icon-img">
+          <img src="../assets/icons/win98/paint.png" class="retro-icon" alt="Paint">
+        </div>
+        <span class="icon-label">Paint</span>
+      </div>
+
+      <div class="desktop-icon" data-app="media-player" tabindex="0" id="icon-media-player">
+        <div class="icon-img">
+          <img src="../assets/icons/win98/wmp.png" class="retro-icon" alt="Reproductor multimedia">
+        </div>
+        <span class="icon-label">Reproductor multimedia</span>
+      </div>
+
+      <div class="desktop-icon" data-app="outlook" tabindex="0" id="icon-outlook">
+        <div class="icon-img">
+          <img src="../assets/icons/win98/outlook.png" class="retro-icon" alt="Outlook Express">
+        </div>
+        <span class="icon-label">Outlook Express</span>
+      </div>
+    </div>
+
+    </div>
+
+    <!-- Active Desktop Channel Bar -->
+    <div id="channel-bar" class="channel-bar win-outset">
+      <div class="channel-bar-header">
+        <span>Canales</span>
+        <button id="btn-close-channel-bar" class="channel-close-btn" title="Cerrar barra">✕</button>
+      </div>
+      <div class="channel-btn" data-ch="news"><span class="channel-dot" style="background:#ff3333;"></span> Noticiero 98</div>
+      <div class="channel-btn" data-ch="sports"><span class="channel-dot" style="background:#33cc33;"></span> Deportes Online</div>
+      <div class="channel-btn" data-ch="disney"><span class="channel-dot" style="background:#0066ff;"></span> Entretenimiento</div>
+      <div class="channel-btn" data-ch="msn"><span class="channel-dot" style="background:#ff9900;"></span> MSN Red Activa</div>
+    </div>
+
+    <div id="selection-marquee" class="selection-marquee hidden"></div>
+
+    <div id="windows-container" class="windows-container">
+
+      <!-- Mi PC -->
+      <div id="win-my-computer" class="win98-window hidden" data-id="my-computer" style="width: 440px; height: 320px; top: 70px; left: 90px;">
+        <div class="window-titlebar">
+          <div class="titlebar-text">
+            <span>Mi PC</span>
+          </div>
+          <div class="titlebar-controls">
+            <button class="win-btn win-btn-minimize">_</button>
+            <button class="win-btn win-btn-maximize">□</button>
+            <button class="win-btn win-btn-close">✕</button>
+          </div>
+        </div>
+        <div class="window-menubar">
+          <span class="menu-item">Archivo</span>
+          <span class="menu-item">Edición</span>
+          <span class="menu-item">Ver</span>
+          <span class="menu-item">Ayuda</span>
+        </div>
+        <div class="window-content my-computer-content">
+          <div class="drive-item" data-action="drive-a">
+            <div class="drive-icon">
+              <!-- 3.5 floppy disk icon -->
+              <svg viewBox="0 0 32 32" width="32" height="32"><rect x="2" y="2" width="28" height="28" rx="2" fill="#4a4a8a"/><rect x="5" y="2" width="16" height="10" fill="#8888cc"/><rect x="8" y="14" width="16" height="12" rx="1" fill="#c0c0c0"/><rect x="11" y="16" width="10" height="5" fill="#a0a0a0"/><rect x="12" y="3" width="5" height="7" fill="#ccccee" rx="1"/></svg>
+            </div>
+            <span>Disquete 3&frac12; (A:)</span>
+          </div>
+          <div class="drive-item" data-action="drive-c">
+            <div class="drive-icon">
+              <!-- Hard drive icon -->
+              <svg viewBox="0 0 32 32" width="32" height="32"><rect x="3" y="6" width="26" height="20" rx="3" fill="#c8c8c8" stroke="#888" stroke-width="1"/><rect x="3" y="6" width="26" height="10" rx="3" fill="#e0e0e0"/><circle cx="22" cy="20" r="4" fill="#aaa" stroke="#888" stroke-width="1"/><circle cx="22" cy="20" r="2" fill="#ccc"/><rect x="6" y="9" width="12" height="2" rx="1" fill="#aaa"/><rect x="6" y="13" width="8" height="2" rx="1" fill="#aaa"/></svg>
+            </div>
+            <span>Disco local (C:)</span>
+          </div>
+          <div class="drive-item" data-action="drive-d">
+            <div class="drive-icon">
+              <!-- CD-ROM icon -->
+              <svg viewBox="0 0 32 32" width="32" height="32"><circle cx="16" cy="16" r="13" fill="#e8e8e8" stroke="#888" stroke-width="1"/><circle cx="16" cy="16" r="5" fill="none" stroke="#bbb" stroke-width="2"/><circle cx="16" cy="16" r="2" fill="#ccc"/><ellipse cx="10" cy="10" rx="5" ry="2" fill="rgba(80,120,200,0.15)" transform="rotate(-30 10 10)"/></svg>
+            </div>
+            <span>Unidad de CD (D:)</span>
+          </div>
+          <div class="drive-item" data-action="panel-control">
+            <div class="drive-icon">
+              <!-- Control Panel icon -->
+              <svg viewBox="0 0 32 32" width="32" height="32"><rect x="2" y="2" width="28" height="28" rx="2" fill="#f0e0c0"/><rect x="4" y="4" width="11" height="11" rx="1" fill="#c0d8f0" stroke="#6088b0" stroke-width="1"/><rect x="17" y="4" width="11" height="11" rx="1" fill="#d0f0c0" stroke="#60a060" stroke-width="1"/><rect x="4" y="17" width="11" height="11" rx="1" fill="#f0c0d0" stroke="#b06080" stroke-width="1"/><rect x="17" y="17" width="11" height="11" rx="1" fill="#f0f0a0" stroke="#a0a060" stroke-width="1"/></svg>
+            </div>
+            <span>Panel de control</span>
+          </div>
+        </div>
+        <div class="window-statusbar">
+          <span class="status-cell">4 objeto(s)</span>
+          <span class="status-cell">Capacidad C: 2.1 GB</span>
+        </div>
+      </div>
+
+      <!-- Buscaminas -->
+      <div id="win-minesweeper" class="win98-window hidden" data-id="minesweeper" style="width: 250px; top: 90px; left: 180px;">
+        <div class="window-titlebar">
+          <div class="titlebar-text">
+            <span>Buscaminas</span>
+          </div>
+          <div class="titlebar-controls">
+            <button class="win-btn win-btn-minimize">_</button>
+            <button class="win-btn win-btn-close">✕</button>
+          </div>
+        </div>
+        <div class="window-menubar">
+          <span class="menu-item" id="minesweeper-new-game">Juego</span>
+          <span class="menu-item">Ayuda</span>
+        </div>
+        <div class="window-content minesweeper-content">
+          <div class="minesweeper-header win-inset">
+            <div id="mine-counter" class="seven-segment-display">010</div>
+            <button id="minesweeper-face" class="minesweeper-face win-outset" title="Nuevo juego">
+              <span id="face-icon">🙂</span>
+            </button>
+            <div id="mine-timer" class="seven-segment-display">000</div>
+          </div>
+          <div id="minesweeper-board" class="minesweeper-board win-inset"></div>
+        </div>
+      </div>
+
+      <!-- Solitario Windows 98 -->
+      <div id="win-solitaire" class="win98-window hidden" data-id="solitaire" style="width: 520px; height: 420px; top: 70px; left: 200px;">
+        <div class="window-titlebar">
+          <div class="titlebar-text">
+            <span>Solitario</span>
+          </div>
+          <div class="titlebar-controls">
+            <button class="win-btn win-btn-minimize">_</button>
+            <button class="win-btn win-btn-close">✕</button>
+          </div>
+        </div>
+        <div class="window-menubar">
+          <span class="menu-item" id="sol-new-game" style="cursor:pointer;"><u>J</u>uego</span>
+          <span class="menu-item"><u>A</u>yuda</span>
+        </div>
+        <div class="window-content" style="padding:0; background:#008000; overflow:hidden;">
+          <div style="padding:10px; display:flex; flex-direction:column; height:100%; box-sizing:border-box;">
+            <div style="display:flex; justify-content:space-between; margin-bottom:12px;">
+              <div style="display:flex; gap:10px;">
+                <div class="sol-card-pile" id="w98-sol-deck" style="cursor:pointer; width:44px; height:62px; background:#000080; border:2px solid #fff; border-radius:3px;" title="Repartir carta"></div>
+                <div class="sol-card-pile" id="w98-sol-waste" style="width:44px; height:62px; border:1px dashed rgba(255,255,255,0.4); border-radius:3px; display:flex; align-items:center; justify-content:center; background:#fff; font-size:16px;"></div>
+              </div>
+              <div style="display:flex; gap:6px;">
+                <div class="sol-card-pile" style="width:44px; height:62px; border:1px solid rgba(255,255,255,0.4); border-radius:3px; display:flex; align-items:center; justify-content:center; color:#fff; font-size:18px;">♠</div>
+                <div class="sol-card-pile" style="width:44px; height:62px; border:1px solid rgba(255,255,255,0.4); border-radius:3px; display:flex; align-items:center; justify-content:center; color:#fff; font-size:18px;">♥</div>
+                <div class="sol-card-pile" style="width:44px; height:62px; border:1px solid rgba(255,255,255,0.4); border-radius:3px; display:flex; align-items:center; justify-content:center; color:#fff; font-size:18px;">♦</div>
+                <div class="sol-card-pile" style="width:44px; height:62px; border:1px solid rgba(255,255,255,0.4); border-radius:3px; display:flex; align-items:center; justify-content:center; color:#fff; font-size:18px;">♣</div>
+              </div>
+            </div>
+            <div id="w98-sol-tableau" style="display:grid; grid-template-columns:repeat(7, 1fr); gap:6px; flex:1;"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bloc de notas -->
+      <div id="win-notepad" class="win98-window hidden" data-id="notepad" style="width: 500px; height: 350px; top: 110px; left: 240px;">
+        <div class="window-titlebar">
+          <div class="titlebar-text">
+            <span id="notepad-title">Sin título: Bloc de notas</span>
+          </div>
+          <div class="titlebar-controls">
+            <button class="win-btn win-btn-minimize">_</button>
+            <button class="win-btn win-btn-maximize">□</button>
+            <button class="win-btn win-btn-close">✕</button>
+          </div>
+        </div>
+        <div class="window-menubar">
+          <div class="menu-dropdown">
+            <span class="menu-item" id="menu-file">Archivo</span>
+            <div class="dropdown-content hidden" id="dropdown-file">
+              <div class="dropdown-item" id="notepad-new">Nuevo</div>
+              <div class="dropdown-item" id="notepad-open">Abrir...</div>
+              <div class="dropdown-item" id="notepad-save">Guardar</div>
+              <div class="dropdown-separator"></div>
+              <div class="dropdown-item" id="notepad-exit">Salir</div>
+            </div>
+          </div>
+          <span class="menu-item">Edición</span>
+          <span class="menu-item">Formato</span>
+          <span class="menu-item">Ayuda</span>
+        </div>
+        <div class="window-content notepad-container">
+          <textarea id="notepad-textarea" class="notepad-textarea" spellcheck="false" placeholder="Escribe aquí tu texto..."></textarea>
+          <input type="file" id="notepad-file-input" accept=".txt,.md,.html,.js,.css" style="display:none;">
+        </div>
+        <div class="window-statusbar">
+          <span class="status-cell" id="notepad-status">Lín 1, Col 1</span>
+          <span class="status-cell">Windows (CRLF)</span>
+        </div>
+      </div>
+
+      <!-- Internet Explorer 5 (Web noventera fidedigna) -->
+      <div id="win-internet-explorer" class="win98-window hidden" data-id="internet-explorer" style="width: 620px; height: 430px; top: 75px; left: 140px;">
+        <div class="window-titlebar">
+          <div class="titlebar-text">
+            <span id="ie-window-title">Yahoo! - Microsoft Internet Explorer</span>
+          </div>
+          <div class="titlebar-controls">
+            <button class="win-btn win-btn-minimize">_</button>
+            <button class="win-btn win-btn-maximize">□</button>
+            <button class="win-btn win-btn-close">✕</button>
+          </div>
+        </div>
+        <div class="window-menubar">
+          <span class="menu-item">Archivo</span>
+          <span class="menu-item">Edición</span>
+          <span class="menu-item">Ver</span>
+          <span class="menu-item">Favoritos</span>
+          <span class="menu-item">Ayuda</span>
+        </div>
+        
+        <div class="ie-toolbar">
+          <button class="ie-btn" id="ie-back"><span>🠔</span> Atrás</button>
+          <button class="ie-btn" id="ie-forward"><span>🠖</span> Adelante</button>
+          <button class="ie-btn" id="ie-stop"><span>✕</span> Detener</button>
+          <button class="ie-btn" id="ie-refresh"><span>🔄</span> Actualizar</button>
+          <button class="ie-btn" id="ie-home"><span>🏠</span> Inicio</button>
+          <div class="ie-separator"></div>
+          <div class="ie-logo-spinning" id="ie-spinning-logo">
+            <svg viewBox="0 0 24 24" class="ie-globe">
+              <circle cx="12" cy="12" r="10" fill="#0055aa"/>
+              <text x="7" y="17" font-size="16" fill="#fff" font-style="italic" font-weight="900">e</text>
+            </svg>
+          </div>
+        </div>
+
+        <div class="ie-address-bar">
+          <span class="address-label">Dirección:</span>
+          <div class="address-input-wrapper win-inset">
+            <input type="text" id="ie-url-input" class="ie-url-input" value="http://www.yahoo.com/">
+          </div>
+          <button class="win-btn ie-go-btn" id="ie-go-btn">Ir</button>
+        </div>
+
+        <div class="window-content ie-browser-viewport win-inset" id="ie-viewport" style="background:#ffffff; color:#000000; font-family:Arial, sans-serif; padding:16px;">
+          <!-- Authentic 1998 Web Portal Simulation -->
+          <div style="text-align:center; margin-bottom:12px;">
+            <h1 style="color:#cc0000; font-family:'Times New Roman', serif; font-size:32px; letter-spacing:2px; margin-bottom:4px;">YAHOO!</h1>
+            <p style="font-size:12px; color:#555;">What's New - Check Email - Yahoo! Pager</p>
+          </div>
+
+          <div style="display:flex; justify-content:center; margin-bottom:16px;">
+            <input type="text" value="" placeholder="Buscar en la World Wide Web..." style="padding:4px 8px; width:300px; border:1px solid #777;">
+            <button style="padding:4px 12px; margin-left:4px; font-weight:bold; cursor:pointer;">Buscar</button>
+          </div>
+
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; font-size:12px;">
+            <div>
+              <p><strong style="color:#0000cc;">Artes y Humanidades</strong><br><span style="color:#555;">Literatura, Fotografía, Museos...</span></p>
+              <p style="margin-top:8px;"><strong style="color:#0000cc;">Informática e Internet</strong><br><span style="color:#555;">Software, Hardware, Juegos, WWW...</span></p>
+              <p style="margin-top:8px;"><strong style="color:#0000cc;">Educación</strong><br><span style="color:#555;">Universidades, Escuelas K-12...</span></p>
+            </div>
+            <div>
+              <p><strong style="color:#0000cc;">Noticias y Medios</strong><br><span style="color:#555;">Titulares mundiales, Periódicos, Clima...</span></p>
+              <p style="margin-top:8px;"><strong style="color:#0000cc;">Entretenimiento</strong><br><span style="color:#555;">Cine, Música de los 90, Humor...</span></p>
+              <p style="margin-top:8px;"><strong style="color:#0000cc;">Ciencia y Tecnología</strong><br><span style="color:#555;">Astronomía, Física, Exploración espacial...</span></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="window-statusbar">
+          <span class="status-cell" id="ie-status">Listo</span>
+          <span class="status-cell">Zona de Internet</span>
+        </div>
+      </div>
+
+      <!-- Papelera -->
+      <div id="win-recycle-bin" class="win98-window hidden" data-id="recycle-bin" style="width: 420px; height: 300px; top: 120px; left: 210px;">
+        <div class="window-titlebar">
+          <div class="titlebar-text">
+            <span>Papelera de reciclaje</span>
+          </div>
+          <div class="titlebar-controls">
+            <button class="win-btn win-btn-minimize">_</button>
+            <button class="win-btn win-btn-maximize">□</button>
+            <button class="win-btn win-btn-close">✕</button>
+          </div>
+        </div>
+        <div class="window-menubar">
+          <span class="menu-item">Archivo</span>
+          <span class="menu-item">Edición</span>
+          <span class="menu-item">Ver</span>
+        </div>
+        <div class="window-content recycle-bin-content">
+          <div class="recycle-actions">
+            <button class="win-btn" id="empty-recycle-btn">Vaciar Papelera de reciclaje</button>
+          </div>
+          <div class="recycle-file-list" id="recycle-list">
+            <div class="recycle-item">
+              <span class="file-icon">📄</span>
+              <span class="file-name">canyon.mid</span>
+              <span class="file-size">28 KB</span>
+            </div>
+          </div>
+        </div>
+        <div class="window-statusbar">
+          <span class="status-cell" id="recycle-status">1 objeto(s)</span>
+          <span class="status-cell">28 KB</span>
+        </div>
+      </div>
+
+      <!-- Propiedades de Pantalla -->
+      <div id="win-display-properties" class="win98-window hidden" data-id="display-properties" style="width: 400px; height: 430px; top: 60px; left: 280px;">
+        <div class="window-titlebar">
+          <div class="titlebar-text">
+            <span>Propiedades de Pantalla</span>
+          </div>
+          <div class="titlebar-controls">
+            <button class="win-btn win-btn-close">✕</button>
+          </div>
+        </div>
+        
+        <div class="display-tabs">
+          <div class="tab-button active">Fondo</div>
+          <div class="tab-button">Protector</div>
+          <div class="tab-button">Apariencia</div>
+        </div>
+
+        <div class="window-content display-properties-content">
+          <div class="crt-monitor-mockup">
+            <div class="crt-casing win-outset">
+              <div id="crt-screen" class="crt-screen preview-teal win-inset">
+                <div class="mockup-window">
+                  <div class="mockup-titlebar"></div>
+                </div>
+              </div>
+            </div>
+            <div class="crt-stand"></div>
+            <div class="crt-base win-outset"></div>
+          </div>
+
+          <div class="wallpaper-selection-area">
+            <label>Papel tapiz:</label>
+            <div class="wallpaper-list win-inset">
+              <div class="wallpaper-option selected" data-wallpaper="teal">Clásico Win98 (Verde Azulado)</div>
+              <div class="wallpaper-option" data-wallpaper="banner">Windows 98 Oficial (Setup Banner)</div>
+              <div class="wallpaper-option" data-wallpaper="clouds">Nubes de Windows (Clouds.bmp)</div>
+              <div class="wallpaper-option" data-wallpaper="matrix">Matrix Code 1999</div>
+              <div class="wallpaper-option" data-wallpaper="space">Espacio Estelar Negro</div>
+            </div>
+          </div>
+
+          <div class="dialog-buttons-row">
+            <button class="win-btn dialog-btn" id="btn-apply-wallpaper">Aceptar</button>
+            <button class="win-btn dialog-btn" id="btn-cancel-wallpaper">Cancelar</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mis Documentos -->
+      <div id="win-portfolio" class="win98-window hidden" data-id="portfolio" style="width: 480px; height: 340px; top: 100px; left: 220px;">
+        <div class="window-titlebar">
+          <div class="titlebar-text">
+            <span>Mis Documentos</span>
+          </div>
+          <div class="titlebar-controls">
+            <button class="win-btn win-btn-minimize">_</button>
+            <button class="win-btn win-btn-maximize">□</button>
+            <button class="win-btn win-btn-close">✕</button>
+          </div>
+        </div>
+        <div class="window-menubar">
+          <span class="menu-item">Archivo</span>
+          <span class="menu-item">Edición</span>
+          <span class="menu-item">Ver</span>
+        </div>
+        <div class="window-content documents-content">
+          <div class="doc-item" id="doc-history">
+            <span class="doc-icon">
+              <!-- Text document icon -->
+              <svg viewBox="0 0 24 24" width="32" height="32"><rect x="3" y="1" width="14" height="18" rx="1" fill="#fff" stroke="#888" stroke-width="1"/><path d="M13 1 L17 5 L13 5 Z" fill="#c8c8c8" stroke="#888" stroke-width="1"/><rect x="5" y="7" width="9" height="1.5" rx="0.5" fill="#666"/><rect x="5" y="10" width="9" height="1.5" rx="0.5" fill="#666"/><rect x="5" y="13" width="6" height="1.5" rx="0.5" fill="#666"/></svg>
+            </span>
+            <span class="doc-name">HISTORIA_WINDOWS_98.txt</span>
+          </div>
+          <div class="doc-item" id="doc-system">
+            <span class="doc-icon">
+              <!-- Notepad document icon -->
+              <svg viewBox="0 0 24 24" width="32" height="32"><rect x="3" y="1" width="14" height="18" rx="1" fill="#ffffc0" stroke="#888" stroke-width="1"/><path d="M13 1 L17 5 L13 5 Z" fill="#e0e080" stroke="#888" stroke-width="1"/><rect x="5" y="7" width="9" height="1.5" rx="0.5" fill="#444"/><rect x="5" y="10" width="9" height="1.5" rx="0.5" fill="#444"/><rect x="5" y="13" width="6" height="1.5" rx="0.5" fill="#444"/></svg>
+            </span>
+            <span class="doc-name">ESPECIFICACIONES.txt</span>
+          </div>
+        </div>
+        <div class="window-statusbar">
+          <span class="status-cell">2 objeto(s)</span>
+          <span class="status-cell">8.4 KB</span>
+        </div>
+      </div>
+
+      <!-- MS Paint 98 -->
+      <div id="win-paint" class="win98-window hidden" data-id="paint" style="width: 560px; height: 410px; top: 70px; left: 160px;">
+        <div class="window-titlebar">
+          <div class="titlebar-text">
+            <span>sin título - Paint</span>
+          </div>
+          <div class="titlebar-controls">
+            <button class="win-btn win-btn-minimize">_</button>
+            <button class="win-btn win-btn-maximize">□</button>
+            <button class="win-btn win-btn-close">✕</button>
+          </div>
+        </div>
+        <div class="window-menubar">
+          <span class="menu-item">Archivo</span>
+          <span class="menu-item">Edición</span>
+          <span class="menu-item">Ver</span>
+          <span class="menu-item">Imagen</span>
+          <span class="menu-item">Colores</span>
+          <span class="menu-item">Ayuda</span>
+        </div>
+        <div style="display:flex; height:calc(100% - 75px); background:var(--win-bg);">
+          <div style="width:56px; border-right:1px solid var(--win-dark); padding:4px; display:grid; grid-template-columns:1fr 1fr; gap:2px; align-content:start;">
+            <button class="win-btn paint-tool-btn active" data-tool="pencil" title="Lápiz">✏</button>
+            <button class="win-btn paint-tool-btn" data-tool="brush" title="Pincel">🖌</button>
+            <button class="win-btn paint-tool-btn" data-tool="eraser" title="Borrador">◻</button>
+            <button class="win-btn paint-tool-btn" data-tool="bucket" title="Relleno">⌸</button>
+            <button class="win-btn paint-tool-btn" data-tool="spray" title="Aerógrafo">░</button>
+            <button class="win-btn paint-tool-btn" data-tool="line" title="Línea">╱</button>
+            <button class="win-btn paint-tool-btn" data-tool="rect" title="Rectángulo">▭</button>
+            <button id="paint-98-clear" class="win-btn" style="grid-column:span 2; font-size:9px; padding:2px;">CLR</button>
+          </div>
+          <div style="flex:1; background:#808080; padding:8px; overflow:auto; display:flex;">
+            <canvas id="paint-98-canvas" width="460" height="260" style="background:#fff; border:1px solid #000; cursor:crosshair;"></canvas>
+          </div>
+        </div>
+        <div id="paint-98-palette" style="height:32px; background:var(--win-bg); border-top:1px solid var(--win-dark); display:flex; align-items:center; padding:2px 8px; gap:2px; overflow-x:auto;"></div>
+      </div>
+
+      <!-- Windows Media Player 6.4 (mplayer2.exe) -->
+      <div id="win-media-player" class="win98-window hidden" data-id="media-player" style="width: 440px; height: 320px; top: 90px; left: 200px;">
+        <div class="window-titlebar">
+          <div class="titlebar-text">
+            <span>Reproductor multimedia - canyon.mid</span>
+          </div>
+          <div class="titlebar-controls">
+            <button class="win-btn win-btn-minimize">_</button>
+            <button class="win-btn win-btn-close">✕</button>
+          </div>
+        </div>
+        <div class="window-menubar">
+          <span class="menu-item">Archivo</span>
+          <span class="menu-item">Edición</span>
+          <span class="menu-item">Dispositivo</span>
+          <span class="menu-item">Escala</span>
+          <span class="menu-item">Ayuda</span>
+        </div>
+        <div style="background:#000; height:150px; position:relative; display:flex; flex-direction:column; align-items:center; justify-content:center;">
+          <canvas id="wmp-spectrum" width="400" height="120" style="width:100%; height:120px; display:block;"></canvas>
+          <div style="position:absolute; bottom:6px; left:12px; color:#00ff00; font-family:monospace; font-size:12px;" id="wmp-time-display">00:00 / 02:15</div>
+        </div>
+        <div style="padding:10px; background:var(--win-bg);">
+          <div style="margin-bottom:8px; display:flex; align-items:center; gap:8px;">
+            <input type="range" id="wmp-seek" min="0" max="100" value="0" style="flex:1;">
+          </div>
+          <div style="display:flex; gap:6px; justify-content:center;">
+            <button class="win-btn" id="wmp-btn-play" style="width:36px; font-weight:bold;">▶</button>
+            <button class="win-btn" id="wmp-btn-pause" style="width:36px; font-weight:bold;">⏸</button>
+            <button class="win-btn" id="wmp-btn-stop" style="width:36px; font-weight:bold;">⏹</button>
+          </div>
+        </div>
+        <div class="window-statusbar">
+          <span class="status-cell" id="wmp-status-text">Detenido</span>
+          <span class="status-cell">MIDI Stereo (44.1 kHz)</span>
+        </div>
+      </div>
+
+      <!-- Outlook Express 5 -->
+      <div id="win-outlook" class="win98-window hidden" data-id="outlook" style="width: 580px; height: 380px; top: 80px; left: 140px;">
+        <div class="window-titlebar">
+          <div class="titlebar-text">
+            <span>Bandeja de entrada - Outlook Express</span>
+          </div>
+          <div class="titlebar-controls">
+            <button class="win-btn win-btn-minimize">_</button>
+            <button class="win-btn win-btn-maximize">□</button>
+            <button class="win-btn win-btn-close">✕</button>
+          </div>
+        </div>
+        <div class="window-menubar">
+          <span class="menu-item">Archivo</span>
+          <span class="menu-item">Edición</span>
+          <span class="menu-item">Ver</span>
+          <span class="menu-item">Herramientas</span>
+          <span class="menu-item">Mensaje</span>
+          <span class="menu-item">Ayuda</span>
+        </div>
+        <div style="display:flex; height:calc(100% - 75px); background:#fff;">
+          <!-- Folders Tree -->
+          <div style="width:140px; border-right:1px solid #808080; background:#f0f0f0; padding:6px; font-size:11px;">
+            <div style="font-weight:bold; margin-bottom:4px;">Carpetas locales</div>
+            <div style="padding:2px 4px; background:#000080; color:#fff; cursor:pointer;">📥 Bandeja (3)</div>
+            <div style="padding:2px 4px; cursor:pointer;">📤 Salida</div>
+            <div style="padding:2px 4px; cursor:pointer;">📁 Enviados</div>
+            <div style="padding:2px 4px; cursor:pointer;">🗑 Eliminados</div>
+          </div>
+          <!-- Messages and Preview -->
+          <div style="flex:1; display:flex; flex-direction:column;">
+            <div style="height:120px; border-bottom:1px solid #808080; overflow-y:auto;">
+              <table style="width:100%; border-collapse:collapse; font-size:11px;">
+                <tr style="background:#e0e0e0; font-weight:bold; border-bottom:1px solid #999;">
+                  <th style="text-align:left; padding:2px 6px;">De</th>
+                  <th style="text-align:left; padding:2px 6px;">Asunto</th>
+                  <th style="text-align:left; padding:2px 6px;">Fecha</th>
+                </tr>
+                <tr class="mail-row selected" data-mail="bill" style="cursor:pointer; background:#000080; color:#fff;">
+                  <td style="padding:3px 6px;">Bill Gates</td>
+                  <td style="padding:3px 6px;">Bienvenido a Windows 98 SE</td>
+                  <td style="padding:3px 6px;">25/06/1998</td>
+                </tr>
+                <tr class="mail-row" data-mail="icq" style="cursor:pointer;">
+                  <td style="padding:3px 6px;">ICQ Alert</td>
+                  <td style="padding:3px 6px;">Tu amigo 1048291 se ha conectado</td>
+                  <td style="padding:3px 6px;">14/07/1998</td>
+                </tr>
+                <tr class="mail-row" data-mail="y2k" style="cursor:pointer;">
+                  <td style="padding:3px 6px;">Microsoft Network</td>
+                  <td style="padding:3px 6px;">Preparación ante el Efecto 2000 (Y2K)</td>
+                  <td style="padding:3px 6px;">01/08/1998</td>
+                </tr>
+              </table>
+            </div>
+            <!-- Mail Content Reader -->
+            <div id="mail-preview" style="flex:1; padding:10px; font-family:var(--win-font); font-size:12px; overflow-y:auto; background:#fff;">
+              <div style="font-weight:bold; margin-bottom:4px;" id="mail-subject">Asunto: Bienvenido a Windows 98 SE</div>
+              <div style="color:#555; margin-bottom:8px;" id="mail-from">De: Bill Gates &lt;billg@microsoft.com&gt;</div>
+              <hr style="margin-bottom:8px;">
+              <div id="mail-body">
+                Estimado usuario:<br><br>
+                Nos complace presentarte Microsoft Windows 98 Segunda Edición. Con una integración web nativa sin precedentes mediante Internet Explorer 5, DirectX 6.1 y compatibilidad avanzada con puertos USB, tu ordenador está preparado para el próximo milenio.<br><br>
+                Disfruta de la experiencia.<br><br>
+                Atentamente,<br>
+                Bill Gates - Microsoft Corporation
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Diálogo Ejecutar (Win + R) -->
+      <div id="win-run" class="win98-window hidden" data-id="run" style="width: 360px; height: 180px; top: 180px; left: 240px;">
+        <div class="window-titlebar">
+          <div class="titlebar-text">
+            <span>Ejecutar</span>
+          </div>
+          <div class="titlebar-controls">
+            <button class="win-btn win-btn-close">✕</button>
+          </div>
+        </div>
+        <div style="padding:14px; background:var(--win-bg);">
+          <p style="margin-bottom:8px; font-size:11px;">Escriba el nombre del programa, carpeta, documento o recurso de Internet que desea que Windows abra:</p>
+          <div style="display:flex; align-items:center; gap:8px; margin-bottom:14px;">
+            <label style="font-size:11px;"><u>A</u>brir:</label>
+            <input type="text" id="run-dialog-input" class="win-inset" value="notepad" style="flex:1; padding:3px 6px; font-family:monospace;">
+          </div>
+          <div style="display:flex; justify-content:flex-end; gap:6px;">
+            <button class="win-btn dialog-btn" id="run-dialog-ok">Aceptar</button>
+            <button class="win-btn dialog-btn" id="run-dialog-cancel">Cancelar</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div id="context-menu" class="context-menu win-outset hidden">
+      <div class="context-item" id="ctx-refresh">Actualizar</div>
+      <div class="context-separator"></div>
+      <div class="context-item" id="ctx-new-note">Nuevo archivo de texto</div>
+      <div class="context-separator"></div>
+      <div class="context-item" id="ctx-properties">Propiedades</div>
+    </div>
+
+  <!-- Diálogo nativo de Apagar el Sistema -->
+  <div id="shutdown-dialog" class="win98-modal hidden">
+    <div class="win98-window modal-window" style="width: 360px;">
+      <div class="window-titlebar">
+        <div class="titlebar-text">
+          <span>Apagar Windows</span>
+        </div>
+        <div class="titlebar-controls">
+          <button class="win-btn win-btn-close" id="shutdown-cancel-x">✕</button>
+        </div>
+      </div>
+      <div class="window-content shutdown-content">
+        <div class="shutdown-prompt-row">
+          <div class="shutdown-key-icon">
+            <svg viewBox="0 0 32 32" class="retro-svg">
+              <rect x="5" y="8" width="22" height="16" fill="#000080" stroke="#000"/>
+              <rect x="8" y="11" width="16" height="10" fill="#008080"/>
+              <path d="M12 24l4 5 4-5" fill="#f8e020"/>
+            </svg>
+          </div>
+          <div class="shutdown-text">
+            <p>¿Qué desea que haga el equipo?</p>
+            <div class="radio-option">
+              <input type="radio" id="shut-opt-off" name="shutdown-opt" value="shutdown">
+              <label for="shut-opt-off">Apagar el sistema</label>
+            </div>
+            <div class="radio-option">
+              <input type="radio" id="shut-opt-restart" name="shutdown-opt" value="restart" checked>
+              <label for="shut-opt-restart">Reiniciar el equipo</label>
+            </div>
+            <div class="radio-option">
+              <input type="radio" id="shut-opt-dos" name="shutdown-opt" value="dos">
+              <label for="shut-opt-dos">Reiniciar en modo MS-DOS</label>
+            </div>
+          </div>
+        </div>
+        <div class="dialog-buttons-row">
+          <button class="win-btn dialog-btn" id="btn-shutdown-confirm">Aceptar</button>
+          <button class="win-btn dialog-btn" id="btn-shutdown-cancel">Cancelar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="safe-shutdown-screen" class="safe-shutdown-screen hidden">
+    <div class="safe-shutdown-message">
+      <h1 class="safe-text">Ahora puede apagar el equipo con seguridad.</h1>
+      <p class="safe-subtext">(O presione el botón de abajo para reiniciar)</p>
+      <button id="btn-restart-pc" class="win-btn restart-screen-btn">Reiniciar equipo</button>
+    </div>
+  </div>
+
+  <!-- Barra de tareas -->
+  <footer id="taskbar" class="taskbar win-outset">
+    <button id="start-button" class="start-button win-outset" tabindex="0">
+      <div class="start-icon">
+        <svg viewBox="0 0 16 16" class="win98-logo">
+          <path fill="#ff0000" d="M1 2h6v5H1z"/>
+          <path fill="#00aa00" d="M9 2h6v5H9z"/>
+          <path fill="#0000d8" d="M1 9h6v5H1z"/>
+          <path fill="#f8f800" d="M9 9h6v5H9z"/>
+        </svg>
+      </div>
+      <span class="start-text">Inicio</span>
+    </button>
+
+    <div class="quick-launch win-inset">
+      <button class="quick-icon-btn" title="Mostrar escritorio" id="ql-desktop">
+        <img src="../assets/icons/win98/channels.png" alt="Desktop">
+      </button>
+      <button class="quick-icon-btn" title="Internet Explorer" id="ql-ie">
+        <img src="../assets/icons/win98/msie.png" alt="IE">
+      </button>
+      <button class="quick-icon-btn" title="Outlook Express" id="ql-outlook" onclick="openWindow('outlook')">
+        <img src="../assets/icons/win98/outlook.png" alt="Outlook">
+      </button>
+      <button class="quick-icon-btn" title="Reproductor multimedia" id="ql-wmp" onclick="openWindow('media-player')">
+        <img src="../assets/icons/win98/wmp.png" alt="WMP">
+      </button>
+    </div>
+
+    <div id="taskbar-windows" class="taskbar-windows"></div>
+
+    <div id="system-tray" class="system-tray win-inset">
+      <button class="tray-icon-btn" id="tray-sound-toggle" title="Sonido">
+        <img src="../assets/icons/win98/volume.png" alt="Volumen" style="width:16px; height:16px; image-rendering:pixelated;">
+      </button>
+      <div id="tray-clock" class="tray-clock">00:00 PM</div>
+    </div>
+  </footer>
+
+  <!-- Menú de Inicio -->
+  <div id="start-menu" class="start-menu win-outset hidden">
+    <div class="start-menu-banner">
+      <span class="banner-text">Windows<b>98</b></span>
+    </div>
+
+    <div class="start-menu-list">
+      <div class="start-item has-submenu" id="start-programs">
+        <span class="start-item-icon"><img src="../assets/icons/win98/settings.png" alt=""></span>
+        <span class="start-item-label"><u>P</u>rogramas</span>
+        <span class="arrow-right">▶</span>
+
+        <div class="start-submenu win-outset hidden" id="programs-submenu">
+          <div class="start-item" data-app="minesweeper">
+            <span class="start-item-icon"><img src="../assets/icons/win98/minesweeper.png" alt=""></span>
+            <span class="start-item-label">Buscaminas</span>
+          </div>
+          <div class="start-item" data-app="solitaire">
+            <span class="start-item-icon"><img src="../assets/icons/win98/solitaire.png" alt=""></span>
+            <span class="start-item-label">Solitario</span>
+          </div>
+          <div class="start-item" data-app="notepad">
+            <span class="start-item-icon"><img src="../assets/icons/win98/notepad.png" alt=""></span>
+            <span class="start-item-label">Bloc de notas</span>
+          </div>
+          <div class="start-item" data-app="paint">
+            <span class="start-item-icon"><img src="../assets/icons/win98/paint.png" alt=""></span>
+            <span class="start-item-label">Paint</span>
+          </div>
+          <div class="start-item" data-app="media-player">
+            <span class="start-item-icon"><img src="../assets/icons/win98/wmp.png" alt=""></span>
+            <span class="start-item-label">Reproductor multimedia</span>
+          </div>
+          <div class="start-item" data-app="outlook">
+            <span class="start-item-icon"><img src="../assets/icons/win98/outlook.png" alt=""></span>
+            <span class="start-item-label">Outlook Express</span>
+          </div>
+          <div class="start-item" data-app="internet-explorer">
+            <span class="start-item-icon"><img src="../assets/icons/win98/msie.png" alt=""></span>
+            <span class="start-item-label">Internet Explorer</span>
+          </div>
+          <div class="start-item" data-app="my-computer">
+            <span class="start-item-icon"><img src="../assets/icons/win98/mycomputer.png" alt=""></span>
+            <span class="start-item-label">Mi PC</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="start-item" data-app="portfolio">
+        <span class="start-item-icon"><img src="../assets/icons/win98/mydocs.png" alt=""></span>
+        <span class="start-item-label"><u>D</u>ocumentos</span>
+      </div>
+
+      <div class="start-item" data-app="display-properties">
+        <span class="start-item-icon"><img src="../assets/icons/win98/settings.png" alt=""></span>
+        <span class="start-item-label"><u>C</u>onfiguración</span>
+      </div>
+
+      <div class="start-separator"></div>
+
+      <div class="start-item" id="start-shutdown">
+        <span class="start-item-icon"><img src="../assets/icons/win98/shutdown.png" alt=""></span>
+        <span class="start-item-label"><u>A</u>pagar el sistema...</span>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

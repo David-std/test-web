@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Microsoft Windows 2000 Professional</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%233a6ea5'/><text x='1' y='22' fill='%23ffffff' font-family='sans-serif' font-weight='bold' font-size='14'>2000</text></svg>">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="w2k-desktop" id="w2k-desktop">
+
+    <!-- Desktop Icons -->
+    <div class="w2k-icons">
+      <!-- My Computer -->
+      <div class="w2k-icon" data-app="mycomputer">
+        <img src="../assets/icons/win2k/mycomputer.png" class="w2k-img" alt="My Computer">
+        <span class="w2k-label">My Computer</span>
+      </div>
+
+      <!-- My Network Places -->
+      <div class="w2k-icon" data-app="network">
+        <img src="../assets/icons/win2k/network.png" class="w2k-img" alt="My Network Places">
+        <span class="w2k-label">My Network Places</span>
+      </div>
+
+      <!-- Recycle Bin -->
+      <div class="w2k-icon" data-app="recycle">
+        <img src="../assets/icons/win2k/recycle_empty.png" class="w2k-img" alt="Recycle Bin">
+        <span class="w2k-label">Recycle Bin</span>
+      </div>
+
+      <!-- Computer Management -->
+      <div class="w2k-icon" data-app="compmgmt">
+        <img src="../assets/icons/win2k/mmc.png" class="w2k-img" alt="Management">
+        <span class="w2k-label">Management</span>
+      </div>
+
+      <!-- Command Prompt -->
+      <div class="w2k-icon" data-app="cmd">
+        <img src="../assets/icons/win2k/cmd.png" class="w2k-img" alt="Command Prompt">
+        <span class="w2k-label">Command Prompt</span>
+      </div>
+
+      <!-- Task Manager -->
+      <div class="w2k-icon" data-app="taskmgr">
+        <img src="../assets/icons/win2k/taskmgr.png" class="w2k-img" alt="Task Manager">
+        <span class="w2k-label">Task Manager</span>
+      </div>
+
+      <!-- Internet Explorer 5.5 -->
+      <div class="w2k-icon" data-app="ie">
+        <img src="../assets/icons/win2k/msie.png" class="w2k-img" alt="Internet Explorer">
+        <span class="w2k-label">Internet Explorer</span>
+      </div>
+
+      <!-- Registry Editor -->
+      <div class="w2k-icon" data-app="regedit">
+        <img src="../assets/icons/win98/regedit.png" class="w2k-img" alt="Registry Editor">
+        <span class="w2k-label">Registry Editor</span>
+      </div>
+    </div>
+
+    <!-- Command Prompt Window -->
+    <div class="w2k-window win-outset hidden" id="win-cmd" data-id="cmd" style="width: 560px; height: 350px; top: 60px; left: 180px;">
+      <div class="w2k-titlebar">
+        <span>Command Prompt - cmd.exe</span>
+        <div class="w2k-controls">
+          <button class="w2k-ctrl-btn win-outset w2k-ctrl-min">_</button>
+          <button class="w2k-ctrl-btn win-outset w2k-ctrl-close">✕</button>
+        </div>
+      </div>
+      <div class="w2k-body cmd-body" style="padding:10px;">
+        <p>Microsoft Windows 2000 [Version 5.00.2195]</p>
+        <p>(C) Copyright 1985-2000 Microsoft Corp.</p>
+        <p style="margin-bottom:8px; color:#888;">Type 'help' to see available commands.</p>
+        <div id="cmd-output"></div>
+        <div style="display:flex;">
+          <span id="cmd-prompt-label">C:\WINNT\system32&gt;&nbsp;</span>
+          <input type="text" id="cmd-input" class="cmd-input" autofocus spellcheck="false">
+        </div>
+      </div>
+    </div>
+
+    <!-- Computer Management MMC Window -->
+    <div class="w2k-window win-outset hidden" id="win-compmgmt" data-id="compmgmt" style="width: 600px; height: 380px; top: 40px; left: 140px;">
+      <div class="w2k-titlebar">
+        <span>Computer Management (Local)</span>
+        <div class="w2k-controls">
+          <button class="w2k-ctrl-btn win-outset w2k-ctrl-min">_</button>
+          <button class="w2k-ctrl-btn win-outset w2k-ctrl-close">✕</button>
+        </div>
+      </div>
+      <div class="w2k-menubar">
+        <span>Action</span>
+        <span>View</span>
+        <span>Help</span>
+      </div>
+      <div class="w2k-body" style="display:flex; height:calc(100% - 40px);">
+        <!-- MMC Left Tree -->
+        <div style="width:200px; border-right:1px solid #808080; background:#fff; overflow:auto; padding:6px; font-family:var(--w2k-font);">
+          <div style="font-weight:bold; margin-bottom:6px;">Computer Management (Local)</div>
+          <div class="mmc-item active" data-view="sysinfo">├─ System Information</div>
+          <div class="mmc-item" data-view="devmgr">├─ Device Manager</div>
+          <div class="mmc-item" data-view="eventlog">├─ Event Viewer</div>
+          <div class="mmc-item" data-view="disk">└─ Disk Management</div>
+        </div>
+        <!-- MMC Right Details -->
+        <div id="mmc-detail-pane" style="flex:1; padding:12px; background:#fff; overflow:auto;">
+          <!-- Dynamically filled by script -->
+        </div>
+      </div>
+    </div>
+
+    <!-- My Computer Window -->
+    <div class="w2k-window win-outset hidden" id="win-mycomputer" data-id="mycomputer" style="width: 480px; height: 300px; top: 90px; left: 160px;">
+      <div class="w2k-titlebar">
+        <span>My Computer</span>
+        <div class="w2k-controls">
+          <button class="w2k-ctrl-btn win-outset w2k-ctrl-min">_</button>
+          <button class="w2k-ctrl-btn win-outset w2k-ctrl-close">✕</button>
+        </div>
+      </div>
+      <div class="w2k-menubar">
+        <span>File</span>
+        <span>Edit</span>
+        <span>View</span>
+        <span>Favorites</span>
+        <span>Tools</span>
+        <span>Help</span>
+      </div>
+      <div style="background:#d4d0c8; padding:3px 8px; border-bottom:1px solid #808080; display:flex; align-items:center; gap:6px;">
+        <span style="color:#555;">Address</span>
+        <input type="text" value="My Computer" readonly style="flex:1; padding:2px 4px; font-size:11px; background:#fff; border:1px inset #808080;">
+      </div>
+      <div class="w2k-body" style="padding:16px; display:flex; flex-wrap:wrap; gap:16px;">
+        <div class="w2k-drive-item" title="Capacity: 1.44 MB">
+          <svg viewBox="0 0 32 32" class="w2k-img">
+            <rect x="4" y="6" width="24" height="20" fill="#c0c0c0" stroke="#000"/>
+            <rect x="7" y="10" width="18" height="4" fill="#000"/>
+          </svg>
+          <div>3½ Floppy (A:)</div>
+        </div>
+        <div class="w2k-drive-item" title="Capacity: 20 GB (NTFS)">
+          <svg viewBox="0 0 32 32" class="w2k-img">
+            <rect x="4" y="6" width="24" height="20" fill="#e0e0e0" stroke="#000"/>
+            <rect x="7" y="10" width="18" height="12" fill="#000080"/>
+            <text x="9" y="19" fill="#fff" font-size="8">NTFS</text>
+          </svg>
+          <div>Local Disk (C:)</div>
+        </div>
+        <div class="w2k-drive-item" title="CDFS Compact Disc">
+          <svg viewBox="0 0 32 32" class="w2k-img">
+            <circle cx="16" cy="16" r="12" fill="#e0e0e0" stroke="#000"/>
+            <circle cx="16" cy="16" r="4" fill="#fff" stroke="#000"/>
+          </svg>
+          <div>Compact Disc (D:)</div>
+        </div>
+        <div class="w2k-drive-item" title="Control Panel">
+          <svg viewBox="0 0 32 32" class="w2k-img">
+            <rect x="4" y="4" width="24" height="24" rx="2" fill="#fff" stroke="#000"/>
+            <circle cx="16" cy="16" r="6" fill="#808080" stroke="#000"/>
+          </svg>
+          <div>Control Panel</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Notepad Window -->
+    <div class="w2k-window win-outset hidden" id="win-notepad" data-id="notepad" style="width: 440px; height: 280px; top: 110px; left: 220px;">
+      <div class="w2k-titlebar">
+        <span>Notepad - README.TXT</span>
+        <div class="w2k-controls">
+          <button class="w2k-ctrl-btn win-outset w2k-ctrl-min">_</button>
+          <button class="w2k-ctrl-btn win-outset w2k-ctrl-close">✕</button>
+        </div>
+      </div>
+      <div class="w2k-menubar">
+        <span>File</span>
+        <span>Edit</span>
+        <span>Format</span>
+        <span>Help</span>
+      </div>
+      <div class="w2k-body" style="padding:0;">
+        <textarea style="width:100%; height:100%; border:none; resize:none; padding:8px; font-family:monospace; outline:none;" spellcheck="false">Microsoft Windows 2000 Professional
+Built on NT Technology 5.0.
+
+Windows 2000 combines the reliability and security of Windows NT with the ease of use and Plug and Play capabilities of Windows 98.
+Features include Active Directory support, NTFS 3.0, and Computer Management MMC.</textarea>
+      </div>
+    </div>
+
+    <!-- Windows 2000 Task Manager Window -->
+    <div class="w2k-window win-outset hidden" id="win-taskmgr" data-id="taskmgr" style="width: 460px; height: 380px; top: 70px; left: 180px;">
+      <div class="w2k-titlebar">
+        <span>Windows Task Manager</span>
+        <div class="w2k-controls">
+          <button class="w2k-ctrl-btn win-outset w2k-ctrl-min">_</button>
+          <button class="w2k-ctrl-btn win-outset w2k-ctrl-close">✕</button>
+        </div>
+      </div>
+      <div class="w2k-menubar">
+        <span><u>F</u>ile</span>
+        <span><u>O</u>ptions</span>
+        <span><u>V</u>iew</span>
+        <span><u>W</u>indows</span>
+        <span><u>H</u>elp</span>
+      </div>
+      <!-- Task Manager Tabs -->
+      <div style="display:flex; gap:4px; padding:4px 6px 0 6px; background:#d4d0c8; border-bottom:1px solid #808080;">
+        <button class="win-outset taskmgr-tab active" data-tab="perf" style="padding:2px 8px; font-size:11px; cursor:pointer;">Performance</button>
+        <button class="win-outset taskmgr-tab" data-tab="apps" style="padding:2px 8px; font-size:11px; cursor:pointer;">Applications</button>
+        <button class="win-outset taskmgr-tab" data-tab="procs" style="padding:2px 8px; font-size:11px; cursor:pointer;">Processes</button>
+      </div>
+      <!-- Tab 1: Performance -->
+      <div id="w2k-taskmgr-perf" class="w2k-body" style="padding:10px; background:#d4d0c8; height:calc(100% - 90px);">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; height:100%;">
+          <div style="border:2px inset #fff; padding:6px; background:#000; display:flex; flex-direction:column;">
+            <div style="color:#00ff00; font-size:10px; font-family:monospace; margin-bottom:4px;">CPU Usage: <span id="w2k-cpu-pct">18%</span></div>
+            <canvas id="w2k-cpu-canvas" width="180" height="150" style="flex:1; width:100%; display:block;"></canvas>
+          </div>
+          <div style="border:2px inset #fff; padding:6px; background:#000; display:flex; flex-direction:column;">
+            <div style="color:#00ff00; font-size:10px; font-family:monospace; margin-bottom:4px;">MEM Usage: 84 MB / 256 MB</div>
+            <div style="flex:1; display:flex; align-items:flex-end; padding:6px;">
+              <div style="width:100%; height:33%; background:#00ff00;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Tab 2: Applications -->
+      <div id="w2k-taskmgr-apps" class="w2k-body hidden" style="padding:8px; background:#fff; height:calc(100% - 90px); overflow-y:auto;">
+        <table style="width:100%; font-size:11px; border-collapse:collapse;">
+          <tr style="background:#e0e0e0; font-weight:bold; border-bottom:1px solid #808080;">
+            <th style="text-align:left; padding:2px;">Task</th>
+            <th style="text-align:left; padding:2px;">Status</th>
+          </tr>
+          <tr><td style="padding:3px;">Command Prompt</td><td style="color:#008000;">Running</td></tr>
+          <tr><td style="padding:3px;">Computer Management</td><td style="color:#008000;">Running</td></tr>
+          <tr><td style="padding:3px;">Notepad</td><td style="color:#008000;">Running</td></tr>
+        </table>
+      </div>
+      <!-- Tab 3: Processes -->
+      <div id="w2k-taskmgr-procs" class="w2k-body hidden" style="padding:8px; background:#fff; height:calc(100% - 90px); overflow-y:auto;">
+        <table style="width:100%; font-size:11px; border-collapse:collapse; font-family:monospace;">
+          <tr style="background:#e0e0e0; font-weight:bold; border-bottom:1px solid #808080;">
+            <th style="text-align:left; padding:2px;">Image Name</th>
+            <th style="text-align:right; padding:2px;">PID</th>
+            <th style="text-align:right; padding:2px;">CPU</th>
+            <th style="text-align:right; padding:2px;">Mem Usage</th>
+          </tr>
+          <tr><td>System</td><td style="text-align:right;">8</td><td style="text-align:right;">00</td><td style="text-align:right;">216 K</td></tr>
+          <tr><td>smss.exe</td><td style="text-align:right;">144</td><td style="text-align:right;">00</td><td style="text-align:right;">348 K</td></tr>
+          <tr><td>csrss.exe</td><td style="text-align:right;">172</td><td style="text-align:right;">01</td><td style="text-align:right;">1,840 K</td></tr>
+          <tr><td>explorer.exe</td><td style="text-align:right;">248</td><td style="text-align:right;">02</td><td style="text-align:right;">6,220 K</td></tr>
+          <tr><td>taskmgr.exe</td><td style="text-align:right;">312</td><td style="text-align:right;">03</td><td style="text-align:right;">2,100 K</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- Internet Explorer 5.5 Window -->
+    <div class="w2k-window win-outset hidden" id="win-ie" data-id="ie" style="width: 620px; height: 420px; top: 50px; left: 130px;">
+      <div class="w2k-titlebar">
+        <span>Microsoft Windows Update - Internet Explorer</span>
+        <div class="w2k-controls">
+          <button class="w2k-ctrl-btn win-outset w2k-ctrl-min">_</button>
+          <button class="w2k-ctrl-btn win-outset w2k-ctrl-close">✕</button>
+        </div>
+      </div>
+      <div class="w2k-menubar">
+        <span>File</span>
+        <span>Edit</span>
+        <span>View</span>
+        <span>Favorites</span>
+        <span>Tools</span>
+        <span>Help</span>
+      </div>
+      <div style="background:#d4d0c8; padding:4px 8px; display:flex; align-items:center; gap:6px; border-bottom:1px solid #808080; font-size:11px;">
+        <span>Address:</span>
+        <input type="text" value="http://windowsupdate.microsoft.com/" class="win-inset" style="flex:1; padding:2px 6px; font-family:monospace;" readonly>
+      </div>
+      <div class="w2k-body" style="padding:16px; background:#ffffff; font-family:Arial, sans-serif; overflow-y:auto; height:calc(100% - 80px);">
+        <div style="display:flex; align-items:center; gap:12px; border-bottom:2px solid #000080; padding-bottom:8px; margin-bottom:14px;">
+          <h1 style="color:#000080; font-size:24px; font-weight:bold; font-family:'Times New Roman', serif;">Microsoft Windows Update</h1>
+        </div>
+        <div style="background:#eaf2ff; border:1px solid #b0c8f0; padding:12px; margin-bottom:16px; font-size:12px;">
+          <h3 style="color:#003399; margin-bottom:6px;">Windows 2000 Service Pack 4 Status</h3>
+          <p>Your system is running Microsoft Windows 2000 Professional with Service Pack 4 (Build 2195).</p>
+          <p style="margin-top:6px; color:#008000; font-weight:bold;">✓ All critical security updates are installed.</p>
+        </div>
+        <div style="font-size:12px; line-height:1.6;">
+          <h4 style="color:#000080;">Product Highlights for IT Professionals:</h4>
+          <ul>
+            <li>Active Directory enterprise directory services.</li>
+            <li>Kerberos security authentication and Encrypting File System (EFS).</li>
+            <li>Plug and Play hardware architecture with ACPI power management.</li>
+            <li>Internet Information Services (IIS) 5.0 web server.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recycle Bin Window -->
+    <div class="w2k-window win-outset hidden" id="win-recycle" data-id="recycle" style="width: 460px; height: 290px; top: 100px; left: 190px;">
+      <div class="w2k-titlebar">
+        <span>Recycle Bin</span>
+        <div class="w2k-controls">
+          <button class="w2k-ctrl-btn win-outset w2k-ctrl-min">_</button>
+          <button class="w2k-ctrl-btn win-outset w2k-ctrl-close">✕</button>
+        </div>
+      </div>
+      <div class="w2k-menubar">
+        <span><u>F</u>ile</span>
+        <span><u>E</u>dit</span>
+        <span><u>V</u>iew</span>
+        <span><u>H</u>elp</span>
+      </div>
+      <div class="w2k-body" style="padding:14px; background:#fff; height:calc(100% - 46px);">
+        <p style="color:#555;">0 object(s) in Recycle Bin</p>
+      </div>
+    </div>
+
+    <!-- My Network Places Window -->
+    <div class="w2k-window win-outset hidden" id="win-network" data-id="network" style="width: 480px; height: 300px; top: 80px; left: 170px;">
+      <div class="w2k-titlebar">
+        <span>My Network Places</span>
+        <div class="w2k-controls">
+          <button class="w2k-ctrl-btn win-outset w2k-ctrl-min">_</button>
+          <button class="w2k-ctrl-btn win-outset w2k-ctrl-close">✕</button>
+        </div>
+      </div>
+      <div class="w2k-menubar">
+        <span><u>F</u>ile</span>
+        <span><u>E</u>dit</span>
+        <span><u>V</u>iew</span>
+        <span><u>H</u>elp</span>
+      </div>
+      <div class="w2k-body" style="padding:16px; background:#fff; display:flex; gap:20px;">
+        <div style="text-align:center; cursor:pointer;" onclick="alert('Entire Network: Microsoft Windows Network (Active Directory)')">
+          <img src="../assets/icons/win2k/network.png" style="width:32px; height:32px; display:block; margin:0 auto 4px;" alt="">
+          <span>Entire Network</span>
+        </div>
+        <div style="text-align:center; cursor:pointer;" onclick="alert('Computers Near Me: 3 Domain Controllers connected')">
+          <img src="../assets/icons/win2k/mycomputer.png" style="width:32px; height:32px; display:block; margin:0 auto 4px;" alt="">
+          <span>Computers Near Me</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Registry Editor Window -->
+    <div class="w2k-window win-outset hidden" id="win-regedit" data-id="regedit" style="width: 540px; height: 360px; top: 60px; left: 150px;">
+      <div class="w2k-titlebar">
+        <span>Registry Editor</span>
+        <div class="w2k-controls">
+          <button class="w2k-ctrl-btn win-outset w2k-ctrl-min">_</button>
+          <button class="w2k-ctrl-btn win-outset w2k-ctrl-close">✕</button>
+        </div>
+      </div>
+      <div class="w2k-menubar">
+        <span>Registry</span>
+        <span>Edit</span>
+        <span>View</span>
+        <span>Favorites</span>
+        <span>Help</span>
+      </div>
+      <div class="w2k-body" style="display:flex; height:calc(100% - 44px); font-family:monospace; font-size:11px; background:#fff;">
+        <div style="width:210px; border-right:1px solid #808080; padding:6px; overflow:auto;">
+          <div style="font-weight:bold;">My Computer</div>
+          <div style="padding-left:10px;">├─ HKEY_CLASSES_ROOT</div>
+          <div style="padding-left:10px;">├─ HKEY_CURRENT_USER</div>
+          <div style="padding-left:10px; color:#000080; font-weight:bold;">└┬ HKEY_LOCAL_MACHINE</div>
+          <div style="padding-left:24px;">├─ HARDWARE</div>
+          <div style="padding-left:24px;">├─ SAM</div>
+          <div style="padding-left:24px;">├─ SECURITY</div>
+          <div style="padding-left:24px; color:#000080;">└┬ SOFTWARE</div>
+          <div style="padding-left:36px; font-weight:bold;">└─ Microsoft</div>
+        </div>
+        <div style="flex:1; padding:8px; overflow:auto;">
+          <table style="width:100%; border-collapse:collapse; font-size:11px;">
+            <tr style="border-bottom:1px solid #808080; text-align:left;">
+              <th>Name</th>
+              <th>Type</th>
+              <th>Data</th>
+            </tr>
+            <tr><td>(Default)</td><td>REG_SZ</td><td>(value not set)</td></tr>
+            <tr><td>ProductName</td><td>REG_SZ</td><td>Microsoft Windows 2000 Professional</td></tr>
+            <tr><td>CurrentBuild</td><td>REG_SZ</td><td>2195</td></tr>
+            <tr><td>CSDVersion</td><td>REG_SZ</td><td>Service Pack 4</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Windows 2000 Taskbar -->
+  <footer class="w2k-taskbar win-outset">
+    <button class="w2k-start-btn win-outset" id="w2k-start-btn">
+      <svg viewBox="0 0 16 16" width="14" height="14">
+        <path fill="#ff0000" d="M1 2h6v5H1z"/>
+        <path fill="#00aa00" d="M9 2h6v5H9z"/>
+        <path fill="#0000d8" d="M1 9h6v5H1z"/>
+        <path fill="#f8f800" d="M9 9h6v5H9z"/>
+      </svg>
+      <span>Start</span>
+    </button>
+
+    <div class="w2k-tabs" id="w2k-tabs"></div>
+
+    <div class="w2k-tray win-inset">
+      <svg viewBox="0 0 16 16" width="14" height="14">
+        <path d="M3 5h3l4-3v12l-4-3H3z" fill="#000"/>
+        <path d="M12 5c1 1.5 1 4.5 0 6" stroke="#000" fill="none"/>
+      </svg>
+      <span id="w2k-clock">00:00 PM</span>
+    </div>
+  </footer>
+
+  <!-- Start Menu -->
+  <div class="w2k-start-menu win-outset hidden" id="w2k-start-menu">
+    <div class="w2k-banner">
+      <span class="w2k-banner-text">Windows 2000 Professional</span>
+    </div>
+    <div class="w2k-menu-list">
+      <div class="w2k-menu-item" data-app="cmd">
+        <img src="../assets/icons/win2k/cmd.png" alt="">
+        <span><u>P</u>rograms</span>
+      </div>
+
+      <div class="w2k-menu-item" data-app="compmgmt">
+        <img src="../assets/icons/win2k/mmc.png" alt="">
+        <span><u>M</u>anagement</span>
+      </div>
+
+      <div class="w2k-menu-item" data-app="mycomputer">
+        <img src="../assets/icons/win2k/mycomputer.png" alt="">
+        <span><u>D</u>ocuments</span>
+      </div>
+
+      <div class="w2k-menu-item" data-app="notepad">
+        <img src="../assets/icons/win2k/notepad.png" alt="">
+        <span><u>N</u>otepad</span>
+      </div>
+
+      <div class="w2k-menu-item" data-app="taskmgr">
+        <img src="../assets/icons/win2k/taskmgr.png" alt="">
+        <span><u>T</u>ask Manager</span>
+      </div>
+
+      <div class="w2k-menu-item" data-app="regedit">
+        <img src="../assets/icons/win98/regedit.png" alt="">
+        <span><u>R</u>egistry Editor</span>
+      </div>
+
+      <div class="w2k-menu-item" data-app="compmgmt">
+        <img src="../assets/icons/win2k/settings.png" alt="">
+        <span><u>S</u>ettings</span>
+      </div>
+
+      <div style="height:1px; background:#808080; margin:2px 0;"></div>
+
+      <div class="w2k-menu-item" id="w2k-menu-shutdown">
+        <img src="../assets/icons/win2k/shutdown.png" alt="">
+        <span>Sh<u>u</u>t Down...</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Shut Down Windows Dialog -->
+  <div id="w2k-shutdown-dialog" class="hidden" style="position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.4); display:flex; align-items:center; justify-content:center; z-index:100000;">
+    <div class="w2k-window win-outset" style="width:360px; position:static;">
+      <div class="w2k-titlebar">
+        <span>Shut Down Windows</span>
+      </div>
+      <div style="padding:14px; background:#d4d0c8; color:#000;">
+        <p style="font-weight:bold; margin-bottom:12px;">What do you want the computer to do?</p>
+        <div style="margin-bottom:14px;">
+          <label style="display:block; margin-bottom:6px;">
+            <input type="radio" name="w2k-shut-opt" value="shutdown"> Shut down
+          </label>
+          <label style="display:block; margin-bottom:6px;">
+            <input type="radio" name="w2k-shut-opt" value="reboot" checked> Restart
+          </label>
+          <label style="display:block;">
+            <input type="radio" name="w2k-shut-opt" value="logoff"> Log off Administrator
+          </label>
+        </div>
+        <div style="display:flex; justify-content:flex-end; gap:8px;">
+          <button id="btn-w2k-shut-ok" class="win-outset" style="padding:3px 14px; cursor:pointer;">OK</button>
+          <button id="btn-w2k-shut-cancel" class="win-outset" style="padding:3px 14px; cursor:pointer;">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Microsoft Windows Vista Ultimate</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='14' fill='%230044aa'/><path d='M10 10l6 12 6-12' stroke='%2300ffff' stroke-width='3' fill='none'/></svg>">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="vista-desktop" id="vista-desktop">
+
+    <!-- Windows Sidebar con Gadgets en vivo -->
+    <div class="vista-sidebar">
+      <!-- Gadget 1: Reloj analógico -->
+      <div class="vista-gadget">
+        <canvas id="vista-clock-canvas" width="100" height="100"></canvas>
+      </div>
+
+      <!-- Gadget 2: El Tiempo -->
+      <div class="vista-gadget" id="vista-weather-gadget" style="cursor:pointer;" title="Click to refresh weather">
+        <div style="font-size:10px; color:#80c0ff; font-weight:600;">Madrid</div>
+        <div style="display:flex; align-items:center; justify-content:center; gap:6px; margin:4px 0;">
+          <svg viewBox="0 0 32 32" width="28" height="28">
+            <circle cx="12" cy="12" r="6" fill="#f59e0b"/>
+            <path d="M10 24 h14 a5 5 0 0 0 0 -10 a7 7 0 0 0 -13 -2 a5 5 0 0 0 -1 12 z" fill="#ffffff" opacity="0.9"/>
+          </svg>
+          <span style="font-size:20px; font-weight:bold;">21°C</span>
+        </div>
+        <div style="font-size:10px; color:#ddd;">Partly Cloudy</div>
+      </div>
+
+      <!-- Gadget 3: Medidor de CPU y Memoria (Dual Dial) -->
+      <div class="vista-gadget">
+        <div style="font-size:10px; color:#80c0ff; font-weight:600; margin-bottom:4px;">CPU &amp; RAM METER</div>
+        <div style="display:flex; justify-content:space-around;">
+          <!-- CPU Dial -->
+          <div style="text-align:center;">
+            <svg viewBox="0 0 50 50" width="46" height="46">
+              <circle cx="25" cy="25" r="22" fill="#111" stroke="#38bdf8" stroke-width="2"/>
+              <path d="M10 35 A 18 18 0 1 1 40 35" fill="none" stroke="#222" stroke-width="4"/>
+              <line id="vista-cpu-needle" x1="25" y1="25" x2="25" y2="8" stroke="#ff3b30" stroke-width="2" stroke-linecap="round"/>
+              <circle cx="25" cy="25" r="3" fill="#fff"/>
+            </svg>
+            <div style="font-size:9px; font-weight:bold;" id="vista-cpu-text">CPU 28%</div>
+          </div>
+          <!-- RAM Dial -->
+          <div style="text-align:center;">
+            <svg viewBox="0 0 50 50" width="46" height="46">
+              <circle cx="25" cy="25" r="22" fill="#111" stroke="#34d399" stroke-width="2"/>
+              <path d="M10 35 A 18 18 0 1 1 40 35" fill="none" stroke="#222" stroke-width="4"/>
+              <line id="vista-ram-needle" x1="25" y1="25" x2="25" y2="8" stroke="#34d399" stroke-width="2" stroke-linecap="round"/>
+              <circle cx="25" cy="25" r="3" fill="#fff"/>
+            </svg>
+            <div style="font-size:9px; font-weight:bold;" id="vista-ram-text">RAM 45%</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Gadget 4: Diapositivas Slide Show -->
+      <div class="vista-gadget">
+        <div style="font-size:10px; color:#80c0ff; font-weight:600; margin-bottom:4px;">Slide Show</div>
+        <div id="vista-slideshow-box" style="width:108px; height:68px; background:#000; border-radius:4px; overflow:hidden; border:1px solid rgba(255,255,255,0.3); position:relative;">
+          <svg id="vista-slide-svg" viewBox="0 0 120 75" style="width:100%; height:100%; display:block;">
+            <rect width="120" height="75" fill="#0284c7"/>
+            <circle cx="95" cy="20" r="10" fill="#f59e0b"/>
+            <polygon points="0,75 40,35 70,75" fill="#047857"/>
+            <polygon points="50,75 85,25 120,75" fill="#065f46"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- Iconos del escritorio -->
+    <div class="vista-icons">
+      <!-- Computer -->
+      <div class="vista-icon" data-win="win-computer">
+        <img src="../assets/icons/winvista/computer.png" class="vista-icon-img" alt="Computer">
+        <span class="vista-icon-label">Computer</span>
+      </div>
+
+      <!-- Recycle Bin -->
+      <div class="vista-icon" data-win="win-recycle">
+        <img src="../assets/icons/winvista/recycle_empty.png" class="vista-icon-img" alt="Recycle Bin">
+        <span class="vista-icon-label">Recycle Bin</span>
+      </div>
+
+      <!-- Windows Photo Gallery -->
+      <div class="vista-icon" data-win="win-gallery">
+        <img src="../assets/icons/winvista/gallery.png" class="vista-icon-img" alt="Photo Gallery">
+        <span class="vista-icon-label">Photo Gallery</span>
+      </div>
+
+      <!-- Windows Media Center -->
+      <div class="vista-icon" data-win="win-mediacenter">
+        <img src="../assets/icons/winvista/mediacenter.png" class="vista-icon-img" alt="Media Center">
+        <span class="vista-icon-label">Media Center</span>
+      </div>
+
+      <!-- Internet Explorer 7 -->
+      <div class="vista-icon" data-win="win-ie">
+        <img src="../assets/icons/winvista/msie.png" class="vista-icon-img" alt="Internet Explorer">
+        <span class="vista-icon-label">Internet Explorer</span>
+      </div>
+    </div>
+
+    <!-- Windows Photo Gallery Window -->
+    <div class="vista-window hidden" id="win-gallery" style="width: 580px; height: 390px; top: 40px; left: 140px;">
+      <div class="vista-titlebar">
+        <span>Windows Photo Gallery</span>
+        <div class="vista-controls">
+          <button class="vista-ctrl-btn vista-ctrl-min">─</button>
+          <button class="vista-ctrl-btn vista-ctrl-close">✕</button>
+        </div>
+      </div>
+      <div style="background:#f0f4fa; padding:4px 10px; border-bottom:1px solid #d0d8e8; display:flex; gap:12px; font-size:11px;">
+        <span style="font-weight:bold; color:#1a3a60;">File</span>
+        <span>Fix</span>
+        <span>Info</span>
+        <span>Print</span>
+        <span>E-mail</span>
+        <span>Make a Movie</span>
+      </div>
+      <div class="vista-body" style="background:#111; display:flex; flex-direction:column; height:calc(100% - 70px);">
+        <!-- Active Photo Viewer -->
+        <div style="flex:1; display:flex; align-items:center; justify-content:center; padding:10px; overflow:hidden;">
+          <div id="gallery-main-view" style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; transition:transform 0.2s ease;">
+            <!-- SVG image rendered here -->
+          </div>
+        </div>
+        <!-- Bottom Controls Bar -->
+        <div style="background:rgba(20,30,45,0.95); padding:8px 14px; display:flex; justify-content:space-between; align-items:center; border-top:1px solid rgba(255,255,255,0.15);">
+          <div style="display:flex; gap:8px;">
+            <button id="btn-gallery-prev" class="vista-tool-btn" title="Previous Picture">◄</button>
+            <button id="btn-gallery-play" class="vista-tool-btn" title="Play Slide Show">▶</button>
+            <button id="btn-gallery-next" class="vista-tool-btn" title="Next Picture">►</button>
+          </div>
+          <span id="gallery-pic-title" style="color:#fff; font-size:11px;">Desert Landscape.jpg</span>
+          <div style="display:flex; gap:8px;">
+            <button id="btn-gallery-rot-l" class="vista-tool-btn" title="Rotate Left">↺</button>
+            <button id="btn-gallery-rot-r" class="vista-tool-btn" title="Rotate Right">↻</button>
+            <button id="btn-gallery-zoom-in" class="vista-tool-btn" title="Zoom In">+</button>
+            <button id="btn-gallery-zoom-out" class="vista-tool-btn" title="Zoom Out">−</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Computer Window -->
+    <div class="vista-window hidden" id="win-computer" style="width: 520px; height: 340px; top: 70px; left: 180px;">
+      <div class="vista-titlebar">
+        <span>Computer</span>
+        <div class="vista-controls">
+          <button class="vista-ctrl-btn vista-ctrl-min">─</button>
+          <button class="vista-ctrl-btn vista-ctrl-close">✕</button>
+        </div>
+      </div>
+      <!-- Vista Breadcrumb Address Bar -->
+      <div style="background:#f4f6fa; padding:4px 8px; border-bottom:1px solid #d4dbe8; display:flex; align-items:center; gap:6px;">
+        <button class="vista-nav-btn">◄</button>
+        <button class="vista-nav-btn">►</button>
+        <div style="flex:1; background:#fff; border:1px solid #b8c4d8; border-radius:3px; padding:3px 8px; font-size:11px; display:flex; align-items:center; gap:4px;">
+          <span>Computer</span>
+          <span style="color:#888;">&gt;</span>
+        </div>
+        <input type="text" placeholder="Search Computer" style="width:140px; padding:3px 8px; font-size:11px; border:1px solid #b8c4d8; border-radius:3px; outline:none;">
+      </div>
+      <div class="vista-body" style="padding:16px;">
+        <div style="font-weight:600; color:#1a3a60; margin-bottom:12px;">Hard Disk Drives (1)</div>
+        <div style="display:flex; align-items:center; gap:12px; background:#f0f4fa; padding:12px; border-radius:4px; width:320px; border:1px solid #d8e2f0;">
+          <svg viewBox="0 0 32 32" width="36" height="36">
+            <rect x="3" y="6" width="26" height="20" rx="3" fill="#3b82f6" stroke="#1d4ed8"/>
+            <rect x="6" y="9" width="20" height="6" fill="#fff" opacity="0.8"/>
+            <circle cx="16" cy="20" r="3" fill="#1d4ed8"/>
+          </svg>
+          <div style="flex:1;">
+            <div><strong>Local Disk (C:)</strong></div>
+            <div style="height:10px; background:#e2e8f0; border-radius:5px; overflow:hidden; margin:5px 0;">
+              <div style="width:48%; height:100%; background:linear-gradient(90deg, #38bdf8, #0284c7);"></div>
+            </div>
+            <small style="color:#64748b;">58.4 GB free of 119 GB</small>
+          </div>
+        </div>
+
+        <div style="font-weight:600; color:#1a3a60; margin:16px 0 10px;">Devices with Removable Storage (1)</div>
+        <div style="display:flex; align-items:center; gap:12px; background:#f0f4fa; padding:12px; border-radius:4px; width:320px; border:1px solid #d8e2f0;">
+          <svg viewBox="0 0 32 32" width="36" height="36">
+            <circle cx="16" cy="16" r="13" fill="#e2e8f0" stroke="#64748b"/>
+            <circle cx="16" cy="16" r="4" fill="#fff" stroke="#64748b"/>
+          </svg>
+          <div>
+            <div><strong>CD-RW Drive (D:)</strong></div>
+            <small style="color:#64748b;">CDFS Optical Disc</small>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Windows Media Center Window -->
+    <div class="vista-window hidden" id="win-mediacenter" style="width: 620px; height: 400px; top: 50px; left: 160px;">
+      <div class="vista-titlebar">
+        <span>Windows Media Center</span>
+        <div class="vista-controls">
+          <button class="vista-ctrl-btn vista-ctrl-min">─</button>
+          <button class="vista-ctrl-btn vista-ctrl-close">✕</button>
+        </div>
+      </div>
+      <div class="vista-body" style="background:#021533; color:#fff; overflow:hidden; position:relative; display:flex; flex-direction:column; justify-content:center; align-items:center;">
+        <div style="position:absolute; top:20px; left:30px; font-size:28px; font-weight:300; letter-spacing:1px; color:#38bdf8;">media center</div>
+        <div class="mediacenter-strip">
+          <div class="mc-item active">TV + Movies</div>
+          <div class="mc-item">Music</div>
+          <div class="mc-item">Pictures + Videos</div>
+          <div class="mc-item">Tasks</div>
+          <div class="mc-item">Sports</div>
+        </div>
+        <div style="color:#94a3b8; font-size:12px; margin-top:20px;">Use arrow keys or click to navigate categories</div>
+      </div>
+    </div>
+
+    <!-- Recycle Bin Window -->
+    <div class="vista-window hidden" id="win-recycle" style="width: 500px; height: 320px; top: 80px; left: 180px;">
+      <div class="vista-titlebar">
+        <span>Recycle Bin</span>
+        <div class="vista-controls">
+          <button class="vista-ctrl-btn vista-ctrl-min">─</button>
+          <button class="vista-ctrl-btn vista-ctrl-close">✕</button>
+        </div>
+      </div>
+      <div style="background:#f4f6fa; padding:4px 8px; border-bottom:1px solid #d4dbe8; display:flex; gap:12px; font-size:11px;">
+        <span id="vista-empty-recycle" style="cursor:pointer; color:#1a3a60; font-weight:600;">Empty the Recycle Bin</span>
+        <span>Restore all items</span>
+      </div>
+      <div class="vista-body" style="padding:16px; background:#fff; height:calc(100% - 64px);">
+        <p style="color:#666;" id="vista-recycle-msg">This folder is empty.</p>
+      </div>
+    </div>
+
+    <!-- Internet Explorer 7 Window -->
+    <div class="vista-window hidden" id="win-ie" style="width: 640px; height: 420px; top: 60px; left: 160px;">
+      <div class="vista-titlebar">
+        <span>MSN.com - Windows Internet Explorer</span>
+        <div class="vista-controls">
+          <button class="vista-ctrl-btn vista-ctrl-min">─</button>
+          <button class="vista-ctrl-btn vista-ctrl-close">✕</button>
+        </div>
+      </div>
+      <!-- IE7 Nav Bar -->
+      <div style="background:#eaf0f8; padding:6px 10px; display:flex; align-items:center; gap:8px; border-bottom:1px solid #c0d0e8;">
+        <button class="vista-nav-btn">◄</button>
+        <button class="vista-nav-btn">►</button>
+        <input type="text" value="http://www.msn.com/" readonly style="flex:1; padding:4px 8px; font-size:11px; border:1px solid #8ba4c4; border-radius:2px; background:#fff;">
+        <button style="padding:3px 10px; background:#38bdf8; color:#fff; border:none; border-radius:3px; cursor:pointer; font-weight:bold; font-size:11px;">Go</button>
+      </div>
+      <div class="vista-body" style="padding:16px; background:#ffffff; overflow-y:auto; height:calc(100% - 75px); font-family:Arial, sans-serif;">
+        <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:2px solid #0044aa; padding-bottom:10px; margin-bottom:14px;">
+          <h1 style="color:#0044aa; font-size:24px; font-weight:300;">msn<span style="color:#ff3300;">.</span></h1>
+          <input type="text" placeholder="Live Search..." style="padding:4px 8px; border:1px solid #aaa; border-radius:3px; width:220px;">
+        </div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+          <div style="border:1px solid #e0e8f0; padding:12px; border-radius:4px; background:#f8fafc;">
+            <h3 style="color:#0284c7; font-size:14px; margin-bottom:6px;">Windows Vista News</h3>
+            <p style="font-size:12px; line-height:1.5; color:#333;">Experience Windows Aero graphics, Windows Sidebar Gadgets, instant desktop search, and enhanced security with Windows Defender.</p>
+          </div>
+          <div style="border:1px solid #e0e8f0; padding:12px; border-radius:4px; background:#f8fafc;">
+            <h3 style="color:#059669; font-size:14px; margin-bottom:6px;">Entertainment</h3>
+            <p style="font-size:12px; line-height:1.5; color:#333;">Discover music, videos, and games with Windows Media Player 11 and Windows Media Center.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Windows Vista Taskbar -->
+  <footer class="vista-taskbar">
+    <div class="vista-orb" id="vista-orb" title="Start">
+      <svg viewBox="0 0 16 16" width="22" height="22">
+        <path fill="#ff3333" d="M2 3h5v4H2z"/>
+        <path fill="#33cc33" d="M9 3h5v4H9z"/>
+        <path fill="#3399ff" d="M2 9h5v4H2z"/>
+        <path fill="#ffcc00" d="M9 9h5v4H9z"/>
+      </svg>
+    </div>
+
+    <!-- Quick Launch: Flip 3D -->
+    <div class="vista-quick-launch" style="display:flex; align-items:center; margin-left:4px; margin-right:8px;">
+      <button id="btn-flip-3d" title="Switch between windows (Flip 3D)" style="background:transparent; border:none; cursor:pointer; padding:2px 4px; display:flex; align-items:center;">
+        <svg viewBox="0 0 20 20" width="18" height="18">
+          <polygon points="2,14 10,4 18,4 10,14" fill="rgba(56,189,248,0.7)" stroke="#fff" stroke-width="1"/>
+          <polygon points="5,17 13,7 19,7 11,17" fill="rgba(14,165,233,0.9)" stroke="#fff" stroke-width="1"/>
+        </svg>
+      </button>
+    </div>
+
+    <div class="vista-tabs" id="vista-tabs"></div>
+
+    <div class="vista-tray">
+      <svg viewBox="0 0 16 16" width="14" height="14">
+        <path d="M3 5h3l4-3v12l-4-3H3z" fill="#fff"/>
+        <path d="M12 5c1 1.5 1 4.5 0 6" stroke="#fff" fill="none"/>
+      </svg>
+      <span id="vista-clock">00:00 PM</span>
+    </div>
+  </footer>
+
+  <!-- Windows Vista Start Menu -->
+  <div class="vista-start-menu hidden" id="vista-start-menu">
+    <div class="vista-menu-cols">
+      <div class="vista-menu-left" id="vista-menu-programs-list">
+        <div class="vista-menu-item" data-win="win-gallery">
+          <svg viewBox="0 0 24 24" width="22" height="22">
+            <rect x="2" y="3" width="20" height="18" rx="2" fill="#1e3a8a" stroke="#60a5fa"/>
+            <circle cx="8" cy="8" r="2" fill="#fbbf24"/>
+            <path d="M3 18 L9 11 L13 15 L17 9 L21 18 Z" fill="#38bdf8"/>
+          </svg>
+          <strong>Windows Photo Gallery</strong>
+        </div>
+        <div class="vista-menu-item" data-win="win-computer">
+          <svg viewBox="0 0 24 24" width="22" height="22">
+            <rect x="3" y="3" width="18" height="13" rx="1" fill="#1e293b" stroke="#38bdf8"/>
+            <rect x="5" y="5" width="14" height="9" fill="#0284c7"/>
+            <rect x="10" y="16" width="4" height="4" fill="#94a3b8"/>
+          </svg>
+          <strong>Computer</strong>
+        </div>
+        <div class="vista-menu-item" data-win="win-mediacenter">
+          <svg viewBox="0 0 24 24" width="22" height="22">
+            <circle cx="12" cy="12" r="10" fill="#0284c7"/>
+            <circle cx="12" cy="12" r="4" fill="#fff"/>
+          </svg>
+          <strong>Windows Media Center</strong>
+        </div>
+      </div>
+      <div class="vista-menu-right">
+        <div class="vista-menu-item">Documents</div>
+        <div class="vista-menu-item">Pictures</div>
+        <div class="vista-menu-item">Music</div>
+        <div class="vista-menu-item">Control Panel</div>
+        <div class="vista-menu-item">Default Programs</div>
+        <div class="vista-menu-item">Help and Support</div>
+      </div>
+    </div>
+    <div class="vista-menu-footer">
+      <div style="background:rgba(255,255,255,0.15); border-radius:3px; padding:3px 8px; flex:1; margin-right:10px;">
+        <input type="text" id="vista-search-input" placeholder="Start Search" style="background:transparent; border:none; outline:none; color:#fff; width:100%; font-size:11px;">
+      </div>
+      <button id="vista-power-btn" style="background:transparent; border:none; color:#ff4444; font-size:18px; cursor:pointer;" title="Shut down / Restart">
+        ⏻
+      </button>
+    </div>
+  </div>
+
+  <!-- Shut Down Windows Vista Dialog -->
+  <div id="vista-shutdown-dialog" class="hidden" style="position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.5); display:flex; align-items:center; justify-content:center; z-index:100000;">
+    <div style="background:rgba(15,25,38,0.95); backdrop-filter:blur(16px); border:1px solid rgba(255,255,255,0.3); border-radius:8px; width:360px; padding:18px; color:#fff;">
+      <h3 style="margin-bottom:12px;">Shut Down Windows</h3>
+      <p style="margin-bottom:14px; font-size:12px; color:#bbb;">What would you like the computer to do?</p>
+      <div style="margin-bottom:18px;">
+        <label style="display:block; margin-bottom:8px; cursor:pointer;">
+          <input type="radio" name="vista-shut" value="reboot" checked> Restart (Boot Manager)
+        </label>
+        <label style="display:block; cursor:pointer;">
+          <input type="radio" name="vista-shut" value="off"> Shut Down
+        </label>
+      </div>
+      <div style="display:flex; justify-content:flex-end; gap:8px;">
+        <button id="btn-vista-shut-ok" style="padding:4px 14px; background:#2a85e8; color:#fff; border:none; border-radius:3px; cursor:pointer;">OK</button>
+        <button id="btn-vista-shut-cancel" style="padding:4px 14px; background:rgba(255,255,255,0.2); color:#fff; border:none; border-radius:3px; cursor:pointer;">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Windows Flip 3D Simulation Overlay -->
+  <div id="vista-flip3d-modal" class="hidden" style="position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.65); backdrop-filter:blur(8px); display:flex; flex-direction:column; align-items:center; justify-content:center; z-index:90000; perspective:1000px;">
+    <div style="color:#fff; font-size:16px; font-weight:300; margin-bottom:24px; text-shadow:0 2px 8px #000;">Windows Flip 3D — Press TAB or click to cycle</div>
+    <div id="flip3d-carousel" style="width:480px; height:300px; position:relative; transform-style:preserve-3d;">
+      <div class="flip-card card-1" style="position:absolute; width:100%; height:100%; background:linear-gradient(135deg, rgba(14,165,233,0.85), rgba(2,132,199,0.95)); border:2px solid #fff; border-radius:8px; box-shadow:0 15px 35px rgba(0,0,0,0.7); transform:rotateY(-30deg) translateZ(80px); padding:20px; color:#fff; cursor:pointer;">
+        <h3>Windows Photo Gallery</h3>
+        <p style="margin-top:10px; opacity:0.9;">Viewing Desert Landscape.jpg</p>
+      </div>
+      <div class="flip-card card-2" style="position:absolute; width:100%; height:100%; background:linear-gradient(135deg, rgba(30,41,59,0.9), rgba(15,23,42,0.95)); border:2px solid #fff; border-radius:8px; box-shadow:0 15px 35px rgba(0,0,0,0.7); transform:rotateY(-30deg) translateZ(0px) translateX(-50px) translateY(-20px); padding:20px; color:#fff; cursor:pointer;">
+        <h3>Computer</h3>
+        <p style="margin-top:10px; opacity:0.9;">Local Disk (C:) - 58.4 GB free</p>
+      </div>
+      <div class="flip-card card-3" style="position:absolute; width:100%; height:100%; background:linear-gradient(135deg, rgba(2,21,51,0.95), rgba(0,85,170,0.95)); border:2px solid #fff; border-radius:8px; box-shadow:0 15px 35px rgba(0,0,0,0.7); transform:rotateY(-30deg) translateZ(-80px) translateX(-100px) translateY(-40px); padding:20px; color:#fff; cursor:pointer;">
+        <h3>Windows Media Center</h3>
+        <p style="margin-top:10px; opacity:0.9;">TV + Movies / Music / Pictures</p>
+      </div>
+    </div>
+    <button id="btn-flip3d-close" style="margin-top:40px; padding:6px 20px; background:rgba(255,255,255,0.25); color:#fff; border:1px solid #fff; border-radius:4px; cursor:pointer;">Exit Flip 3D (Esc)</button>
+  </div>
+
+  <!-- User Account Control (UAC) Prompt Modal -->
+  <div id="vista-uac-modal" class="hidden" style="position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.75); display:flex; align-items:center; justify-content:center; z-index:999999;">
+    <div style="background:#fff; border-radius:8px; width:440px; overflow:hidden; box-shadow:0 15px 40px rgba(0,0,0,0.8); font-family:'Segoe UI', sans-serif;">
+      <div style="background:linear-gradient(90deg, #0284c7, #0369a1); color:#fff; padding:12px 18px; display:flex; align-items:center; gap:12px;">
+        <svg viewBox="0 0 24 24" width="28" height="28">
+          <path d="M12 2 L4 5 L4 11 C4 16.5, 7.5 21.5, 12 23 C16.5 21.5, 20 16.5, 20 11 L20 5 Z" fill="#f59e0b"/>
+          <path d="M12 2 L12 23 C16.5 21.5, 20 16.5, 20 11 L20 5 Z" fill="#fbbf24"/>
+        </svg>
+        <div>
+          <h4 style="margin:0; font-size:15px;">User Account Control</h4>
+          <span style="font-size:11px; opacity:0.9;">Windows needs your permission to continue</span>
+        </div>
+      </div>
+      <div style="padding:18px; font-size:12px; color:#222;">
+        <p style="margin-bottom:10px;">If you started this action, continue to configure device settings or start this program.</p>
+        <div style="background:#f4f6fa; border:1px solid #d0d8e8; padding:8px 12px; border-radius:4px; margin-bottom:16px;">
+          <strong>Device Administration Tool</strong><br>
+          <span style="color:#666;">Microsoft Windows Hardware Verification</span>
+        </div>
+        <div style="display:flex; justify-content:flex-end; gap:8px;">
+          <button id="btn-uac-continue" style="padding:6px 18px; background:#0284c7; color:#fff; border:none; border-radius:4px; font-weight:bold; cursor:pointer;">Continue</button>
+          <button id="btn-uac-cancel" style="padding:6px 18px; background:#e2e8f0; color:#000; border:none; border-radius:4px; cursor:pointer;">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
